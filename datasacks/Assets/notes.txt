@@ -1,0 +1,56 @@
+.LOG
+
+7:38 AM 2/2/2018
+
+Datasacks, sacks-o-data.
+
+TODO for basic functionality:
+
+_x_	basic structure of data
+_x_	display int
+_x_	display float
+_x_	display string
+_x_	enable button (set .interactable)
+_x_	enable UI component (set .enabled on Button or Text object)
+_x_	send button event to datasack
+_x_	persistent saves/loads
+_x_	toggle to control a boolean directly
+
+Future Features:
+
+___	array processing
+	___	load/store element(s)
+	___	process tagged children
+
+___	indexing by integer:
+	___	image selection from array
+	___	string display from array
+	___	color selection from array
+
+___	color storage/retrieval as int
+
+___	output: image filled position (float)
+
+_x_	input: get slider to variable (float)
+
+___	inject formatting from another datavar:
+	___	use IFormatUser interface
+	___	to display int
+	___	to display float
+
+___	input field (string) input
+
+Datasack Instance Collections:
+___	create the instance collection
+___	insert each Datasack:
+	___	this clones it to a new instance
+	___	change the datasack name: prefix it with instance name (or ID?)
+___	load/save all data instance content to a JSON string
+
+Maybe some basic Awake "setters" like what is in EZVars:
+
+___	AwakeSetFloat, AwakeSetInt, AwakeSetString
+
+Maybe a DatasackUtility (DSU) bunch of functions for some of the above, and:
+
+___	a scene transition watcher
