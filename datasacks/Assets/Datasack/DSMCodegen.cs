@@ -12,6 +12,7 @@
 public partial class DSM
 {
 	public static Datasack GameRunning { get { return DSM.I.Get( "GameRunning"); } }
+	public static Datasack GUID { get { return DSM.I.Get( "GUID"); } }
 	public static Datasack HardMode { get { return DSM.I.Get( "HardMode"); } }
 	public static Datasack HighScore { get { return DSM.I.Get( "HighScore"); } }
 	public static Datasack LastWord { get { return DSM.I.Get( "LastWord"); } }

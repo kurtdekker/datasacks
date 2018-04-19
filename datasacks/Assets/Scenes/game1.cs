@@ -47,6 +47,11 @@ public class game1 : MonoBehaviour
 
 	void Start()
 	{
+		if (DSM.GUID.Value.Length < 10)
+		{
+			DSM.GUID.Value = System.Guid.NewGuid().ToString().Substring( 0, 10);
+		}
+
 		Debug.Log( GetType()+".Start():");
 		Debug.Log( DSM.Timer1.ToString());
 		Debug.Log( DSM.Timer1Start.ToString());
