@@ -49,8 +49,6 @@ public class Datasack : ScriptableObject
 {
 	public	string	InitialValue;
 
-	private	string	TheData;
-
 	public	bool	Save;
 
 	public	delegate	void	OnValueChangedDelegate( Datasack ds);
@@ -68,6 +66,8 @@ public class Datasack : ScriptableObject
 				DSM.s_PlayerPrefsPrefix + name.ToLower(), Value);
 		}
 	}
+
+	[NonSerialized] private	string	TheData;
 
 	public	string	Value
 	{
