@@ -43,11 +43,23 @@ using UnityEngine.UI;
 [RequireComponent( typeof( Button))]
 public class DSButtonSetUIIntent : MonoBehaviour
 {
+	[Tooltip("Defaults to UISack datavar if none supplied.")]
+	public Datasack dsUI;
+
+	[Tooltip("Leave blank to set Button GameObject name")]
+	public string ValueToSet;
+
 	private	Button button;
 
 	void	OnChanged()
 	{
-		DSM.UISack.Value = name;
+		var ds = DSM.UISack;
+		if (dsUI) ds = dsUI;
+
+		string value = name;
+		if (ValueToSet != null && ValueToSet.Length > 0) value = ValueToSet;
+
+		ds.Value = value;
 	}
 
 	void	OnEnable()
