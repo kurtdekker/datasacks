@@ -48,7 +48,6 @@ public class DSAudioVolume : MonoBehaviour
 
 	void Start ()
 	{
-		azzs = GetComponents<AudioSource>();
 		OnChanged (dataSack);
 	}
 
@@ -62,6 +61,7 @@ public class DSAudioVolume : MonoBehaviour
 
 	void	OnEnable()
 	{
+		azzs = GetComponents<AudioSource>();
 		dataSack.OnChanged += OnChanged;	
 	}
 	void	OnDisable()

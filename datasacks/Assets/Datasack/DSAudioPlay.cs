@@ -56,11 +56,6 @@ public class DSAudioPlay : MonoBehaviour
 
 	private int lastPlayed;
 
-	void Start ()
-	{
-		azzs = GetComponents<AudioSource>();
-	}
-
 	void	OnChanged( Datasack ds)
 	{
 		if (Strategy == PlayStrategy.ALL)
@@ -92,6 +87,7 @@ public class DSAudioPlay : MonoBehaviour
 
 	void	OnEnable()
 	{
+		azzs = GetComponents<AudioSource>();
 		dataSack.OnChanged += OnChanged;	
 	}
 	void	OnDisable()
