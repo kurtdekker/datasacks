@@ -44,18 +44,49 @@ public class DSAudioPlay : MonoBehaviour
 {
 	public	Datasack	dataSack;
 
-	private AudioSource azz;
+	private AudioSource[] azzs;
+
+	public enum PlayStrategy
+	{
+		RANDOM,
+		SEQUENCE,
+		ALL,
+	}
+	public PlayStrategy Strategy;
+
+	private int lastPlayed;
 
 	void Start ()
 	{
-		azz = GetComponent<AudioSource>();
+		azzs = GetComponents<AudioSource>();
 	}
 
 	void	OnChanged( Datasack ds)
 	{
-		if (azz)
+		if (Strategy == PlayStrategy.ALL)
 		{
-			azz.Play();
+			foreach( var az in azzs)
+			{
+				az.Play();
+			}
+			return;
+		}
+
+		if (Strategy == PlayStrategy.RANDOM)
+		{
+			lastPlayed = Random.Range( 0, azzs.Length);
+		}
+
+		azzs[lastPlayed].Play();
+
+		// done after the .Play() so we get 0 played first
+		if (Strategy == PlayStrategy.SEQUENCE)
+		{
+			lastPlayed++;
+			if (lastPlayed >= azzs.Length)
+			{
+				lastPlayed = 0;
+			}
 		}
 	}
 

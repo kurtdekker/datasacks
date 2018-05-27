@@ -44,19 +44,19 @@ public class DSAudioVolume : MonoBehaviour
 {
 	public	Datasack	dataSack;
 
-	private AudioSource azz;
+	private AudioSource[] azzs;
 
 	void Start ()
 	{
-		azz = GetComponent<AudioSource>();
+		azzs = GetComponents<AudioSource>();
 		OnChanged (dataSack);
 	}
 
 	void	OnChanged( Datasack ds)
 	{
-		if (azz)
+		foreach( var az in azzs)
 		{
-			azz.volume = ds.fValue;
+			az.volume = ds.fValue;
 		}
 	}
 
