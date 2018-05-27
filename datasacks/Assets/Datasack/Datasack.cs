@@ -45,7 +45,7 @@ using UnityEditor;
 #endif
 
 [CreateAssetMenu]
-public class Datasack : ScriptableObject
+public partial class Datasack : ScriptableObject
 {
 	public	string	InitialValue;
 
@@ -89,45 +89,6 @@ public class Datasack : ScriptableObject
 				#endif
 					DSM.I.SetDirty();
 			}
-		}
-	}
-
-	public	int		iValue
-	{
-		get
-		{
-			int i = 0;
-			int.TryParse (Value, out i);
-			return i;
-		}
-		set
-		{
-			Value = value.ToString();
-		}
-	}
-
-	public	float	fValue
-	{
-		get
-		{
-			return DatasackFormatting.FromHexString( Value);
-		}
-		set
-		{
-			Value = DatasackFormatting.ToHexString( value);
-		}
-	}
-
-	// CAUTION: nonzero integer is true... a string "true" doesn't cut it!
-	public	bool	bValue
-	{
-		get
-		{
-			return iValue != 0;
-		}
-		set
-		{
-			iValue = value ? 1 : 0;
 		}
 	}
 
