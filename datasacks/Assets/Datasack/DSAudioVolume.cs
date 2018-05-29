@@ -44,7 +44,10 @@ public class DSAudioVolume : MonoBehaviour
 {
 	public	Datasack	dataSack;
 
+	public	bool	DisregardInitialVolume;
+
 	private AudioSource[] azzs;
+	private float[] initialVolumes;
 
 	void Start ()
 	{
@@ -53,15 +56,23 @@ public class DSAudioVolume : MonoBehaviour
 
 	void	OnChanged( Datasack ds)
 	{
-		foreach( var az in azzs)
+		for (int i = 0; i < azzs.Length; i++)
 		{
-			az.volume = ds.fValue;
+			var az = azzs[i];
+			az.volume = DisregardInitialVolume ? ds.fValue : ds.fValue * initialVolumes[i];
 		}
 	}
 
 	void	OnEnable()
 	{
 		azzs = GetComponents<AudioSource>();
+
+		initialVolumes = new float[azzs.Length];
+		for (int i = 0; i < azzs.Length; i++)
+		{
+			initialVolumes[i] = azzs[i].volume;
+		}
+
 		dataSack.OnChanged += OnChanged;	
 	}
 	void	OnDisable()
