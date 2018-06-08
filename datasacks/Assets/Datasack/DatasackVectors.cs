@@ -42,6 +42,26 @@ using UnityEngine;
 
 public partial class Datasack
 {
+	public	Vector2	v2Value
+	{
+		get
+		{
+			string[] parts = Value.Split( ',');
+			if (parts.Length == 2)
+			{
+				return new Vector2(
+					DatasackFormatting.FromHexString( parts[0]),
+					DatasackFormatting.FromHexString( parts[1]));
+			}
+			return Vector2.zero;
+		}
+		set
+		{
+			Value = DatasackFormatting.ToHexString( value.x) + "," +
+				DatasackFormatting.ToHexString( value.y);
+		}
+	}
+
 	public	Vector3	v3Value
 	{
 		get
