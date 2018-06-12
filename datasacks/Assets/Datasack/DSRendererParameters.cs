@@ -46,11 +46,11 @@ public class DSRendererParameters : MonoBehaviour
 	public	Datasack	dsMainTextureOffset;
 	public	Datasack	dsMainTextureScale;
 
-	private	Renderer	renderer;
+	private	Renderer	myRenderer;
 
 	void Start ()
 	{
-		renderer = GetComponent<Renderer> ();
+		myRenderer = GetComponent<Renderer> ();
 		OnChangeOffset (dsMainTextureOffset);
 		OnChangeScale (dsMainTextureScale);
 	}
@@ -58,12 +58,12 @@ public class DSRendererParameters : MonoBehaviour
 	void	OnChangeOffset( Datasack ds)
 	{
 		if (ds)
-			renderer.material.mainTextureOffset = ds.v2Value;
+			myRenderer.material.mainTextureOffset = ds.v2Value;
 	}
 	void	OnChangeScale( Datasack ds)
 	{
 		if (ds)
-			renderer.material.mainTextureScale = ds.v2Value;
+			myRenderer.material.mainTextureScale = ds.v2Value;
 	}
 
 	void	OnEnable()
