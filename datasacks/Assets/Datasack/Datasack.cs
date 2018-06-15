@@ -69,6 +69,14 @@ public partial class Datasack : ScriptableObject
 
 	[NonSerialized] private	string	TheData;
 
+	public	void	Poke()
+	{
+		if (OnChanged != null)
+		{
+			OnChanged.Invoke (this);
+		}
+	}
+
 	public	string	Value
 	{
 		get
@@ -78,10 +86,9 @@ public partial class Datasack : ScriptableObject
 		set
 		{
 			TheData = value;
-			if (OnChanged != null)
-			{
-				OnChanged.Invoke (this);
-			}
+
+			Poke();
+
 			if (Save)
 			{
 				#if UNITY_EDITOR
