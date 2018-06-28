@@ -56,6 +56,9 @@ public partial class Datasack : ScriptableObject
 	[NonSerialized]
 	public	OnValueChangedDelegate	OnChanged;
 
+	[NonSerialized]
+	public	OnValueChangedDelegate	OnChangedOnceOnly;
+
 	void OnEnable()
 	{
 		Value = InitialValue;
@@ -74,6 +77,13 @@ public partial class Datasack : ScriptableObject
 		if (OnChanged != null)
 		{
 			OnChanged.Invoke (this);
+		}
+
+		var call = OnChangedOnceOnly;
+		if (call != null)
+		{
+			OnChangedOnceOnly = null;
+			call(this);
 		}
 	}
 
