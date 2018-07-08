@@ -40,34 +40,38 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DSImageColorLookupGetFloat : MonoBehaviour
+[RequireComponent( typeof( Image))]
+public class DSImageColorGetInt : MonoBehaviour
 {
 	public	Datasack	dataSack;
 
-	public	Gradient	ColorLookup;
+	public	Color[]		ColorTable;
 
-	private	Image	image;
-
-	void Start ()
+	void Reset()
 	{
-		image = GetComponent<Image> ();
-		OnChanged (dataSack);
+		ColorTable = new Color[] {
+			Color.white,
+			Color.green,
+		};
 	}
+
+	private	Image image;
 
 	void	OnChanged( Datasack ds)
 	{
-		if (image)
-		{
-			image.color = ColorLookup.Evaluate (ds.fValue);
-		}
+		image.color = ColorTable[ ds.iValue];
 	}
 
 	void	OnEnable()
 	{
-		dataSack.OnChanged += OnChanged;	
+		image = GetComponent<Image> ();
+
+		dataSack.OnChanged += OnChanged;
+
+		OnChanged(dataSack);
 	}
 	void	OnDisable()
 	{
-		dataSack.OnChanged -= OnChanged;	
+		dataSack.OnChanged -= OnChanged;
 	}
 }
