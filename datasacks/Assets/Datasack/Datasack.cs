@@ -162,6 +162,12 @@ public partial class Datasack : ScriptableObject
 			AssetDatabase.Refresh();
 		}
 
+		string PlayerPrefsKey()
+		{
+			Datasack ds = (Datasack)target;
+			return DSM.s_PlayerPrefsPrefix + ds.name.ToLower();
+		}
+
 		public override void OnInspectorGUI()
 		{
 			DrawDefaultInspector();
@@ -171,6 +177,36 @@ public partial class Datasack : ScriptableObject
 			if (GUILayout.Button( "CODEGEN"))
 			{
 				GenerateCode();
+			}
+
+			GUILayout.Space(20);
+
+			GUI.color = Color.cyan;
+			if (GUILayout.Button( "OUTPUT CURRENT VALUE"))
+			{
+				Datasack ds = (Datasack)target;
+				Debug.Log( "Datasack " + ds.name + " is currently: '" + ds.Value + "' (float=" + ds.fValue + ")");
+			}
+
+			GUILayout.Space(20);
+
+			GUI.color = Color.yellow;
+			if (GUILayout.Button( "DELETE SAVED VALUE"))
+			{
+				if (PlayerPrefs.HasKey(PlayerPrefsKey()))
+				{
+					PlayerPrefs.DeleteKey( PlayerPrefsKey());
+					PlayerPrefs.Save();
+				}
+			}
+
+			GUILayout.Space(20);
+
+			GUI.color = Color.red;
+			if (GUILayout.Button( "DELETE ALL PLAYER PREFS"))
+			{
+				PlayerPrefs.DeleteAll();
+				PlayerPrefs.Save();
 			}
 
 			EditorGUILayout.EndVertical();
