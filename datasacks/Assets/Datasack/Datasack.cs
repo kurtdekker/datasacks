@@ -181,6 +181,15 @@ public partial class Datasack : ScriptableObject
 
 			GUILayout.Space(20);
 
+			GUI.color = Color.green;
+			if (GUILayout.Button( "RESET TO INITIAL VALUE"))
+			{
+				Datasack ds = (Datasack)target;
+				ds.Value = ds.InitialValue;
+			}
+
+			GUILayout.Space(20);
+
 			GUI.color = Color.cyan;
 			if (GUILayout.Button( "OUTPUT CURRENT VALUE"))
 			{
