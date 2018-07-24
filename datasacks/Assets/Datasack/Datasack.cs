@@ -142,7 +142,7 @@ public partial class Datasack : ScriptableObject
 
 			s += "public partial class DSM\n{\n";
 
-			Datasack[] sacks = Resources.LoadAll<Datasack>( "Datasacks/");
+			Datasack[] sacks = Resources.LoadAll<Datasack>( "");
 			foreach( var ds in sacks)
 			{
 				AppendGetter( ref s, ds);

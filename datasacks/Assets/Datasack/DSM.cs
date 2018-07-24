@@ -59,7 +59,7 @@ public partial class DSM : MonoBehaviour
 
 				_I.AllSacks = new Dictionary<string, Datasack> ();
 
-				Datasack[] sacks = Resources.LoadAll<Datasack>( "Datasacks/");
+				Datasack[] sacks = Resources.LoadAll<Datasack>( "");
 
 				foreach (var sack in sacks)
 				{
