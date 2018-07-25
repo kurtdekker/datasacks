@@ -72,7 +72,4 @@ into the string portion of a Datasack.
 		dataSack.OnChanged -= OnDatasackChanged;
 	}
 
-
-![Datasacks Overview](https://raw.githubusercontent.com/kurtdekker/kurtdekker.github.io/master/images/20180724_datasacks_overview.png)
-
 ![Datasacks Overview 2](https://raw.githubusercontent.com/kurtdekker/datasacks/master/20180724_datasacks_overview.png)
