@@ -3,6 +3,10 @@ Putting up my datasacks module for easy UI event processing in Unity3D.
 Fire up the example game scene for a silly clicker that has some UI
 that uses datasacks.
 
+Here is a sorta graphical overview of how things work:
+
+![Datasacks Overview 2](https://raw.githubusercontent.com/kurtdekker/datasacks/master/20180724_datasacks_overview.png)
+
 More examples coming soon. Here are some notes:
 
 What are Datasacks?
@@ -71,5 +75,3 @@ into the string portion of a Datasack.
 	{
 		dataSack.OnChanged -= OnDatasackChanged;
 	}
-
-![Datasacks Overview 2](https://raw.githubusercontent.com/kurtdekker/datasacks/master/20180724_datasacks_overview.png)
