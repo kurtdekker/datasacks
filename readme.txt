@@ -44,3 +44,34 @@ let non-engineers make meaningful changes to the game without
 having to involve an engineer.
 
 See notes.txt for what (might be) coming in the future.
+
+Other things you can do with a Datasack can be seen looking at
+its inspector: change values at runtime, display values, etc.
+
+You can also check the Save boolean to cause it to persist to
+the PlayerPrefs system between launches of the application.
+
+Obviously you can use JSON and store whatever objects you want
+into the string portion of a Datasack.
+
+// Here is an example data subscription pattern for your Monobehavior:
+
+	public Datasack dataSack;	// populate this in the Unity editor
+
+	void	OnDatasackChanged( Datasack ds)
+	{
+		// Here is where you service the notification
+		// that the contents of this Datasack changed
+		// You can inspect the name of the Datasack if
+		// you expect more than one Datasack to call
+		// this function.
+	}
+
+	void	OnEnable()
+	{
+		dataSack.OnChanged += OnDatasackChanged;
+	}
+	void	OnDisable()
+	{
+		dataSack.OnChanged -= OnDatasackChanged;
+	}
