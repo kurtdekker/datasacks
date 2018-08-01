@@ -61,6 +61,12 @@ public partial class Datasack : ScriptableObject
 
 	void OnEnable()
 	{
+		bool holdBreak = DebugBreak;
+		bool holdLogging = DebugLogging;
+
+		DebugBreak = false;
+		DebugLogging = false;
+
 		Value = InitialValue;
 
 		if (Save)
@@ -68,6 +74,9 @@ public partial class Datasack : ScriptableObject
 			Value = PlayerPrefs.GetString (
 				DSM.s_PlayerPrefsPrefix + name.ToLower(), Value);
 		}
+
+		DebugBreak = holdBreak;
+		DebugLogging = holdLogging;
 	}
 
 	[NonSerialized] private	string	TheData;
@@ -95,6 +104,17 @@ public partial class Datasack : ScriptableObject
 		}
 		set
 		{
+			if (DebugLogging)
+			{
+				Debug.Log( "Datasack " + name + " changed: '" + TheData + "' to '" + value + "'");
+			}
+
+			if (DebugBreak)
+			{
+				Debug.LogWarning( "Datasack " + name + ": set to DebugBreak");
+				Debug.Break();
+			}
+
 			TheData = value;
 
 			Poke();
