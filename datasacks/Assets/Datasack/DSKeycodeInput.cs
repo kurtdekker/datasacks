@@ -40,33 +40,74 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DSActiveGetBool : MonoBehaviour
+public class DSKeycodeInput : MonoBehaviour
 {
+	[Tooltip("Defaults to UISack datavar if none supplied.")]
 	public	Datasack	dataSack;
 
-	[Tooltip("Targets to toggle (Not this object!):")]
-	public	GameObject[]	Targets;
-
-	void Start ()
+	public	enum KeyActivity
 	{
-		OnChanged (dataSack);
+		DOWN,
+		UP,
+		HOLD,
 	}
 
-	void	OnChanged( Datasack ds)
+	[Tooltip( "List keycodes you want tracked.")]
+	public	KeyCode[]	KeysToTrack;
+
+	[Tooltip( "What type of activity to track.")]
+	public	KeyActivity	Activity;
+
+	[Tooltip( "Leave blank to send the Keycode.ToString()")]
+	public	string		Output;
+
+	void	Reset()
 	{
-		foreach( var target in Targets)
+		KeysToTrack = new KeyCode[] {
+			KeyCode.Return,
+			KeyCode.Space,
+		};
+
+		Activity = KeyActivity.DOWN;
+
+		Output = "";
+	}
+
+	void	Update()
+	{
+		System.Func<KeyCode,bool> InputFunction = Input.GetKeyDown;
+
+		switch( Activity)
 		{
-			target.SetActive( dataSack.bValue);
+		case KeyActivity.UP :
+			InputFunction = Input.GetKeyUp;
+			break;
+		case KeyActivity.HOLD :
+			InputFunction = Input.GetKey;
+			break;
+		}
+
+		bool triggered = false;
+		string tempOutput = "";
+
+		foreach( var key in KeysToTrack)
+		{
+			if (InputFunction( key))
+			{
+				triggered = true;
+				tempOutput = key.ToString();
+				break;
+			}
+		}
+
+		if (triggered)
+		{
+			if (Output != null && Output.Length > 0)
+			{
+				tempOutput = Output;
+			}
+
+			dataSack.Value = tempOutput;
 		}
 	}
-
-	void	OnEnable()
-	{
-		dataSack.OnChanged += OnChanged;	
-	}
-	void	OnDisable()
-	{
-		dataSack.OnChanged -= OnChanged;	
-	}
-
 }

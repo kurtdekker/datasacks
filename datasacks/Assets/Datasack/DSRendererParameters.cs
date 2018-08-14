@@ -42,7 +42,7 @@ using UnityEngine.UI;
 
 public class DSRendererParameters : MonoBehaviour
 {
-	[Header("These are Vector2:")]
+	[Tooltip("These are Vector2:")]
 	public	Datasack	dsMainTextureOffset;
 	public	Datasack	dsMainTextureScale;
 

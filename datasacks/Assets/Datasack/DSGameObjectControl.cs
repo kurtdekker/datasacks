@@ -41,16 +41,16 @@ using UnityEngine;
 
 public class DSGameObjectControl : MonoBehaviour
 {
-	[Header( "Poke this Datasack to enable/disable objects below.")]
+	[Tooltip( "Poke this Datasack to enable/disable objects below.")]
 	public	Datasack	dataSack;
 
-	[Header( "GameObjects to DISABLE when Datasack is poked.")]
+	[Tooltip( "GameObjects to DISABLE when Datasack is poked.")]
 	public	GameObject[]	ToDisable;
 
-	[Header( "GameObjects to ENABLE when Datasack is poked.")]
+	[Tooltip( "GameObjects to ENABLE when Datasack is poked.")]
 	public	GameObject[]	ToEnable;
 
-	[Header( "Toggle this to trigger a FALSE poke on Enable.")]
+	[Tooltip( "Toggle this to trigger a FALSE poke on Enable.")]
 	public	bool			TriggerFalseOnEnable;
 
 	void OnChanged( Datasack ds)
