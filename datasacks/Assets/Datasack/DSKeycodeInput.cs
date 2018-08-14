@@ -61,6 +61,9 @@ public class DSKeycodeInput : MonoBehaviour
 	[Tooltip( "Leave blank to send the Keycode.ToString()")]
 	public	string		Output;
 
+	[Tooltip( "Check box to send GameObject.name")]
+	public	bool		SendGameObjectName;
+
 	void	Reset()
 	{
 		KeysToTrack = new KeyCode[] {
@@ -71,6 +74,8 @@ public class DSKeycodeInput : MonoBehaviour
 		Activity = KeyActivity.DOWN;
 
 		Output = "";
+
+		SendGameObjectName = false;
 	}
 
 	void	Update()
@@ -105,6 +110,11 @@ public class DSKeycodeInput : MonoBehaviour
 			if (Output != null && Output.Length > 0)
 			{
 				tempOutput = Output;
+			}
+
+			if (SendGameObjectName)
+			{
+				tempOutput = name;
 			}
 
 			dataSack.Value = tempOutput;
