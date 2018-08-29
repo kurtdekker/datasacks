@@ -19,6 +19,11 @@ public partial class DSM
 	public static Datasack HighScore { get { return DSM.I.Get( "HighScore"); } }
 	public static Datasack InputtedData { get { return DSM.I.Get( "InputtedData"); } }
 	public static Datasack LastWord { get { return DSM.I.Get( "LastWord"); } }
+	public static Datasack Popup1Button1Text { get { return DSM.I.Get( "Popup1Button1Text"); } }
+	public static Datasack Popup1Button2Text { get { return DSM.I.Get( "Popup1Button2Text"); } }
+	public static Datasack Popup1Header { get { return DSM.I.Get( "Popup1Header"); } }
+	public static Datasack Popup1Message { get { return DSM.I.Get( "Popup1Message"); } }
+	public static Datasack Popup1Result { get { return DSM.I.Get( "Popup1Result"); } }
 	public static Datasack Score { get { return DSM.I.Get( "Score"); } }
 	public static Datasack Ships { get { return DSM.I.Get( "Ships"); } }
 	public static Datasack StartingShips { get { return DSM.I.Get( "StartingShips"); } }
