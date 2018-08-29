@@ -126,6 +126,15 @@ public class game1 : MonoBehaviour
 			Debug.Log( "Entered:" + DSM.InputtedData.Value);
 			break;
 
+		case "ButtonPopup1":
+			DSM.Popup1Header.Value = "Answer Me!";
+			DSM.Popup1Message.Value = "WHAT is the airspeed velocity of an unladen swallow?";
+			DSM.Popup1Button1Text.Value = "African";
+			DSM.Popup1Button2Text.Value = "European";
+			DSM.Popup1Result.Value = "<none>";
+			popup1.Activate();
+			break;
+
 		default :
 			Debug.LogWarning (GetType () + ".OnUIIntent(): unknown intent: " + ds.Value);
 			break;
