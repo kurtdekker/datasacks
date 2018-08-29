@@ -38,110 +38,65 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-
-
-public class game1 : MonoBehaviour
+[RequireComponent( typeof( InputField))]
+public class DSInputField : MonoBehaviour
 {
-	string[] words = new string[] { "clack", "clock", "click", "cluck"};
+	[Header("The DataSack to signal onEndEdit. Default is UISack.")]
+	public Datasack DSUI;
 
-	void Start()
+	public	bool	SignalPayloadInsteadOfName;
+
+	[Header("The actual text as it is edited, bidirectional connection.")]
+	public Datasack dataSackPayload;
+
+	private	InputField inputField;
+
+	// Data flowing from InputField to the Datasack(s)
+	void	OnValueChanged( string Value)
 	{
-		if (DSM.GUID.Value.Length < 10)
-		{
-			DSM.GUID.Value = System.Guid.NewGuid().ToString().Substring( 0, 10);
-		}
+		dataSackPayload.Value = Value;
+	}
+	public void OnEndEdit( string Value)
+	{
+		Debug.Log( "OnEndEdit(): " + Value);
 
-		Debug.Log( GetType()+".Start():");
-		Debug.Log( DSM.Timer1.ToString());
-		Debug.Log( DSM.Timer1Start.ToString());
+		dataSackPayload.Value = Value;
+
+		string signalledOutput = name;
+		if (SignalPayloadInsteadOfName) signalledOutput = Value;
+
+		DSUI.Value = signalledOutput;
 	}
 
-	void	NewGame()
+	// Data flowing from Datasack to InputField
+	void	OnDatasackChanged( Datasack ds)
 	{
-		DSM.Score.iValue = 0;
-
-		DSM.GameRunning.bValue = true;
-
-		DSM.Timer1.fValue = DSM.Timer1Start.fValue;
-
-		if (DSM.HardMode.bValue)
-		{
-			DSM.Timer1.fValue /= 2;
-		}
-
-		DSM.LastWord.Value = "-word-";
-	}
-
-	void	AddPoints()
-	{
-		DSM.Score.iValue += Random.Range (10, 20);
-
-		DSM.LastWord.Value = words[ Random.Range( 0, words.Length)];
-	}
-
-	void	GameOver()
-	{
-		DSM.GameRunning.bValue = false;
-
-		if (DSM.Score.iValue > DSM.HighScore.iValue)
-		{
-			DSM.HighScore.iValue = DSM.Score.iValue;
-		}
-	}
-
-	void	Update()
-	{
-		if (DSM.GameRunning.bValue)
-		{
-			DSM.Timer1.fValue -= Time.deltaTime;
-
-			if (DSM.Timer1.fValue < 0)
-			{
-				GameOver();
-			}
-		}
-	}
-
-	void	OnUIIntent( Datasack ds)
-	{
-		Debug.Log (GetType () + ".OnUIIntent(): intent: " + ds.Value);
-
-		switch( ds.Value)
-		{
-		case "ButtonNewgame":
-			NewGame ();
-			break;
-
-		case "ButtonAddpoints":
-			AddPoints ();
-			break;
-
-		case "ButtonGameover":
-			GameOver ();
-			break;
-
-		case "InputField":
-			DSM.AudioSourceEnter.Poke();
-			Debug.Log( "Entered:" + DSM.InputtedData.Value);
-			break;
-
-		default :
-			Debug.LogWarning (GetType () + ".OnUIIntent(): unknown intent: " + ds.Value);
-			break;
-		}
+		inputField.text = ds.Value;
 	}
 
 	void	OnEnable()
 	{
-		DSM.UISack.OnChanged += OnUIIntent;
-	}
+		if (DSUI == null) DSUI = DSM.UISack;
 
+		inputField = GetComponent<InputField> ();
+
+		// to connect data flows from InputField to Datasack(s):
+		inputField.onValueChanged.AddListener (OnValueChanged);
+		inputField.onEndEdit.AddListener( OnEndEdit);
+
+		// to connect data flows from Datasack to InputField:
+		dataSackPayload.OnChanged += OnDatasackChanged;
+		inputField.text = dataSackPayload.Value;
+	}
 	void	OnDisable()
 	{
-		if (!DSM.shuttingDown)
-		{
-			DSM.UISack.OnChanged -= OnUIIntent;
-		}
+		inputField.onValueChanged.RemoveListener (OnValueChanged);
+
+		inputField.onEndEdit.RemoveListener( OnEndEdit);
+
+		dataSackPayload.OnChanged -= OnDatasackChanged;
 	}
 }

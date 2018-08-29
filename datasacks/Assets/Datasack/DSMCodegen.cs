@@ -11,11 +11,13 @@
 //
 public partial class DSM
 {
+	public static Datasack AudioSourceEnter { get { return DSM.I.Get( "AudioSourceEnter"); } }
 	public static Datasack AudioSourceHello { get { return DSM.I.Get( "AudioSourceHello"); } }
 	public static Datasack GameRunning { get { return DSM.I.Get( "GameRunning"); } }
 	public static Datasack GUID { get { return DSM.I.Get( "GUID"); } }
 	public static Datasack HardMode { get { return DSM.I.Get( "HardMode"); } }
 	public static Datasack HighScore { get { return DSM.I.Get( "HighScore"); } }
+	public static Datasack InputtedData { get { return DSM.I.Get( "InputtedData"); } }
 	public static Datasack LastWord { get { return DSM.I.Get( "LastWord"); } }
 	public static Datasack Score { get { return DSM.I.Get( "Score"); } }
 	public static Datasack Ships { get { return DSM.I.Get( "Ships"); } }
