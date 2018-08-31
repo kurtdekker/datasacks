@@ -42,37 +42,34 @@ using UnityEngine.UI;
 
 public class DSTextGetStrArray : MonoBehaviour
 {
-	public	Datasack	dataSack;
-
 	public	int			index;
+
+	public	Datasack	dataSack;
 
 	public	string		FormatString;
 
-	private	Text	text;
-
-	void Start ()
-	{
-		text = GetComponent<Text> ();
-		OnChanged (dataSack);
-	}
+	private DSTextAbstraction ta;
 
 	void	OnChanged( Datasack ds)
 	{
-		if (text)
+		string display = ds.GetArrayEntry( index);
+		if (FormatString.Length > 0)
 		{
-			string input = ds.GetArrayEntry( index);
-			if (FormatString.Length > 0)
-			{
-				text.text = System.String.Format (FormatString, input);
-				return;
-			}
-			text.text = input;
+			ta.SetText( System.String.Format (FormatString, display));
+			return;
 		}
+		ta.SetText( display);
 	}
 
 	void	OnEnable()
 	{
-		dataSack.OnChanged += OnChanged;	
+		if (!ta)
+		{
+			ta = DSTextAbstraction.Attach( this);
+		}
+
+		dataSack.OnChanged += OnChanged;
+		OnChanged( dataSack);
 	}
 	void	OnDisable()
 	{

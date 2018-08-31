@@ -46,30 +46,27 @@ public class DSTextGetString : MonoBehaviour
 
 	public	string		FormatString;
 
-	private	Text	text;
-
-	void Start ()
-	{
-		text = GetComponent<Text> ();
-		OnChanged (dataSack);
-	}
+	private DSTextAbstraction ta;
 
 	void	OnChanged( Datasack ds)
 	{
-		if (text)
+		if (FormatString.Length > 0)
 		{
-			if (FormatString.Length > 0)
-			{
-				text.text = System.String.Format (FormatString, ds.Value);
-				return;
-			}
-			text.text = ds.Value;
+			ta.SetText( System.String.Format (FormatString, ds.Value));
+			return;
 		}
+		ta.SetText( ds.Value);
 	}
 
 	void	OnEnable()
 	{
-		dataSack.OnChanged += OnChanged;	
+		if (!ta)
+		{
+			ta = DSTextAbstraction.Attach( this);
+		}
+
+		dataSack.OnChanged += OnChanged;
+		OnChanged( dataSack);
 	}
 	void	OnDisable()
 	{

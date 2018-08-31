@@ -40,36 +40,39 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DSTextGetInt : MonoBehaviour
+// WARNING! Internal class: other Datasack scripts will add this as needed.
+
+public class DSTextAbstraction : MonoBehaviour
 {
-	public	Datasack	dataSack;
+	private	Text	text;
 
-	public	string		FormatString;
+	// <WIP> observe and interoperate with other text-type objects
+	// here, such as TextMeshPro or TextMeshProUGUI objects.
 
-	private DSTextAbstraction ta;
-
-	void	OnChanged( Datasack ds)
+	public	static	DSTextAbstraction	Attach( MonoBehaviour script)
 	{
-		if (FormatString.Length > 0)
+		DSTextAbstraction ta = script.gameObject.AddComponent<DSTextAbstraction>();
+		return ta;
+	}
+
+	void	LazyFinder()
+	{
+		if (!text)
 		{
-			ta.SetText( System.String.Format (FormatString, ds.iValue));
+			text = GetComponent<Text>();
+		}
+	}
+
+	public	void	SetText( string s)
+	{
+		LazyFinder();
+
+		if (text)
+		{
+			text.text = s;
 			return;
 		}
-		ta.SetText( ds.iValue.ToString ());
-	}
 
-	void	OnEnable()
-	{
-		if (!ta)
-		{
-			ta = DSTextAbstraction.Attach( this);
-		}
-
-		dataSack.OnChanged += OnChanged;
-		OnChanged( dataSack);
-	}
-	void	OnDisable()
-	{
-		dataSack.OnChanged -= OnChanged;	
+		Debug.LogError( GetType() + ".SetText(): no suitable text object found.");
 	}
 }

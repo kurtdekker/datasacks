@@ -46,30 +46,27 @@ public class DSTextGetFloat : MonoBehaviour
 
 	public	string		FormatString;
 
-	private	Text	text;
-
-	void Start ()
-	{
-		text = GetComponent<Text> ();
-		OnChanged (dataSack);
-	}
+	private DSTextAbstraction ta;
 
 	void	OnChanged( Datasack ds)
 	{
-		if (text)
+		if (FormatString.Length > 0)
 		{
-			if (FormatString.Length > 0)
-			{
-				text.text = System.String.Format (FormatString, ds.fValue);
-				return;
-			}
-			text.text = ds.fValue.ToString ();
+			ta.SetText( System.String.Format (FormatString, ds.fValue));
+			return;
 		}
+		ta.SetText( ds.fValue.ToString ());
 	}
 
 	void	OnEnable()
 	{
-		dataSack.OnChanged += OnChanged;	
+		if (!ta)
+		{
+			ta = DSTextAbstraction.Attach( this);
+		}
+
+		dataSack.OnChanged += OnChanged;
+		OnChanged( dataSack);
 	}
 	void	OnDisable()
 	{
