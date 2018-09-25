@@ -41,6 +41,10 @@ using UnityEngine;
 
 public partial class DSM : MonoBehaviour
 {
+	// You can make this "", but then the Resources.LoadAll<Datasack>()
+	// call below may load ALL Resources/ assets into RAM at once.
+	public const string s_DatasacksDirectoryPrefix = "Datasacks/";
+
 	public static bool shuttingDown { get; private set; }
 
 	static	DSM	_I;
@@ -59,7 +63,7 @@ public partial class DSM : MonoBehaviour
 
 				_I.AllSacks = new Dictionary<string, Datasack> ();
 
-				Datasack[] sacks = Resources.LoadAll<Datasack>( "");
+				Datasack[] sacks = Resources.LoadAll<Datasack>( s_DatasacksDirectoryPrefix);
 
 				foreach (var sack in sacks)
 				{

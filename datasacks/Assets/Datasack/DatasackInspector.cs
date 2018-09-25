@@ -82,7 +82,7 @@ public partial class Datasack
 
 			s += "public partial class DSM\n{\n";
 
-			Datasack[] sacks = Resources.LoadAll<Datasack>( "");
+			Datasack[] sacks = Resources.LoadAll<Datasack>( DSM.s_DatasacksDirectoryPrefix);
 			foreach( var ds in sacks)
 			{
 				AppendGetter( ref s, ds);
