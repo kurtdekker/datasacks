@@ -23,6 +23,9 @@ public class popup1 : MonoBehaviour
 		{
 		case "PopupButton1":
 		case "PopupButton2":
+
+			Debug.Log( "Popup1 dismissed with result '" + ds.Value + "'");
+
 			Dismiss();
 			DSM.Popup1Result.Value = ds.Value;
 			Destroy(this);
