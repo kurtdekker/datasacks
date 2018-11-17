@@ -58,11 +58,23 @@ public partial class Datasack
 	{
 		get
 		{
-			return DatasackFormatting.FromHexString( Value);
+			return DatasackFormatting.FloatFromHexString( Value);
 		}
 		set
 		{
-			Value = DatasackFormatting.ToHexString( value);
+			Value = DatasackFormatting.FloatToHexString( value);
+		}
+	}
+
+	public	double	dValue
+	{
+		get
+		{
+			return DatasackFormatting.DoubleFromHexString( Value);
+		}
+		set
+		{
+			Value = DatasackFormatting.DoubleToHexString( value);
 		}
 	}
 

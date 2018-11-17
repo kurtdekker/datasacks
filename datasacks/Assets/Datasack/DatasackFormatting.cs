@@ -40,14 +40,14 @@ using System;
 
 public static class DatasackFormatting
 {
-	public static string ToHexString(float f)
+	public static string FloatToHexString(float f)
 	{
 		var bytes = BitConverter.GetBytes(f);
 		var i = BitConverter.ToInt32(bytes, 0);
 		return "0x" + i.ToString("X8");
 	}
 
-	public static float FromHexString(string s)
+	public static float FloatFromHexString(string s)
 	{
 		if (s == null || s.Length == 0) return 0;
 		if (s.StartsWith( "0x"))
@@ -59,11 +59,40 @@ public static class DatasackFormatting
 		}
 		float result = 0.0f;
 		if (s.EndsWith( "f")) s = s.Substring( 0, s.Length - 1);
+		if (s.EndsWith( "d")) s = s.Substring( 0, s.Length - 1);
 		if (float.TryParse( s, out result))
 		{
 			return result;
 		}
-		Debug.LogWarning( "DatasackFormatting.FromHexString(): invalid string for float (must be IEEE754-format 0x12345678 or else 1234.5678[f])");
+		Debug.LogWarning( "DatasackFormatting.FloatFromHexString(): invalid string for float (must be IEEE754-format 0x12345678 or else 1234.5678[f])");
+		return 0.0f;
+	}
+
+	public static string DoubleToHexString(double f)
+	{
+		var bytes = BitConverter.GetBytes(f);
+		var i = BitConverter.ToInt64(bytes, 0);
+		return "0x" + i.ToString("X16");
+	}
+
+	public static double DoubleFromHexString(string s)
+	{
+		if (s == null || s.Length == 0) return 0;
+		if (s.StartsWith( "0x"))
+		{
+			s = s.Substring(2);
+			var i = Convert.ToInt64(s, 16);
+			var bytes = BitConverter.GetBytes(i);
+			return BitConverter.ToDouble(bytes, 0);
+		}
+		float result = 0.0f;
+		if (s.EndsWith( "f")) s = s.Substring( 0, s.Length - 1);
+		if (s.EndsWith( "d")) s = s.Substring( 0, s.Length - 1);
+		if (float.TryParse( s, out result))
+		{
+			return result;
+		}
+		Debug.LogWarning( "DatasackFormatting.DoubleFromHexString(): invalid string for double (must be IEEE754-format 0x12345678012345678 or else 1234.5678[f/d])");
 		return 0.0f;
 	}
 }

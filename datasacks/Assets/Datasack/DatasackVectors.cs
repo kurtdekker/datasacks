@@ -48,15 +48,15 @@ public partial class Datasack
 			if (parts.Length == 2)
 			{
 				return new Vector2(
-					DatasackFormatting.FromHexString( parts[0]),
-					DatasackFormatting.FromHexString( parts[1]));
+					DatasackFormatting.FloatFromHexString( parts[0]),
+					DatasackFormatting.FloatFromHexString( parts[1]));
 			}
 			return Vector2.zero;
 		}
 		set
 		{
-			Value = DatasackFormatting.ToHexString( value.x) + "," +
-				DatasackFormatting.ToHexString( value.y);
+			Value = DatasackFormatting.FloatToHexString( value.x) + "," +
+				DatasackFormatting.FloatToHexString( value.y);
 		}
 	}
 
@@ -68,17 +68,17 @@ public partial class Datasack
 			if (parts.Length == 3)
 			{
 				return new Vector3(
-					DatasackFormatting.FromHexString( parts[0]),
-					DatasackFormatting.FromHexString( parts[1]),
-					DatasackFormatting.FromHexString( parts[2]));
+					DatasackFormatting.FloatFromHexString( parts[0]),
+					DatasackFormatting.FloatFromHexString( parts[1]),
+					DatasackFormatting.FloatFromHexString( parts[2]));
 			}
 			return Vector3.zero;
 		}
 		set
 		{
-			Value = DatasackFormatting.ToHexString( value.x) + "," +
-					DatasackFormatting.ToHexString( value.y) + "," +
-					DatasackFormatting.ToHexString( value.z);
+			Value = DatasackFormatting.FloatToHexString( value.x) + "," +
+					DatasackFormatting.FloatToHexString( value.y) + "," +
+					DatasackFormatting.FloatToHexString( value.z);
 		}
 	}
 
@@ -90,19 +90,19 @@ public partial class Datasack
 			if (parts.Length == 4)
 			{
 				return new Quaternion(
-					DatasackFormatting.FromHexString( parts[0]),
-					DatasackFormatting.FromHexString( parts[1]),
-					DatasackFormatting.FromHexString( parts[2]),
-					DatasackFormatting.FromHexString( parts[3]));
+					DatasackFormatting.FloatFromHexString( parts[0]),
+					DatasackFormatting.FloatFromHexString( parts[1]),
+					DatasackFormatting.FloatFromHexString( parts[2]),
+					DatasackFormatting.FloatFromHexString( parts[3]));
 			}
 			return Quaternion.identity;
 		}
 		set
 		{
-			Value = DatasackFormatting.ToHexString( value.x) + "," +
-				DatasackFormatting.ToHexString( value.y) + "," +
-				DatasackFormatting.ToHexString( value.z) + "," +
-				DatasackFormatting.ToHexString( value.w);
+			Value = DatasackFormatting.FloatToHexString( value.x) + "," +
+				DatasackFormatting.FloatToHexString( value.y) + "," +
+				DatasackFormatting.FloatToHexString( value.z) + "," +
+				DatasackFormatting.FloatToHexString( value.w);
 		}
 	}
 }
