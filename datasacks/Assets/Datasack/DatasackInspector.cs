@@ -53,7 +53,7 @@ public partial class Datasack
 	bool DebugLogging;
 
 #if UNITY_EDITOR
-	[CustomEditor(typeof(Datasack))]
+	[CustomEditor(typeof(Datasack)), CanEditMultipleObjects]
 	public class DatasackEditor : Editor
 	{
 		void AppendGetter( ref string s, Datasack ds)
