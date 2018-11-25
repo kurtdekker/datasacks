@@ -50,10 +50,10 @@ public class DSKeycodeInput : MonoBehaviour
 		HOLD,
 	}
 
-	[Tooltip( "List keycodes you want tracked.")]
+	[Tooltip( "List of keycodes you want tracked.")]
 	public	KeyCode[]	KeysToTrack;
 
-	[Tooltip( "What type of activity to track.")]
+	[Tooltip( "What type of key activity to track.")]
 	public	KeyActivity	Activity;
 
 	[Tooltip( "Leave blank to send the Keycode.ToString()")]
@@ -74,6 +74,11 @@ public class DSKeycodeInput : MonoBehaviour
 		Output = "";
 
 		SendGameObjectName = false;
+
+		if (GetComponent<Button>())
+		{
+			SendGameObjectName = true;
+		}
 	}
 
 	void	Update()
