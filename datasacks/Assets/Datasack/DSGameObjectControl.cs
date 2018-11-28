@@ -48,18 +48,6 @@ public class DSGameObjectControl : MonoBehaviour
 	[Tooltip( "GameObjects to DISABLE when Datasack is poked TRUE.")]
 	public	GameObject[]	ToDisable;
 
-	[Tooltip( "Toggle this to trigger a TRUE poke on Enable.")]
-	public	bool			TriggerTrueOnEnable;
-
-	[Tooltip( "Toggle this to trigger a FALSE poke on Enable.")]
-	public	bool			TriggerFalseOnEnable;
-
-	void Reset()
-	{
-		TriggerTrueOnEnable = true;
-		TriggerFalseOnEnable = false;
-	}
-
 	void OnChanged( Datasack ds)
 	{
 		bool pokedTrue = ds.bValue;
@@ -85,15 +73,7 @@ public class DSGameObjectControl : MonoBehaviour
 	{
 		dataSack.OnChanged += OnChanged;
 
-		if (TriggerTrueOnEnable)
-		{
-			dataSack.bValue = true;
-		}
-
-		if (TriggerFalseOnEnable)
-		{
-			dataSack.bValue = false;
-		}
+		dataSack.Poke();
 	}
 
 	void OnDisable()
