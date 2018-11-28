@@ -42,26 +42,27 @@ public class DSGameObjectControl : MonoBehaviour
 	[Tooltip( "Poke this Datasack to enable/disable objects below.")]
 	public	Datasack	dataSack;
 
-	[Tooltip( "GameObjects to DISABLE when Datasack is poked.")]
+	[Tooltip( "GameObjects to ENABLE when Datasack is poked TRUE.")]
+	public	GameObject[]	ToEnable;
+
+	[Tooltip( "GameObjects to DISABLE when Datasack is poked TRUE.")]
 	public	GameObject[]	ToDisable;
 
-	[Tooltip( "GameObjects to ENABLE when Datasack is poked.")]
-	public	GameObject[]	ToEnable;
+	[Tooltip( "Toggle this to trigger a TRUE poke on Enable.")]
+	public	bool			TriggerTrueOnEnable;
 
 	[Tooltip( "Toggle this to trigger a FALSE poke on Enable.")]
 	public	bool			TriggerFalseOnEnable;
 
+	void Reset()
+	{
+		TriggerTrueOnEnable = true;
+		TriggerFalseOnEnable = false;
+	}
+
 	void OnChanged( Datasack ds)
 	{
 		bool pokedTrue = ds.bValue;
-
-		foreach( var go in ToDisable)
-		{
-			if (go)
-			{
-				go.SetActive( !pokedTrue);
-			}
-		}
 
 		foreach( var go in ToEnable)
 		{
@@ -70,11 +71,24 @@ public class DSGameObjectControl : MonoBehaviour
 				go.SetActive( pokedTrue);
 			}
 		}
+
+		foreach( var go in ToDisable)
+		{
+			if (go)
+			{
+				go.SetActive( !pokedTrue);
+			}
+		}
 	}
 
 	void OnEnable()
 	{
 		dataSack.OnChanged += OnChanged;
+
+		if (TriggerTrueOnEnable)
+		{
+			dataSack.bValue = true;
+		}
 
 		if (TriggerFalseOnEnable)
 		{
