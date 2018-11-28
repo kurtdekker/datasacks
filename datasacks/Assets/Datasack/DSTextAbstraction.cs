@@ -49,7 +49,11 @@ public class DSTextAbstraction : MonoBehaviour
 
 	public	static	DSTextAbstraction	Attach( MonoBehaviour script)
 	{
-		DSTextAbstraction ta = script.gameObject.AddComponent<DSTextAbstraction>();
+		DSTextAbstraction ta = script.gameObject.GetComponent<DSTextAbstraction>();
+		if (!ta)
+		{
+			ta = script.gameObject.AddComponent<DSTextAbstraction>();
+		}
 		return ta;
 	}
 
@@ -63,6 +67,8 @@ public class DSTextAbstraction : MonoBehaviour
 
 	public	void	SetText( string s)
 	{
+		if (!gameObject) return;
+
 		LazyFinder();
 
 		if (text)
