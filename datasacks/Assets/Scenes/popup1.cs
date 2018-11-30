@@ -19,6 +19,8 @@ public class popup1 : MonoBehaviour
 
 	void OnUserIntent( Datasack ds)
 	{
+		DSM.AudioSourceClick.Poke();
+
 		switch( ds.Value)
 		{
 		case "PopupButton1":

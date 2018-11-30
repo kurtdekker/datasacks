@@ -11,6 +11,7 @@
 //
 public partial class DSM
 {
+	public static Datasack AudioSourceClick { get { return DSM.I.Get( "AudioSourceClick"); } }
 	public static Datasack AudioSourceEnter { get { return DSM.I.Get( "AudioSourceEnter"); } }
 	public static Datasack AudioSourceHello { get { return DSM.I.Get( "AudioSourceHello"); } }
 	public static Datasack GameRunning { get { return DSM.I.Get( "GameRunning"); } }

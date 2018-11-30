@@ -47,6 +47,9 @@ public class game1 : MonoBehaviour
 
 	void Start()
 	{
+		UnityEngine.SceneManagement.SceneManager.LoadScene( "audio",
+			UnityEngine.SceneManagement.LoadSceneMode.Additive);
+		
 		if (DSM.GUID.Value.Length < 10)
 		{
 			DSM.GUID.Value = System.Guid.NewGuid().ToString().Substring( 0, 10);
@@ -106,6 +109,8 @@ public class game1 : MonoBehaviour
 	void	OnUIIntent( Datasack ds)
 	{
 		Debug.Log (GetType () + ".OnUIIntent(): intent: " + ds.Value);
+
+		DSM.AudioSourceClick.Poke();
 
 		switch( ds.Value)
 		{
