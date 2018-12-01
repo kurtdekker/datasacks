@@ -38,35 +38,54 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[System.Obsolete("Use DSColorizeGetFloat instead.")]
-public class DSImageColorGetFloat : MonoBehaviour
+// WARNING! Internal class: other Datasack scripts will add this as needed.
+
+public class DSColorableAbstraction : MonoBehaviour
 {
-	public	Datasack	dataSack;
+	private	Text	text;
+	private Image	image;
 
-	public	Gradient	ColorLookup;
+	// <WIP> observe and interoperate with other colorable objects
 
-	private	Image	image;
-
-	void Start ()
+	public	static	DSColorableAbstraction	Attach( MonoBehaviour script)
 	{
-		image = GetComponent<Image> ();
-		OnChanged (dataSack);
+		DSColorableAbstraction ca = script.gameObject.AddComponent<DSColorableAbstraction>();
+		return ca;
 	}
 
-	void	OnChanged( Datasack ds)
+	void	LazyFinder()
 	{
-		if (image)
+		if (!text)
 		{
-			image.color = ColorLookup.Evaluate (ds.fValue);
+			text = GetComponent<Text>();
+		}
+		if (!image)
+		{
+			image = GetComponent<Image>();
 		}
 	}
 
-	void	OnEnable()
+	public	void	SetColor( Color c)
 	{
-		dataSack.OnChanged += OnChanged;	
-	}
-	void	OnDisable()
-	{
-		dataSack.OnChanged -= OnChanged;	
+		LazyFinder();
+
+		bool good = false;
+
+		if (text)
+		{
+			text.color = c;
+			good = true;
+		}
+
+		if (image)
+		{
+			image.color = c;
+			good = true;
+		}
+
+		if (!good)
+		{
+			Debug.LogError( GetType() + ".SetColor(): no suitable colorable object found.");
+		}
 	}
 }

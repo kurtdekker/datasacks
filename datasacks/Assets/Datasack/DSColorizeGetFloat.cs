@@ -38,32 +38,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[System.Obsolete("Use DSColorizeGetFloat instead.")]
-public class DSImageColorGetFloat : MonoBehaviour
+public class DSColorizeGetFloat : MonoBehaviour
 {
 	public	Datasack	dataSack;
 
 	public	Gradient	ColorLookup;
 
-	private	Image	image;
-
-	void Start ()
-	{
-		image = GetComponent<Image> ();
-		OnChanged (dataSack);
-	}
+	private DSColorableAbstraction colorable;
 
 	void	OnChanged( Datasack ds)
 	{
-		if (image)
+		if (colorable)
 		{
-			image.color = ColorLookup.Evaluate (ds.fValue);
+			colorable.SetColor( ColorLookup.Evaluate (ds.fValue));
 		}
 	}
 
 	void	OnEnable()
 	{
+		if (!colorable)
+		{
+			colorable = DSColorableAbstraction.Attach( this);
+		}
 		dataSack.OnChanged += OnChanged;	
+		OnChanged(dataSack);
 	}
 	void	OnDisable()
 	{
