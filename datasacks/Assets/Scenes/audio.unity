@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4465934, g: 0.49642956, b: 0.57482487, a: 1}
+  m_IndirectSpecularColor: {r: 0.3731316, g: 0.38074896, b: 0.3587254, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -120,6 +120,7 @@ GameObject:
   - component: {fileID: 128985261}
   - component: {fileID: 128985260}
   - component: {fileID: 128985259}
+  - component: {fileID: 128985262}
   m_Layer: 0
   m_Name: AudioSourceClick
   m_TagString: Untagged
@@ -233,6 +234,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &128985262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 128985258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 144dd0d31ef514e84ab04cfab36ed044, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dataSack: {fileID: 11400000, guid: 227e1785b7a8944d294071092208250a, type: 2}
+  DisregardInitialVolume: 0
 --- !u!1 &567484793
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,6 +257,7 @@ GameObject:
   - component: {fileID: 567484796}
   - component: {fileID: 567484795}
   - component: {fileID: 567484794}
+  - component: {fileID: 567484797}
   m_Layer: 0
   m_Name: AudioSourceEnter
   m_TagString: Untagged
@@ -356,6 +371,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &567484797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 567484793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 144dd0d31ef514e84ab04cfab36ed044, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dataSack: {fileID: 11400000, guid: 227e1785b7a8944d294071092208250a, type: 2}
+  DisregardInitialVolume: 0
 --- !u!1 &1766231934
 GameObject:
   m_ObjectHideFlags: 0
