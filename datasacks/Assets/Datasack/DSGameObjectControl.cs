@@ -48,6 +48,9 @@ public class DSGameObjectControl : MonoBehaviour
 	[Tooltip( "GameObjects to DISABLE when Datasack is poked TRUE.")]
 	public	GameObject[]	ToDisable;
 
+	[Tooltip( "GameObject array to map to iValue of Datasack")]
+	public	GameObject[]	IndexArray;
+
 	void OnChanged( Datasack ds)
 	{
 		bool pokedTrue = ds.bValue;
@@ -66,6 +69,11 @@ public class DSGameObjectControl : MonoBehaviour
 			{
 				go.SetActive( !pokedTrue);
 			}
+		}
+
+		for (int i = 0; i < IndexArray.Length; i++)
+		{
+			IndexArray[i].SetActive( i == ds.iValue);
 		}
 	}
 
