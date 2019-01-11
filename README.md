@@ -22,12 +22,15 @@ header code in (DSMCodegen.cs) containing all the names of the
 Datasacks you have created in your project. This is purely for
 code convenience and type-checking because you can always get
 at a Datasack by its name (DSM.I.Get( string)), and of course
-they are always available as draggable objects into monobehaviors.
+they are always available as draggable objects into Monobehaviors.
 
 The general flow pattern is that you put the DSButtonSetUIIntent.cs
 script on any UI button, and when pressed that will put the name
 of that button's GameObject into the DSM.UISack variable, unless
 you specify another Datasack.
+
+Over in code you have a switch statement that operates on the
+name of the button received, and does different things. See below.
 
 Datasacks can be subscribed to for changes, either on a permanent
 listener basis or on a one-shot basis.
@@ -55,6 +58,7 @@ Obviously you can use JSON and store whatever objects you want
 into the string portion of a Datasack.
 
 // Here is an example data subscription pattern for your Monobehavior:
+// It falls back to DSM.UISack because that is the default sack.
 
 	public Datasack dataSack;	// populate this in the Unity editor
 
@@ -65,10 +69,20 @@ into the string portion of a Datasack.
 		// You can inspect the name of the Datasack if
 		// you expect more than one Datasack to call
 		// this function.
+		switch( ds.Value)
+		{
+		case "ButtonAchievements":
+			// start achievements scene
+			break;
+		case "ButtonPlay":
+			// start playing the game
+			break;
+		}
 	}
 
 	void	OnEnable()
 	{
+		if (!dataSack) dataSack = DSM.UISack;	// falls back to the UI sack
 		dataSack.OnChanged += OnDatasackChanged;
 	}
 	void	OnDisable()
