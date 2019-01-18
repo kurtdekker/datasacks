@@ -39,13 +39,23 @@ using UnityEngine;
 
 public partial class DSM
 {
-	const	string	s_UIIntent = "UIIntent";
+	const	string	s_UserIntent = "UserIntent";
 
+	public	static	Datasack	UserIntent
+	{
+		get
+		{
+			return I.Get (s_UserIntent, true);
+		}
+	}
+
+	// obsoleted 1/18/2019 - will be removed after 2/18/2019
+	[System.Obsolete( "Use DSM.UserIntent instead please.")]
 	public	static	Datasack	UISack
 	{
 		get
 		{
-			return I.Get (s_UIIntent, true);
+			return I.Get (s_UserIntent, true);
 		}
 	}
 }
