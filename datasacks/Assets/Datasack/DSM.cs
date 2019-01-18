@@ -128,7 +128,9 @@ public partial class DSM : MonoBehaviour
 		{
 			if (AutoAdd)
 			{
-				AllSacks [sackname] = ScriptableObject.CreateInstance<Datasack> ();
+				var ds = ScriptableObject.CreateInstance<Datasack> ();
+				ds.name = sackname;
+				AllSacks [sackname] = ds;
 			}
 			else
 			{
