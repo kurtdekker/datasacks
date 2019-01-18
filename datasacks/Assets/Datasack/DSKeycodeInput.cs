@@ -121,7 +121,7 @@ public class DSKeycodeInput : MonoBehaviour
 				tempOutput = name;
 			}
 
-			var ds = DSM.UISack;
+			var ds = DSM.UserIntent;
 			if (dataSack) ds = dataSack;
 
 			ds.Value = tempOutput;

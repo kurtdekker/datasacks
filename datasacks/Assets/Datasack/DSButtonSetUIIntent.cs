@@ -51,7 +51,7 @@ public class DSButtonSetUIIntent : MonoBehaviour
 
 	void	OnChanged()
 	{
-		var ds = DSM.UISack;
+		var ds = DSM.UserIntent;
 		if (dsUI) ds = dsUI;
 
 		string value = name;

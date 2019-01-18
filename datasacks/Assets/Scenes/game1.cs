@@ -106,7 +106,7 @@ public class game1 : MonoBehaviour
 		}
 	}
 
-	void	OnUIIntent( Datasack ds)
+	void	OnUserIntent( Datasack ds)
 	{
 		Debug.Log (GetType () + ".OnUIIntent(): intent: " + ds.Value);
 
@@ -148,14 +148,14 @@ public class game1 : MonoBehaviour
 
 	void	OnEnable()
 	{
-		DSM.UISack.OnChanged += OnUIIntent;
+		DSM.UserIntent.OnChanged += OnUserIntent;
 	}
 
 	void	OnDisable()
 	{
 		if (!DSM.shuttingDown)
 		{
-			DSM.UISack.OnChanged -= OnUIIntent;
+			DSM.UserIntent.OnChanged -= OnUserIntent;
 		}
 	}
 }

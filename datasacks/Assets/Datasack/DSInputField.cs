@@ -77,7 +77,7 @@ public class DSInputField : MonoBehaviour
 
 	void	OnEnable()
 	{
-		if (DSUI == null) DSUI = DSM.UISack;
+		if (DSUI == null) DSUI = DSM.UserIntent;
 
 		inputField = GetComponent<InputField> ();
 
