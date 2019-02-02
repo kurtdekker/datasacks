@@ -1960,6 +1960,7 @@ GameObject:
   - component: {fileID: 1244324094}
   - component: {fileID: 1244324097}
   - component: {fileID: 1244324098}
+  - component: {fileID: 1244324099}
   m_Layer: 5
   m_Name: ButtonNewgame
   m_TagString: Untagged
@@ -2086,6 +2087,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dataSack: {fileID: 11400000, guid: 601b1a2c5bffb4bf58dc8e30437d5488, type: 2}
   Inverted: 1
+--- !u!114 &1244324099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1244324092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95b66aa802b614618b20b38592a5b787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnInteractableCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.1
+      value: 1.5
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.3
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1265118313
 GameObject:
   m_ObjectHideFlags: 0
@@ -2872,6 +2908,7 @@ GameObject:
   - component: {fileID: 1697321144}
   - component: {fileID: 1697321147}
   - component: {fileID: 1697321148}
+  - component: {fileID: 1697321149}
   m_Layer: 5
   m_Name: ButtonAddpoints
   m_TagString: Untagged
@@ -2998,6 +3035,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dataSack: {fileID: 11400000, guid: 601b1a2c5bffb4bf58dc8e30437d5488, type: 2}
   Inverted: 0
+--- !u!114 &1697321149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1697321142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95b66aa802b614618b20b38592a5b787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnInteractableCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.1
+      value: 1.5
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.3
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1734772834
 GameObject:
   m_ObjectHideFlags: 0

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311947, g: 0.38074005, b: 0.35872722, a: 1}
+  m_IndirectSpecularColor: {r: 0.3731316, g: 0.38074896, b: 0.3587254, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -122,6 +122,7 @@ GameObject:
   - component: {fileID: 372839918}
   - component: {fileID: 372839917}
   - component: {fileID: 372839920}
+  - component: {fileID: 372839921}
   m_Layer: 5
   m_Name: PopupButton1
   m_TagString: Untagged
@@ -235,6 +236,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dsUI: {fileID: 0}
   ValueToSet: 
+--- !u!114 &372839921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 372839915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95b66aa802b614618b20b38592a5b787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnInteractableCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.1
+      value: 1.5
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.3
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &515419891
 GameObject:
   m_ObjectHideFlags: 0
@@ -924,6 +960,7 @@ GameObject:
   - component: {fileID: 2011554417}
   - component: {fileID: 2011554416}
   - component: {fileID: 2011554419}
+  - component: {fileID: 2011554420}
   m_Layer: 5
   m_Name: PopupButton2
   m_TagString: Untagged
@@ -1037,6 +1074,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dsUI: {fileID: 0}
   ValueToSet: 
+--- !u!114 &2011554420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2011554414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95b66aa802b614618b20b38592a5b787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnInteractableCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.1
+      value: 1.5
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 0.3
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &2135438912
 GameObject:
   m_ObjectHideFlags: 0
