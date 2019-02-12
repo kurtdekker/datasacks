@@ -56,7 +56,7 @@ public partial class Datasack
 	[CustomEditor(typeof(Datasack)), CanEditMultipleObjects]
 	public class DatasackEditor : Editor
 	{
-		void AppendGetter( ref string s, Datasack ds)
+		void AppendGetter( ref string s, Datasack ds, string variableName)
 		{
 			string safeName = ds.name;
 
@@ -64,7 +64,7 @@ public partial class Datasack
 			// names into filenames. Tell the user to be thankful we don't enforce 8.3 filenames.
 
 			s += "\tpublic static Datasack " + safeName + " { get { return DSM.I.Get( \"" +
-				safeName  + "\"); } }\n";
+				variableName  + "\", Load: true); } }\n";
 		}
 
 		void GenerateCode()
@@ -98,6 +98,7 @@ public partial class Datasack
 			foreach( var dirName in SplitByDirectory.Keys)
 			{
 				string nestedClassName = null;
+				string pathPrefix = "";
 				string indentation = "";
 
 				const string s_DatasacksSearchTarget = "/Datasacks";
@@ -116,6 +117,8 @@ public partial class Datasack
 
 					nestedClassName = dirName.Substring( resourcesOffset);
 
+					pathPrefix = nestedClassName + "/";
+
 					indentation = "\t";
 				}
 
@@ -128,7 +131,7 @@ public partial class Datasack
 				foreach( var ds in SplitByDirectory[dirName])
 				{
 					s += indentation;
-					AppendGetter( ref s, ds);
+					AppendGetter( ref s, ds, pathPrefix + ds.name);
 				}
 
 				if (nestedClassName != null)
@@ -154,7 +157,7 @@ public partial class Datasack
 		string PlayerPrefsKey()
 		{
 			Datasack ds = (Datasack)target;
-			return DSM.s_PlayerPrefsPrefix + ds.name.ToLower();
+			return DSM.s_PlayerPrefsPrefix + ds.name;
 		}
 
 		public override void OnInspectorGUI()

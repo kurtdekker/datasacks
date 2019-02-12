@@ -60,13 +60,6 @@ public partial class DSM : MonoBehaviour
 				DontDestroyOnLoad (_I.gameObject);
 
 				_I.AllSacks = new Dictionary<string, Datasack> ();
-
-				Datasack[] sacks = Resources.LoadAll<Datasack>( s_DatasacksDirectoryPrefix);
-
-				foreach (var sack in sacks)
-				{
-					_I.AllSacks [sack.name.ToLower()] = sack;
-				}
 			}
 			return _I;
 		}
@@ -80,7 +73,7 @@ public partial class DSM : MonoBehaviour
 			{
 				if (kvp.Value.Save)
 				{
-					PlayerPrefs.SetString (s_PlayerPrefsPrefix + kvp.Key.ToLower(), kvp.Value.Value);
+					PlayerPrefs.SetString (s_PlayerPrefsPrefix + kvp.Key, kvp.Value.Value);
 				}
 			}
 			PlayerPrefs.Save();
@@ -119,17 +112,27 @@ public partial class DSM : MonoBehaviour
 
 	Dictionary<string,Datasack> AllSacks;
 
-	public	Datasack	Get( string sackname, bool AutoAdd = false)
+	public	Datasack	Get( string sackname, bool Add = false, bool Load = false)
 	{
-		sackname = sackname.ToLower();
-
-		// creating Datasack on the fly
 		if (!AllSacks.ContainsKey( sackname))
 		{
-			if (AutoAdd)
+			Datasack ds = null;
+			if (Load)
 			{
-				var ds = ScriptableObject.CreateInstance<Datasack> ();
+				string finalName = s_DatasacksDirectoryPrefix + sackname;
+				ds = Resources.Load<Datasack>( finalName);
+				if (!ds)
+				{
+					Debug.LogError( GetType()+".Get(): Failed to load datasack '" + finalName + "'. Set AutoAdd = true to add at runtime.");
+				}
+			}
+			if (Add)
+			{
+				ds = ScriptableObject.CreateInstance<Datasack> ();
 				ds.name = sackname;
+			}
+			if (ds)
+			{
 				AllSacks [sackname] = ds;
 			}
 			else

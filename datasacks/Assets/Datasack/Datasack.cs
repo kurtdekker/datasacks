@@ -70,7 +70,7 @@ public partial class Datasack : ScriptableObject
 		if (Save)
 		{
 			Value = PlayerPrefs.GetString (
-				DSM.s_PlayerPrefsPrefix + name.ToLower(), Value);
+				DSM.s_PlayerPrefsPrefix + name, Value);
 		}
 
 		DebugBreak = holdBreak;
