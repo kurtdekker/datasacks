@@ -50,9 +50,9 @@ public class game1 : MonoBehaviour
 		UnityEngine.SceneManagement.SceneManager.LoadScene( "audio",
 			UnityEngine.SceneManagement.LoadSceneMode.Additive);
 		
-		if (DSM.GUID.Value.Length < 10)
+		if (DSM.Folder_Subfolder.GUID.Value.Length < 10)
 		{
-			DSM.GUID.Value = System.Guid.NewGuid().ToString().Substring( 0, 10);
+			DSM.Folder_Subfolder.GUID.Value = System.Guid.NewGuid().ToString().Substring( 0, 10);
 		}
 
 		Debug.Log( GetType()+".Start():");
