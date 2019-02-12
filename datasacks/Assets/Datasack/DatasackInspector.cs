@@ -97,9 +97,43 @@ public partial class Datasack
 
 			foreach( var dirName in SplitByDirectory.Keys)
 			{
+				string nestedClassName = null;
+				string indentation = "";
+
+				const string s_DatasacksSearchTarget = "/Datasacks";
+
+				s += "\n";
+				s += "// Datasacks from directory '" + dirName + "'\n";
+
+				// CAUTION: this only handles "nested namespaces"
+				// one class (folder) deep for now. Feel free to improve it
+				// and send me a pull request!
+				if (!dirName.EndsWith( s_DatasacksSearchTarget))
+				{
+					int resourcesOffset = dirName.LastIndexOf( s_DatasacksSearchTarget);
+
+					resourcesOffset += s_DatasacksSearchTarget.Length + 1;
+
+					nestedClassName = dirName.Substring( resourcesOffset);
+
+					indentation = "\t";
+				}
+
+				if (nestedClassName != null)
+				{
+					s += "\tpublic static class " + nestedClassName + "\n";
+					s += "\t{\n";
+				}
+
 				foreach( var ds in SplitByDirectory[dirName])
 				{
+					s += indentation;
 					AppendGetter( ref s, ds);
+				}
+
+				if (nestedClassName != null)
+				{
+					s += "\t}\n";
 				}
 			}
 
