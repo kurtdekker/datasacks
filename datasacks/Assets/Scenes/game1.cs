@@ -62,7 +62,7 @@ public class game1 : MonoBehaviour
 
 	void	NewGame()
 	{
-		DSM.Score.iValue = 0;
+		DSM.PlayerState.Score.iValue = 0;
 
 		DSM.GameRunning.bValue = true;
 
@@ -78,7 +78,7 @@ public class game1 : MonoBehaviour
 
 	void	AddPoints()
 	{
-		DSM.Score.iValue += Random.Range (10, 20);
+		DSM.PlayerState.Score.iValue += Random.Range (10, 20);
 
 		DSM.LastWord.Value = words[ Random.Range( 0, words.Length)];
 	}
@@ -87,9 +87,9 @@ public class game1 : MonoBehaviour
 	{
 		DSM.GameRunning.bValue = false;
 
-		if (DSM.Score.iValue > DSM.HighScore.iValue)
+		if (DSM.PlayerState.Score.iValue > DSM.HighScore.iValue)
 		{
-			DSM.HighScore.iValue = DSM.Score.iValue;
+			DSM.HighScore.iValue = DSM.PlayerState.Score.iValue;
 		}
 	}
 
@@ -132,11 +132,11 @@ public class game1 : MonoBehaviour
 			break;
 
 		case "ButtonPopup1":
-			DSM.Popup1Header.Value = "Answer Me!";
-			DSM.Popup1Message.Value = "WHAT is the airspeed velocity of an unladen swallow?";
-			DSM.Popup1Button1Text.Value = "African";
-			DSM.Popup1Button2Text.Value = "European";
-			DSM.Popup1Result.Value = "<none>";
+			DSM.Popup1.Popup1Header.Value = "Answer Me!";
+			DSM.Popup1.Popup1Message.Value = "WHAT is the airspeed velocity of an unladen swallow?";
+			DSM.Popup1.Popup1Button1Text.Value = "African";
+			DSM.Popup1.Popup1Button2Text.Value = "European";
+			DSM.Popup1.Popup1Result.Value = "<none>";
 			popup1.Activate();
 			break;
 

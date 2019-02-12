@@ -29,7 +29,7 @@ public class popup1 : MonoBehaviour
 			Debug.Log( "Popup1 dismissed with result '" + ds.Value + "'");
 
 			Dismiss();
-			DSM.Popup1Result.Value = ds.Value;
+			DSM.Popup1.Popup1Result.Value = ds.Value;
 			Destroy(this);
 			break;
 		}

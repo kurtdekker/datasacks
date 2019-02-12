@@ -11,6 +11,8 @@
 //
 public partial class DSM
 {
+
+// Datasacks from directory 'Assets/Datasack/Resources/Datasacks'
 	public static Datasack AudioSourceClick { get { return DSM.I.Get( "AudioSourceClick"); } }
 	public static Datasack AudioSourceEnter { get { return DSM.I.Get( "AudioSourceEnter"); } }
 	public static Datasack AudioSourceHello { get { return DSM.I.Get( "AudioSourceHello"); } }
@@ -24,11 +26,21 @@ public partial class DSM
 	public static Datasack Timer1 { get { return DSM.I.Get( "Timer1"); } }
 	public static Datasack Timer1Start { get { return DSM.I.Get( "Timer1Start"); } }
 	public static Datasack Volume { get { return DSM.I.Get( "Volume"); } }
-	public static Datasack Score { get { return DSM.I.Get( "Score"); } }
-	public static Datasack Ships { get { return DSM.I.Get( "Ships"); } }
-	public static Datasack Popup1Button1Text { get { return DSM.I.Get( "Popup1Button1Text"); } }
-	public static Datasack Popup1Button2Text { get { return DSM.I.Get( "Popup1Button2Text"); } }
-	public static Datasack Popup1Header { get { return DSM.I.Get( "Popup1Header"); } }
-	public static Datasack Popup1Message { get { return DSM.I.Get( "Popup1Message"); } }
-	public static Datasack Popup1Result { get { return DSM.I.Get( "Popup1Result"); } }
+
+// Datasacks from directory 'Assets/Datasack/Resources/Datasacks/PlayerState'
+	public static class PlayerState
+	{
+		public static Datasack Score { get { return DSM.I.Get( "Score"); } }
+		public static Datasack Ships { get { return DSM.I.Get( "Ships"); } }
+	}
+
+// Datasacks from directory 'Assets/Datasack/Resources/Datasacks/Popup1'
+	public static class Popup1
+	{
+		public static Datasack Popup1Button1Text { get { return DSM.I.Get( "Popup1Button1Text"); } }
+		public static Datasack Popup1Button2Text { get { return DSM.I.Get( "Popup1Button2Text"); } }
+		public static Datasack Popup1Header { get { return DSM.I.Get( "Popup1Header"); } }
+		public static Datasack Popup1Message { get { return DSM.I.Get( "Popup1Message"); } }
+		public static Datasack Popup1Result { get { return DSM.I.Get( "Popup1Result"); } }
+	}
 }
