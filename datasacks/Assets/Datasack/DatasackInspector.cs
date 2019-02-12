@@ -81,9 +81,26 @@ public partial class Datasack
 			s += "public partial class DSM\n{\n";
 
 			Datasack[] sacks = Resources.LoadAll<Datasack>( DSM.s_DatasacksDirectoryPrefix);
+
+			Dictionary<string,List<Datasack>> SplitByDirectory = new Dictionary<string, List<Datasack>>();
+
 			foreach( var ds in sacks)
 			{
-				AppendGetter( ref s, ds);
+				string assetPath = AssetDatabase.GetAssetPath( ds.GetInstanceID());
+				string dirName = System.IO.Path.GetDirectoryName( assetPath);
+				if (!SplitByDirectory.ContainsKey( dirName))
+				{
+					SplitByDirectory[dirName] = new List<Datasack>();
+				}
+				SplitByDirectory[dirName].Add( ds);
+			}
+
+			foreach( var dirName in SplitByDirectory.Keys)
+			{
+				foreach( var ds in SplitByDirectory[dirName])
+				{
+					AppendGetter( ref s, ds);
+				}
 			}
 
 			s += "}\n";
