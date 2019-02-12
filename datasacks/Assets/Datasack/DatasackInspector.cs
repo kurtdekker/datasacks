@@ -1,7 +1,7 @@
 ﻿/*
 	The following license supersedes all notices in the source code.
 
-	Copyright (c) 2018 Kurt Dekker/PLBM Games All rights reserved.
+	Copyright (c) 2019 Kurt Dekker/PLBM Games All rights reserved.
 
 	http://www.twitter.com/kurtdekker
 
@@ -56,14 +56,19 @@ public partial class Datasack
 	[CustomEditor(typeof(Datasack)), CanEditMultipleObjects]
 	public class DatasackEditor : Editor
 	{
-		void AppendGetter( ref string s, Datasack ds, string variableName)
+		string IdentifierSafeString( string s)
 		{
-			string safeName = ds.name;
+			s = s.Replace( "_", "_");
+			s = s.Replace( "-", "_");
+			s = s.Replace( "/", "_");
+			s = s.Replace( "\\", "_");
+			return s;
+		}
 
-			// Note to future self: don't allow future silliness by putting non-identifier-safe
-			// names into filenames. Tell the user to be thankful we don't enforce 8.3 filenames.
-
-			s += "\tpublic static Datasack " + safeName + " { get { return DSM.I.Get( \"" +
+		void CreateStaticGetterExpression( ref string s, Datasack ds, string variableName)
+		{
+			s += "\tpublic static Datasack " + IdentifierSafeString( ds.name) +
+				" { get { return DSM.I.Get( \"" +
 				variableName  + "\", Load: true); } }\n";
 		}
 
@@ -124,14 +129,14 @@ public partial class Datasack
 
 				if (nestedClassName != null)
 				{
-					s += "\tpublic static class " + nestedClassName + "\n";
+					s += "\tpublic static class " + IdentifierSafeString( nestedClassName) + "\n";
 					s += "\t{\n";
 				}
 
 				foreach( var ds in SplitByDirectory[dirName])
 				{
 					s += indentation;
-					AppendGetter( ref s, ds, pathPrefix + ds.name);
+					CreateStaticGetterExpression( ref s, ds, pathPrefix + ds.name);
 				}
 
 				if (nestedClassName != null)
