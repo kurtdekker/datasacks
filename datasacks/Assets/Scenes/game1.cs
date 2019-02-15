@@ -45,15 +45,29 @@ public class game1 : MonoBehaviour
 {
 	string[] words = new string[] { "clack", "clock", "click", "cluck"};
 
+	void InitializeGUIDs()
+	{
+		Datasack[] GUID_Datasacks = new Datasack[] {
+			DSM.GUID,
+			DSM.Folder.GUID,
+			DSM.Folder_Subfolder.GUID,
+		};
+
+		foreach( var dataSack in GUID_Datasacks)
+		{
+			if (dataSack.Value.Length < 10)
+			{
+				dataSack.Value = System.Guid.NewGuid().ToString().Substring( 0, 10);
+			}
+		}
+	}
+
 	void Start()
 	{
 		UnityEngine.SceneManagement.SceneManager.LoadScene( "audio",
 			UnityEngine.SceneManagement.LoadSceneMode.Additive);
-		
-		if (DSM.Folder_Subfolder.GUID.Value.Length < 10)
-		{
-			DSM.Folder_Subfolder.GUID.Value = System.Guid.NewGuid().ToString().Substring( 0, 10);
-		}
+
+		InitializeGUIDs();
 
 		Debug.Log( GetType()+".Start():");
 		Debug.Log( DSM.Timer1.ToString());
