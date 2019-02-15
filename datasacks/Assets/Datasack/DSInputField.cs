@@ -63,7 +63,7 @@ public class DSInputField : MonoBehaviour
 
 		dataSackPayload.Value = Value;
 
-		string signalledOutput = name;
+		string signalledOutput = gameObject.name;
 		if (SignalPayloadInsteadOfName) signalledOutput = Value;
 
 		DSUI.Value = signalledOutput;

@@ -46,7 +46,8 @@ public partial class Datasack
 {
 	public override string ToString ()
 	{
-		return string.Format ("[Datasack: name={0}, Value={1}, iValue={2}, fValue={3}, bValue={4}]", name, Value, iValue, fValue, bValue);
+		return string.Format ("[Datasack: name={0}, FullName={1}, Value={2}, iValue={3}, fValue={4}, bValue={5}]",
+			name, FullName, Value, iValue, fValue, bValue);
 	}
 
 	bool DebugBreak;
@@ -162,7 +163,7 @@ public partial class Datasack
 		string PlayerPrefsKey()
 		{
 			Datasack ds = (Datasack)target;
-			return DSM.s_PlayerPrefsPrefix + ds.name;
+			return DSM.s_PlayerPrefsPrefix + ds.FullName;
 		}
 
 		public override void OnInspectorGUI()
@@ -191,7 +192,7 @@ public partial class Datasack
 			GUI.color = Color.cyan;
 			if (GUILayout.Button( "OUTPUT CURRENT VALUE"))
 			{
-				string part1 = "Datasack " + ds.name + " is currently: '" + ds.Value + "'";
+				string part1 = "Datasack " + ds.FullName + " is currently: '" + ds.Value + "'";
 				string part2 = " <not parseable as float>";
 				try
 				{

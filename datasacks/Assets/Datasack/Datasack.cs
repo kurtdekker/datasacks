@@ -57,6 +57,9 @@ public partial class Datasack : ScriptableObject
 	[NonSerialized]
 	public	OnValueChangedDelegate	OnChangedOnceOnly;
 
+	[NonSerialized]
+	public	string		FullName;
+
 	void OnEnable()
 	{
 		bool holdBreak = DebugBreak;
@@ -70,7 +73,7 @@ public partial class Datasack : ScriptableObject
 		if (Save)
 		{
 			Value = PlayerPrefs.GetString (
-				DSM.s_PlayerPrefsPrefix + name, Value);
+				DSM.s_PlayerPrefsPrefix + FullName, Value);
 		}
 
 		DebugBreak = holdBreak;
@@ -109,12 +112,12 @@ public partial class Datasack : ScriptableObject
 		{
 			if (DebugLogging)
 			{
-				Debug.Log( "Datasack " + name + " changed: '" + TheData + "' to '" + value + "'");
+				Debug.Log( "Datasack " + FullName + " changed: '" + TheData + "' to '" + value + "'");
 			}
 
 			if (DebugBreak)
 			{
-				Debug.LogWarning( "Datasack " + name + ": set to DebugBreak");
+				Debug.LogWarning( "Datasack " + FullName + ": set to DebugBreak");
 				Debug.Break();
 			}
 

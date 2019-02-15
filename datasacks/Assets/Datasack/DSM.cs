@@ -73,7 +73,8 @@ public partial class DSM : MonoBehaviour
 			{
 				if (kvp.Value.Save)
 				{
-					PlayerPrefs.SetString (s_PlayerPrefsPrefix + kvp.Key, kvp.Value.Value);
+					string s_PrefsKey = s_PlayerPrefsPrefix + kvp.Key;
+					PlayerPrefs.SetString (s_PrefsKey, kvp.Value.Value);
 				}
 			}
 			PlayerPrefs.Save();
@@ -129,7 +130,7 @@ public partial class DSM : MonoBehaviour
 			if (Add)
 			{
 				ds = ScriptableObject.CreateInstance<Datasack> ();
-				ds.name = sackname;
+				ds.FullName = sackname;
 			}
 			if (ds)
 			{

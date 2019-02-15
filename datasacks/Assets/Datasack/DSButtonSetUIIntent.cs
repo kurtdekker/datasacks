@@ -54,10 +54,10 @@ public class DSButtonSetUIIntent : MonoBehaviour
 		var ds = DSM.UserIntent;
 		if (dsUI) ds = dsUI;
 
-		string value = name;
-		if (ValueToSet != null && ValueToSet.Length > 0) value = ValueToSet;
+		string signalledOutput = gameObject.name;
+		if (ValueToSet != null && ValueToSet.Length > 0) signalledOutput = ValueToSet;
 
-		ds.Value = value;
+		ds.Value = signalledOutput;
 	}
 
 	void	OnEnable()
