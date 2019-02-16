@@ -70,14 +70,20 @@ public partial class Datasack : ScriptableObject
 
 		Value = InitialValue;
 
-		if (Save)
-		{
-			Value = PlayerPrefs.GetString (
-				DSM.s_PlayerPrefsPrefix + FullName, Value);
-		}
-
 		DebugBreak = holdBreak;
 		DebugLogging = holdLogging;
+	}
+
+	public void LoadPersistent()
+	{
+		if (Save)
+		{
+			string s_PrefsKey = DSM.s_PlayerPrefsPrefix + FullName;
+			Debug.LogWarning( "Haskey(" + s_PrefsKey + ") -> " + PlayerPrefs.HasKey( s_PrefsKey).ToString());
+			Debug.LogWarning( "Data(" + s_PrefsKey + ") -> " + PlayerPrefs.GetString( s_PrefsKey).ToString());
+			Value = PlayerPrefs.GetString (s_PrefsKey, Value);
+			Debug.LogWarning( "READ: s_PrefsKey = " + s_PrefsKey + " -> " + Value);
+		}
 	}
 
 	[NonSerialized] private	string	TheData;
