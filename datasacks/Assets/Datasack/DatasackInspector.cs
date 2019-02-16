@@ -219,6 +219,7 @@ public partial class Datasack
 			GUI.color = Color.red;
 			if (GUILayout.Button( "DELETE ALL PLAYER PREFS"))
 			{
+				DSM.ResetDictionaryIfRunning();
 				PlayerPrefs.DeleteAll();
 				PlayerPrefs.Save();
 			}

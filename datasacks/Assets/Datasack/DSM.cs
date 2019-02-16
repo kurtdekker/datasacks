@@ -49,6 +49,14 @@ public partial class DSM : MonoBehaviour
 
 	public	const	string	s_PlayerPrefsPrefix = "DataBag_";
 
+	public static void ResetDictionaryIfRunning()
+	{
+		if (_I)
+		{
+			_I.AllSacks = new Dictionary<string, Datasack> ();
+		}
+	}
+
 	public	static	DSM I
 	{
 		get
@@ -59,7 +67,7 @@ public partial class DSM : MonoBehaviour
 
 				DontDestroyOnLoad (_I.gameObject);
 
-				_I.AllSacks = new Dictionary<string, Datasack> ();
+				ResetDictionaryIfRunning();
 			}
 			return _I;
 		}
