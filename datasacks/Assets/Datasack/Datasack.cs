@@ -57,6 +57,10 @@ public partial class Datasack : ScriptableObject
 	[NonSerialized]
 	public	OnValueChangedDelegate	OnChangedOnceOnly;
 
+	// This name is the name of the Datasack object itself (.name) but
+	// also prefixed with the path location so it is unique. It must be
+	// unique for retrieval from the master dictionary, and for
+	// persistent saving/loading to PlayerPrefs.
 	[NonSerialized]
 	public	string		FullName;
 
