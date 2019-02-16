@@ -83,7 +83,6 @@ public partial class DSM : MonoBehaviour
 				{
 					string s_PrefsKey = s_PlayerPrefsPrefix + kvp.Key;
 					PlayerPrefs.SetString (s_PrefsKey, kvp.Value.Value);
-					Debug.LogWarning( "WRITE: s_PrefsKey = " + s_PrefsKey + " -> " + kvp.Value.Value);
 				}
 			}
 			PlayerPrefs.Save();

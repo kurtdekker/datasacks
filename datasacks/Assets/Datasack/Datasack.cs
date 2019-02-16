@@ -79,10 +79,7 @@ public partial class Datasack : ScriptableObject
 		if (Save)
 		{
 			string s_PrefsKey = DSM.s_PlayerPrefsPrefix + FullName;
-			Debug.LogWarning( "Haskey(" + s_PrefsKey + ") -> " + PlayerPrefs.HasKey( s_PrefsKey).ToString());
-			Debug.LogWarning( "Data(" + s_PrefsKey + ") -> " + PlayerPrefs.GetString( s_PrefsKey).ToString());
 			Value = PlayerPrefs.GetString (s_PrefsKey, Value);
-			Debug.LogWarning( "READ: s_PrefsKey = " + s_PrefsKey + " -> " + Value);
 		}
 	}
 
