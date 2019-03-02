@@ -149,6 +149,9 @@ public class game1 : MonoBehaviour
 			DSM.Popup1.Button1Text.Value = "African";
 			DSM.Popup1.Button2Text.Value = "European";
 			DSM.Popup1.Result.Value = "<none>";
+			DSM.Popup1.Result.OnChangedOnceOnly += (xxx) => {
+				Debug.Log( "Result was " + xxx.Value);
+			};
 			popup1.Activate();
 			break;
 
