@@ -144,11 +144,11 @@ public class game1 : MonoBehaviour
 			break;
 
 		case "ButtonPopup1":
-			DSM.Popup1.Popup1Header.Value = "Answer Me!";
-			DSM.Popup1.Popup1Message.Value = "WHAT is the airspeed velocity of an unladen swallow?";
-			DSM.Popup1.Popup1Button1Text.Value = "African";
-			DSM.Popup1.Popup1Button2Text.Value = "European";
-			DSM.Popup1.Popup1Result.Value = "<none>";
+			DSM.Popup1.Header.Value = "Answer Me!";
+			DSM.Popup1.Message.Value = "WHAT is the airspeed velocity of an unladen swallow?";
+			DSM.Popup1.Button1Text.Value = "African";
+			DSM.Popup1.Button2Text.Value = "European";
+			DSM.Popup1.Result.Value = "<none>";
 			popup1.Activate();
 			break;
 

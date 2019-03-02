@@ -49,10 +49,10 @@ public partial class DSM
 // Datasacks from directory 'Assets/Datasack/Resources/Datasacks/Popup1'
 	public static class Popup1
 	{
-		public static Datasack Popup1Button1Text { get { return DSM.I.Get( "Popup1/Popup1Button1Text", Load: true); } }
-		public static Datasack Popup1Button2Text { get { return DSM.I.Get( "Popup1/Popup1Button2Text", Load: true); } }
-		public static Datasack Popup1Header { get { return DSM.I.Get( "Popup1/Popup1Header", Load: true); } }
-		public static Datasack Popup1Message { get { return DSM.I.Get( "Popup1/Popup1Message", Load: true); } }
-		public static Datasack Popup1Result { get { return DSM.I.Get( "Popup1/Popup1Result", Load: true); } }
+		public static Datasack Button1Text { get { return DSM.I.Get( "Popup1/Button1Text", Load: true); } }
+		public static Datasack Button2Text { get { return DSM.I.Get( "Popup1/Button2Text", Load: true); } }
+		public static Datasack Header { get { return DSM.I.Get( "Popup1/Header", Load: true); } }
+		public static Datasack Message { get { return DSM.I.Get( "Popup1/Message", Load: true); } }
+		public static Datasack Result { get { return DSM.I.Get( "Popup1/Result", Load: true); } }
 	}
 }
