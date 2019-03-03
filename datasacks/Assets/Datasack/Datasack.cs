@@ -45,6 +45,7 @@ using UnityEditor;
 [CreateAssetMenu]
 public partial class Datasack : ScriptableObject
 {
+	[Multiline]
 	public	string	InitialValue;
 
 	public	bool	Save;
