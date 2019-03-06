@@ -26,7 +26,7 @@ they are always available as draggable objects into Monobehaviors.
 
 The general flow pattern is that you put the DSButtonSetUIIntent.cs
 script on any UI button, and when pressed that will put the name
-of that button's GameObject into the DSM.UISack variable, unless
+of that button's GameObject into the DSM.UserIntent variable, unless
 you specify another Datasack.
 
 Over in code you have a switch statement that operates on the
@@ -57,8 +57,8 @@ the PlayerPrefs system between launches of the application.
 Obviously you can use JSON and store whatever objects you want
 into the string portion of a Datasack.
 
-// Here is an example data subscription pattern for your Monobehavior:
-// It falls back to DSM.UISack because that is the default sack.
+	// Here is an example data subscription pattern for your Monobehavior:
+	// It falls back to DSM.UserIntent because that is the default sack.
 
 	public Datasack dataSack;	// populate this in the Unity editor
 
@@ -82,7 +82,7 @@ into the string portion of a Datasack.
 
 	void	OnEnable()
 	{
-		if (!dataSack) dataSack = DSM.UISack;	// falls back to the UI sack
+		if (!dataSack) dataSack = DSM.UserIntent;
 		dataSack.OnChanged += OnDatasackChanged;
 	}
 	void	OnDisable()
