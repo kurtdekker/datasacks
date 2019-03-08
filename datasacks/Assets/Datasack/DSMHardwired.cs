@@ -45,7 +45,7 @@ public partial class DSM
 	{
 		get
 		{
-			return I.Get (s_UserIntent, true);
+			return I.Get (s_UserIntent, Add: true);
 		}
 	}
 
@@ -55,7 +55,7 @@ public partial class DSM
 	{
 		get
 		{
-			return I.Get (s_UserIntent, true);
+			return I.Get (s_UserIntent, Add: true);
 		}
 	}
 }

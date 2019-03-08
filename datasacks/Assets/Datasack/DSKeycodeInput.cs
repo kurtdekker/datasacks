@@ -118,7 +118,7 @@ public class DSKeycodeInput : MonoBehaviour
 
 			if (SendGameObjectName)
 			{
-				tempOutput = name;
+				tempOutput = gameObject.name;
 			}
 
 			var ds = DSM.UserIntent;
