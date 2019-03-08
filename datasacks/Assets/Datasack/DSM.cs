@@ -121,6 +121,8 @@ public partial class DSM : MonoBehaviour
 
 	Dictionary<string,Datasack> AllSacks;
 
+	const string s_ReminderToCodegen = "(Perhaps you need to select a Datasack and do 'CODEGEN' from its inspector panel?)";
+
 	public	Datasack	Get( string sackname, bool Add = false, bool Load = false)
 	{
 		if (!AllSacks.ContainsKey( sackname))
@@ -133,6 +135,7 @@ public partial class DSM : MonoBehaviour
 				if (!ds)
 				{
 					Debug.LogError( GetType()+".Get(): Failed to load datasack '" + finalName + "'. Set AutoAdd = true to add at runtime.");
+					Debug.LogWarning( s_ReminderToCodegen);
 				}
 			}
 			if (Add)
@@ -149,6 +152,7 @@ public partial class DSM : MonoBehaviour
 			else
 			{
 				Debug.LogError( GetType()+".Get(): Datasack '" + sackname + "' does not exist. Set AutoAdd = true to add at runtime.");
+					Debug.LogWarning( s_ReminderToCodegen);
 			}
 		}
 		return AllSacks [sackname];
