@@ -38,6 +38,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Collider))]
 public class Datasack3DSensor : MonoBehaviour, IDatasackTouchable
 {
 	[Tooltip("Defaults to UISack datavar if none supplied.")]
