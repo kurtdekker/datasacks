@@ -73,14 +73,14 @@ public class popup1 : MonoBehaviour
 	void OnEnable()
 	{
 		// Use this method to let the underlying script(s) continue to receive events
-		// DSM.UISack.OnChanged += OnUserIntent;
-		// But we want to take over the UISack entirely
+		// DSM.UserIntent.OnChanged += OnUserIntent;
+		// But we want to take over the UserIntent entirely since we are a modal popup.
 		DSM.UserIntent.PushOnChanged( OnUserIntent);
 	}
 	void OnDisable()
 	{
 		// see note above
-		// DSM.UISack.OnChanged -= OnUserIntent;
+		// DSM.UserIntent.OnChanged -= OnUserIntent;
 		DSM.UserIntent.PopOnChanged();
 	}
 }

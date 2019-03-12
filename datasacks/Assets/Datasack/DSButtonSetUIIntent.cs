@@ -41,7 +41,7 @@ using UnityEngine.UI;
 [RequireComponent( typeof( Button))]
 public class DSButtonSetUIIntent : MonoBehaviour
 {
-	[Tooltip("Defaults to UISack datavar if none supplied.")]
+	[Tooltip("Defaults to UserIntent datasack if none supplied.")]
 	public Datasack dsUI;
 
 	[Tooltip("Leave blank to set Button GameObject name")]
