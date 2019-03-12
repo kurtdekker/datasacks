@@ -55,4 +55,10 @@ public partial class DSM
 		public static Datasack Message { get { return DSM.I.Get( "Popup1/Message", Load: true); } }
 		public static Datasack Result { get { return DSM.I.Get( "Popup1/Result", Load: true); } }
 	}
+
+// Datasacks from directory 'Assets/Datasack/Resources/Datasacks/Popup2'
+	public static class Popup2
+	{
+		public static Datasack TouchCoordinates { get { return DSM.I.Get( "Popup2/TouchCoordinates", Load: true); } }
+	}
 }

@@ -422,7 +422,6 @@ GameObject:
   - component: {fileID: 888969614}
   - component: {fileID: 888969613}
   - component: {fileID: 888969612}
-  - component: {fileID: 888969616}
   m_Layer: 5
   m_Name: CanvasPopup1
   m_TagString: Untagged
@@ -500,24 +499,13 @@ RectTransform:
   - {fileID: 515419892}
   - {fileID: 1322800739}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &888969616
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 888969611}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32d27d85ed2d4403baaafdc12180b43e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &921437100
 GameObject:
   m_ObjectHideFlags: 0
@@ -845,6 +833,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dataSack: {fileID: 11400000, guid: 0c3aaa12d45e648cb9a5dfdb46ccfe08, type: 2}
   FormatString: 
+--- !u!1 &1641614987
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1641614989}
+  - component: {fileID: 1641614988}
+  m_Layer: 0
+  m_Name: 0scripts_Popup1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1641614988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1641614987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d27d85ed2d4403baaafdc12180b43e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1641614989
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1641614987}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1805468512
 GameObject:
   m_ObjectHideFlags: 0
