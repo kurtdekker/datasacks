@@ -16,6 +16,7 @@ public partial class DSM
 	public static Datasack AudioSourceClick { get { return DSM.I.Get( "AudioSourceClick", Load: true); } }
 	public static Datasack AudioSourceEnter { get { return DSM.I.Get( "AudioSourceEnter", Load: true); } }
 	public static Datasack AudioSourceHello { get { return DSM.I.Get( "AudioSourceHello", Load: true); } }
+	public static Datasack ExampleOutput { get { return DSM.I.Get( "ExampleOutput", Load: true); } }
 	public static Datasack GameRunning { get { return DSM.I.Get( "GameRunning", Load: true); } }
 	public static Datasack GUID { get { return DSM.I.Get( "GUID", Load: true); } }
 	public static Datasack HardMode { get { return DSM.I.Get( "HardMode", Load: true); } }
