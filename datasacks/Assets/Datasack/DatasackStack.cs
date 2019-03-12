@@ -51,6 +51,9 @@ public partial class Datasack
 
 	public void PopOnChanged()
 	{
-		OnChanged = OnChangedStack.Pop();
+		if (OnChangedStack != null)
+		{
+			OnChanged = OnChangedStack.Pop();
+		}
 	}
 }
