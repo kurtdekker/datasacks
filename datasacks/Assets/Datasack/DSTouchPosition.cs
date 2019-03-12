@@ -38,7 +38,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class DSButtonTouchPosition : MonoBehaviour
+public class DSTouchPosition : MonoBehaviour
 {
 	[Tooltip("Defaults to UserIntent datasack if none supplied.")]
 	public Datasack dsUI;
@@ -50,7 +50,16 @@ public class DSButtonTouchPosition : MonoBehaviour
 		var ds = DSM.UserIntent;
 		if (dsUI) ds = dsUI;
 
-		ds.v2Value = ped.position;
+		RectTransform rtgo = gameObject.GetComponent<RectTransform>();
+
+		Vector2 normalizedPosition = ped.position;
+
+		normalizedPosition.x -= (rtgo.position.x + rtgo.rect.x);
+		normalizedPosition.y -= (rtgo.position.y + rtgo.rect.y);
+		normalizedPosition.x /= rtgo.rect.width;
+		normalizedPosition.y /= rtgo.rect.height;
+
+		ds.v2Value = normalizedPosition;
 	}
 
 	void	OnEnable()
