@@ -142,4 +142,18 @@ public partial class Datasack : ScriptableObject
 			}
 		}
 	}
+
+	// If you are constantly setting a .Value field, use this
+	// if you can tolerate signalling / breaking / saving to
+	// only perform action when the value is different.
+	public string ValueIfDifferent
+	{
+		set
+		{
+			if (TheData != value)
+			{
+				Value = value;
+			}
+		}
+	}
 }
