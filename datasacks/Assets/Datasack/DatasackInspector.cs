@@ -188,6 +188,8 @@ public partial class Datasack
 					AssetDatabase.CreateAsset( dsc, assetPath);
 				}
 
+				EditorUtility.SetDirty(dsc);
+
 				AssetDatabase.SaveAssets();
 			}
 
