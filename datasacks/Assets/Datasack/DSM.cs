@@ -70,10 +70,9 @@ public partial class DSM : MonoBehaviour
 				ResetDictionaryIfRunning();
 
 				var dsc = Resources.Load<DatasackCollection>( s_AllDatasacks);
-				_I.AllSacks = new Dictionary<string, Datasack>();
 				foreach( var dm in dsc.Mappings)
 				{
-					_I.AllSacks[dm.Fullname] = dm.Datasack;
+					DSM.I.Get( dm.Fullname, Load: true);
 				}
 			}
 			return _I;
