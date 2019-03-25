@@ -68,6 +68,13 @@ public partial class DSM : MonoBehaviour
 				DontDestroyOnLoad (_I.gameObject);
 
 				ResetDictionaryIfRunning();
+
+				var dsc = Resources.Load<DatasackCollection>( s_AllDatasacks);
+				_I.AllSacks = new Dictionary<string, Datasack>();
+				foreach( var dm in dsc.Mappings)
+				{
+					_I.AllSacks[dm.Fullname] = dm.Datasack;
+				}
 			}
 			return _I;
 		}
@@ -86,16 +93,6 @@ public partial class DSM : MonoBehaviour
 				}
 			}
 			PlayerPrefs.Save();
-		}
-	}
-
-	void	OnEnable()
-	{
-		var dsc = Resources.Load<DatasackCollection>( s_AllDatasacks);
-		AllSacks = new Dictionary<string, Datasack>();
-		foreach( var dm in dsc.Mappings)
-		{
-			AllSacks[dm.Fullname] = dm.Datasack;
 		}
 	}
 
