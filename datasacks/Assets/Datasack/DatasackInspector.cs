@@ -86,6 +86,9 @@ public partial class Datasack
 
 			s += "public partial class DSM\n{\n";
 
+			// TODO: make this ransack the entire project for Datasacks,
+			// not just underneath the Resources directories!
+
 			Datasack[] sacks = Resources.LoadAll<Datasack>( DSM.s_DatasacksDirectoryPrefix);
 
 			Dictionary<string,List<Datasack>> SplitByDirectory = new Dictionary<string, List<Datasack>>();
@@ -137,7 +140,9 @@ public partial class Datasack
 				foreach( var ds in SplitByDirectory[dirName])
 				{
 					s += indentation;
-					CreateStaticGetterExpression( ref s, ds, pathPrefix + ds.name);
+					string variableName = pathPrefix + ds.name;
+					CreateStaticGetterExpression( ref s, ds, variableName);
+					ds.FullName = variableName;
 				}
 
 				if (nestedClassName != null)
@@ -158,11 +163,32 @@ public partial class Datasack
 			}
 
 			{
-				var dsc = ScriptableObject.CreateInstance<DatasackCollection>();
-				dsc.Datasacks = sacks;
-				string path = "Assets/Datasack/Resources/AllDatasacks.asset";
-				AssetDatabase.DeleteAsset( path);
-				AssetDatabase.CreateAsset( dsc, path);
+				bool create = false;
+
+				string assetPath = "Assets/" + DSM.s_AllDatasacksAssetPath + ".asset";
+
+				var dsc = AssetDatabase.LoadAssetAtPath<DatasackCollection>( assetPath);
+				if (!dsc)
+				{
+					create = true;
+					dsc = ScriptableObject.CreateInstance<DatasackCollection>();
+				}
+
+				dsc.Mappings = new DatasackCollection.DatasackMapping[ sacks.Length];
+
+				for (int i = 0; i < sacks.Length; i++)
+				{
+					dsc.Mappings[i] = new DatasackCollection.DatasackMapping();
+					dsc.Mappings[i].Fullname = sacks[i].FullName;
+					dsc.Mappings[i].Datasack = sacks[i];
+				}
+
+				if (create)
+				{
+					AssetDatabase.CreateAsset( dsc, assetPath);
+				}
+
+				AssetDatabase.SaveAssets();
 			}
 
 			AssetDatabase.Refresh();
