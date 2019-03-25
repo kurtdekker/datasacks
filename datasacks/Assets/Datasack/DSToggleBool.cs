@@ -59,9 +59,9 @@ public class DSToggleBool : MonoBehaviour
 	{
 		toggle = GetComponent<Toggle> ();
 
-		toggle.onValueChanged.AddListener (OnToggleChanged);
-
 		toggle.isOn = dataSack.bValue;
+
+		toggle.onValueChanged.AddListener (OnToggleChanged);
 
 		dataSack.OnChanged += OnDatasackChanged;
 	}
