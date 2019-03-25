@@ -165,7 +165,11 @@ public partial class Datasack
 			{
 				bool create = false;
 
-				string assetPath = "Assets/" + DSM.s_AllDatasacksAssetPath + ".asset";
+				string assetPath = "Assets/" + DSM.s_AllDatasacksPathPrefix;
+
+				System.IO.Directory.CreateDirectory( assetPath);
+
+				assetPath = assetPath + DSM.s_AllDatasacksAsset + ".asset";
 
 				var dsc = AssetDatabase.LoadAssetAtPath<DatasackCollection>( assetPath);
 				if (!dsc)
