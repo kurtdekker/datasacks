@@ -39,7 +39,8 @@ using UnityEngine;
 
 public partial class DSM : MonoBehaviour
 {
-	public const string s_AllDatasacksAssetPath = "Datasack/Resources/AllDatasacks";
+	public const string s_AllDatasacks = "AllDatasacks";
+	public const string s_AllDatasacksAssetPath = "Datasack/Resources/" + s_AllDatasacks;
 	public const string s_DatasacksDirectoryPrefix = "Datasacks/";
 
 	public static bool shuttingDown { get; private set; }
@@ -90,7 +91,7 @@ public partial class DSM : MonoBehaviour
 
 	void	OnEnable()
 	{
-		var dsc = Resources.Load<DatasackCollection>( s_AllDatasacksAssetPath);
+		var dsc = Resources.Load<DatasackCollection>( s_AllDatasacks);
 		AllSacks = new Dictionary<string, Datasack>();
 		foreach( var dm in dsc.Mappings)
 		{
