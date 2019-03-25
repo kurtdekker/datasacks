@@ -157,6 +157,14 @@ public partial class Datasack
 				sw.Write(s);
 			}
 
+			{
+				var dsc = ScriptableObject.CreateInstance<DatasackCollection>();
+				dsc.Datasacks = sacks;
+				string path = "Assets/Datasack/Resources/AllDatasacks.asset";
+				AssetDatabase.DeleteAsset( path);
+				AssetDatabase.CreateAsset( dsc, path);
+			}
+
 			AssetDatabase.Refresh();
 		}
 
