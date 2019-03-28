@@ -33,61 +33,21 @@
 	SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public partial class Datasack
 {
-	public	int		iValue
+	// If you are constantly setting a .Value field, use this
+	// if you can tolerate signalling / breaking / saving to
+	// only perform action when the value is different.
+	public string ValueIfDifferent
 	{
-		get
-		{
-			int i = 0;
-			int.TryParse (Value, out i);
-			return i;
-		}
 		set
 		{
-			Value = value.ToString();
-		}
-	}
-
-	public	float	fValue
-	{
-		get
-		{
-			return DatasackFormatting.FloatFromHexString( Value);
-		}
-		set
-		{
-			Value = DatasackFormatting.FloatToHexString( value);
-		}
-	}
-
-	public	double	dValue
-	{
-		get
-		{
-			return DatasackFormatting.DoubleFromHexString( Value);
-		}
-		set
-		{
-			Value = DatasackFormatting.DoubleToHexString( value);
-		}
-	}
-
-	// CAUTION: nonzero integer is true... a string "true" does NOT count as true!!!
-	public	bool	bValue
-	{
-		get
-		{
-			return iValue != 0;
-		}
-		set
-		{
-			iValue = value ? 1 : 0;
+			if (TheData != value)
+			{
+				Value = value;
+			}
 		}
 	}
 }
