@@ -23,6 +23,7 @@ public partial class DSM
 	public static Datasack HighScore { get { return DSM.I.Get( "HighScore", Load: true); } }
 	public static Datasack InputtedData { get { return DSM.I.Get( "InputtedData", Load: true); } }
 	public static Datasack LastWord { get { return DSM.I.Get( "LastWord", Load: true); } }
+	public static Datasack SimpleCounter { get { return DSM.I.Get( "SimpleCounter", Load: true); } }
 	public static Datasack StartingShips { get { return DSM.I.Get( "StartingShips", Load: true); } }
 	public static Datasack Timer1 { get { return DSM.I.Get( "Timer1", Load: true); } }
 	public static Datasack Timer1Start { get { return DSM.I.Get( "Timer1Start", Load: true); } }
