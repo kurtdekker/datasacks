@@ -30,6 +30,10 @@ MonoBehaviour:
     Datasack: {fileID: 11400000, guid: 4f3ab57170387404288a1a0259d9e2ca, type: 2}
   - Fullname: HardMode
     Datasack: {fileID: 11400000, guid: 8cd4f9bcd054e4c5d8490bcb32536bde, type: 2}
+  - Fullname: HealthMeter/AnalogPortion
+    Datasack: {fileID: 11400000, guid: 25240b4fbcd1a43e3b3b6e0dea2601d7, type: 2}
+  - Fullname: HealthMeter/PipsPortion
+    Datasack: {fileID: 11400000, guid: c76d0e2dab4d24ac084091bf57cdf9d5, type: 2}
   - Fullname: HighScore
     Datasack: {fileID: 11400000, guid: 48a76e746f44b41d4a84b10d558fa5d0, type: 2}
   - Fullname: InputtedData

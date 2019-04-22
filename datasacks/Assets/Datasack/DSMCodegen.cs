@@ -41,6 +41,13 @@ public partial class DSM
 		public static Datasack GUID { get { return DSM.I.Get( "Folder/Subfolder/GUID", Load: true); } }
 	}
 
+// Datasacks from directory 'Assets/Scenes/examplehealthmeter/Resources/Datasacks/HealthMeter'
+	public static class HealthMeter
+	{
+		public static Datasack AnalogPortion { get { return DSM.I.Get( "HealthMeter/AnalogPortion", Load: true); } }
+		public static Datasack PipsPortion { get { return DSM.I.Get( "HealthMeter/PipsPortion", Load: true); } }
+	}
+
 // Datasacks from directory 'Assets/Datasack/Resources/Datasacks/PlayerState'
 	public static class PlayerState
 	{
