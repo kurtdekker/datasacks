@@ -1,4 +1,13 @@
-Putting up my datasacks module for easy UI event processing in Unity3D.
+This is my datasacks module for easy UI event processing in Unity3D.
+
+You can check out my games here:
+
+iPhone:  https://itunes.apple.com/us/developer/kurt-dekker/id680019078
+Android: https://play.google.com/store/apps/developer?id=Kurt+Dekker
+
+Also: https://kurtdekker.itch.io/
+
+--------------------------------- DATASACKS --------------------------
 
 Fire up the example game scene for a silly clicker that has some UI
 that uses datasacks.
