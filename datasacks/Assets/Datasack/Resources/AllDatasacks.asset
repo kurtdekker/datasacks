@@ -58,6 +58,8 @@ MonoBehaviour:
     Datasack: {fileID: 11400000, guid: c56f8a73fd72a4969b831494011e390a, type: 2}
   - Fullname: StartingShips
     Datasack: {fileID: 11400000, guid: 8cdcae75430c14c08b33aa3016811daa, type: 2}
+  - Fullname: TextObjectSelection
+    Datasack: {fileID: 11400000, guid: 66b6faa2ec07341e98df8b347bdaffe4, type: 2}
   - Fullname: Timer1
     Datasack: {fileID: 11400000, guid: a8324af9f172044e88b016aa8042cdac, type: 2}
   - Fullname: Timer1Start

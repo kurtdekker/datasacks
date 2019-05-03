@@ -17,3 +17,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/example3d/example3d.unity
     guid: b40c6e92a572b4ad2906ea3c2075cf98
+  - enabled: 1
+    path: Assets/Scenes/exampleselectingobjects/ExampleUsingDSGameObjectControl.unity
+    guid: f8d6a24caac404f7092bf3497ba8ea4b

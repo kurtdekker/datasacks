@@ -64,4 +64,7 @@ public partial class DSM
 		public static Datasack Message { get { return DSM.I.Get( "Popup1/Message", Load: true); } }
 		public static Datasack Result { get { return DSM.I.Get( "Popup1/Result", Load: true); } }
 	}
+
+// Datasacks from directory 'Assets/Scenes/exampleselectingobjects/Resources/Datasacks'
+	public static Datasack TextObjectSelection { get { return DSM.I.Get( "TextObjectSelection", Load: true); } }
 }
