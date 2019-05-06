@@ -72,7 +72,7 @@ into the string portion of a Datasack.
 
 	public Datasack dataSack;	// populate this in the Unity editor
 
-	void	OnDatasackChanged( Datasack ds)
+	void	OnUserIntent( Datasack ds)
 	{
 		// Here is where you service the notification
 		// that the contents of this Datasack changed
@@ -93,9 +93,9 @@ into the string portion of a Datasack.
 	void	OnEnable()
 	{
 		if (!dataSack) dataSack = DSM.UserIntent;
-		dataSack.OnChanged += OnDatasackChanged;
+		dataSack.OnChanged += OnUserIntent;
 	}
 	void	OnDisable()
 	{
-		dataSack.OnChanged -= OnDatasackChanged;
+		dataSack.OnChanged -= OnUserIntent;
 	}
