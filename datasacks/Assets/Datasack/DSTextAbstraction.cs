@@ -1,7 +1,7 @@
 ﻿/*
 	The following license supersedes all notices in the source code.
 
-	Copyright (c) 2018 Kurt Dekker/PLBM Games All rights reserved.
+	Copyright (c) 2019 Kurt Dekker/PLBM Games All rights reserved.
 
 	http://www.twitter.com/kurtdekker
 
@@ -65,6 +65,22 @@ public class DSTextAbstraction : MonoBehaviour
 		}
 	}
 
+	public	string	GetText()
+	{
+		if (!gameObject) return "";
+
+		LazyFinder();
+
+		if (text)
+		{
+			return text.text;
+		}
+
+		Debug.LogError( name + "." + GetType() + ".GetText(): no suitable text object found.");
+
+		return "";
+	}
+
 	public	void	SetText( string s)
 	{
 		if (!gameObject) return;
@@ -77,6 +93,6 @@ public class DSTextAbstraction : MonoBehaviour
 			return;
 		}
 
-		Debug.LogError( GetType() + ".SetText(): no suitable text object found.");
+		Debug.LogError( name + "." + GetType() + ".SetText(): no suitable text object found.");
 	}
 }
