@@ -1,7 +1,7 @@
 ﻿/*
 	The following license supersedes all notices in the source code.
 
-	Copyright (c) 2018 Kurt Dekker/PLBM Games All rights reserved.
+	Copyright (c) 2019 Kurt Dekker/PLBM Games All rights reserved.
 
 	http://www.twitter.com/kurtdekker
 
@@ -162,5 +162,27 @@ public partial class DSM : MonoBehaviour
 			}
 		}
 		return AllSacks [sackname];
+	}
+
+	public void ClearAllToInitialValue( bool CallOnChanged = false)
+	{
+		foreach( var kvp in AllSacks)
+		{
+			var ds = kvp.Value;
+
+			var HoldOnChanged = ds.OnChanged;
+			var HoldOnChangedOnceOnly = ds.OnChangedOnceOnly;
+
+			if (!CallOnChanged)
+			{
+				ds.OnChanged = null;
+				ds.OnChangedOnceOnly = null;
+			}
+
+			ds.Value = ds.InitialValue;
+
+			ds.OnChanged = HoldOnChanged;
+			ds.OnChangedOnceOnly = HoldOnChangedOnceOnly;
+		}
 	}
 }
