@@ -42,19 +42,35 @@ public class DSGameObjectControl : MonoBehaviour
 	[Tooltip( "Poke this Datasack to enable/disable objects below.")]
 	public	Datasack	dataSack;
 
+	[Header( "For simple boolean on/off control:")]
 	[Tooltip( "GameObjects to ENABLE when Datasack is poked TRUE (false poke will DISABLE!).")]
 	public	GameObject[]	ToEnable;
 
 	[Tooltip( "GameObjects to DISABLE when Datasack is poked TRUE (false poke will ENABLE!).")]
 	public	GameObject[]	ToDisable;
 
+	[Header( "For iValue control of lists:")]
 	[Tooltip( "GameObject array to map to iValue of Datasack (zero-based, can have gaps)")]
 	public	GameObject[]	IndexArray;
+
+	[Tooltip( "Populates above array based on transform children.")]
+	public	bool			OperateOnChildren;
+
+	[Tooltip( "Selection strategy for list of items.")]
+	public	SelectionStrategy	selectionStrategy;
+
+	public enum SelectionStrategy
+	{
+		SELECT_EXACTLY_ONE,
+		SELECT_LESS_THAN,
+		SELECT_LESS_THAN_OR_EQUAL,
+	}
 
 	void OnChanged( Datasack ds)
 	{
 		bool pokedTrue = ds.bValue;
 
+		// boolean handling:
 		foreach( var go in ToEnable)
 		{
 			if (go)
@@ -62,7 +78,6 @@ public class DSGameObjectControl : MonoBehaviour
 				go.SetActive( pokedTrue);
 			}
 		}
-
 		foreach( var go in ToDisable)
 		{
 			if (go)
@@ -71,11 +86,36 @@ public class DSGameObjectControl : MonoBehaviour
 			}
 		}
 
+		if (OperateOnChildren)
+		{
+			if (transform.childCount != IndexArray.Length)
+			{
+				IndexArray = new GameObject[ transform.childCount];
+			}
+			for (int i = 0; i < transform.childCount; i++)
+			{
+				IndexArray[i] = transform.GetChild(i).gameObject;
+			}
+		}
+
+		// iValue integer list selections
 		for (int i = 0; i < IndexArray.Length; i++)
 		{
 			if (IndexArray[i])
 			{
-				IndexArray[i].SetActive( i == ds.iValue);
+				bool onoff = i == ds.iValue;
+
+				if (selectionStrategy == SelectionStrategy.SELECT_LESS_THAN)
+				{
+					onoff = i < ds.iValue;
+				}
+
+				if (selectionStrategy == SelectionStrategy.SELECT_LESS_THAN_OR_EQUAL)
+				{
+					onoff = i <= ds.iValue;
+				}
+
+				IndexArray[i].SetActive( onoff);
 			}
 		}
 	}
