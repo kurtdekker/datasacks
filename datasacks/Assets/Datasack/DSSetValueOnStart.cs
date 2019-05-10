@@ -45,6 +45,8 @@ public class DSSetValueOnStart : MonoBehaviour
 
 	public bool SetOnAwake;
 
+	public bool SetInOnEnable;
+
 	void Awake()
 	{
 		if (SetOnAwake)
@@ -66,5 +68,13 @@ public class DSSetValueOnStart : MonoBehaviour
 //		Debug.Log( GetType() + ".Start(): dataSack = " + dataSack.FullName +
 //			" on GameObject " + gameObject.name + " is set to " + valueToSet);
 		dataSack.Value = valueToSet;
+	}
+
+	void OnEnable()
+	{
+		if (SetInOnEnable)
+		{
+			DoTheSet();
+		}
 	}
 }
