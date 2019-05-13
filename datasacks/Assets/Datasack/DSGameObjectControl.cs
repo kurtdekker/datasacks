@@ -39,6 +39,7 @@ using UnityEngine;
 
 public class DSGameObjectControl : MonoBehaviour
 {
+	[Header( "For .bValue control (toggle on/off only):")]
 	[Tooltip( "Poke this Datasack to enable/disable objects below.")]
 	public	Datasack	dataSack;
 
@@ -49,11 +50,11 @@ public class DSGameObjectControl : MonoBehaviour
 	[Tooltip( "GameObjects to DISABLE when Datasack is poked TRUE (false poke will ENABLE!).")]
 	public	GameObject[]	ToDisable;
 
-	[Header( "For iValue control of lists:")]
+	[Header( "For .iValue control of lists, or .Value control of GameObjects by their name")]
 	[Tooltip( "GameObject array to map to iValue of Datasack (zero-based, can have gaps)")]
 	public	GameObject[]	IndexArray;
 
-	[Tooltip( "Populates above array based on transform children.")]
+	[Tooltip( "Auto-populates above array based on transform children.")]
 	public	bool			OperateOnChildren;
 
 	[Tooltip( "Selection strategy for list of items.")]
@@ -64,6 +65,7 @@ public class DSGameObjectControl : MonoBehaviour
 		SELECT_EXACTLY_ONE,
 		SELECT_LESS_THAN,
 		SELECT_LESS_THAN_OR_EQUAL,
+		SELECT_BY_GAMEOBJECT_NAME,
 	}
 
 	void OnChanged( Datasack ds)
@@ -101,21 +103,26 @@ public class DSGameObjectControl : MonoBehaviour
 		// iValue integer list selections
 		for (int i = 0; i < IndexArray.Length; i++)
 		{
-			if (IndexArray[i])
+			var currentGameObject = IndexArray[i];
+			if (currentGameObject)
 			{
+				// presume selection SelectionStrategy.SELECT_EXACTLY_ONE:
 				bool onoff = i == ds.iValue;
 
-				if (selectionStrategy == SelectionStrategy.SELECT_LESS_THAN)
+				switch( selectionStrategy)
 				{
+				case SelectionStrategy.SELECT_LESS_THAN :
 					onoff = i < ds.iValue;
-				}
-
-				if (selectionStrategy == SelectionStrategy.SELECT_LESS_THAN_OR_EQUAL)
-				{
+					break;
+				case SelectionStrategy.SELECT_LESS_THAN_OR_EQUAL :
 					onoff = i <= ds.iValue;
+					break;
+				case SelectionStrategy.SELECT_BY_GAMEOBJECT_NAME :
+					onoff = (ds.Value == currentGameObject.name);
+					break;
 				}
 
-				IndexArray[i].SetActive( onoff);
+				currentGameObject.SetActive( onoff);
 			}
 		}
 	}
