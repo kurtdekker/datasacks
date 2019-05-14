@@ -40,7 +40,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 [RequireComponent( typeof( InputField))]
-public class DSInputFieldMoveWhenFocused : MonoBehaviour
+public class MoveInputFieldWhenFocused : MonoBehaviour
 {
 	[Header( "NOTE: This script goes ON the InputField GameObject")]
 
@@ -61,7 +61,7 @@ public class DSInputFieldMoveWhenFocused : MonoBehaviour
 
 	void Reset()
 	{
-		TransitionInterval = 0.3f;
+		TransitionInterval = 0.2f;
 	}
 
 	void Start()
@@ -73,6 +73,7 @@ public class DSInputFieldMoveWhenFocused : MonoBehaviour
 	void OnEnable()
 	{
 		PreviousFraction = -1;
+		TransitionTimer = -0.01f;
 	}
 
 	Vector3 InitialPosition;
@@ -98,7 +99,7 @@ public class DSInputFieldMoveWhenFocused : MonoBehaviour
 
 		if (focused)
 		{
-			DesiredFocusAmount = 1.0f;			// become completely focused
+			DesiredFocusAmount = TransitionInterval;			// become completely focused
 			if (!PreviousFocused)
 			{
 				InitialPosition = TargetToMove.transform.position;
@@ -109,28 +110,28 @@ public class DSInputFieldMoveWhenFocused : MonoBehaviour
 		bool Tweening = false;
 
 		// transitioning into focus
-		if (TransitionTimer < TransitionInterval)
+		if (TransitionTimer < DesiredFocusAmount)
 		{
 			Tweening = true;
 			TransitionTimer += Time.deltaTime;
-			if (TransitionTimer >= TransitionInterval)
+			if (TransitionTimer >= DesiredFocusAmount)
 			{
-				TransitionTimer = TransitionInterval;
+				TransitionTimer = DesiredFocusAmount;
 			}
 		}
 
 		// transitioning out of focus
-		if (TransitionTimer > 0)
+		if (TransitionTimer > DesiredFocusAmount)
 		{
 			Tweening = true;
 			TransitionTimer -= Time.deltaTime;
-			if (TransitionTimer <= 0)
+			if (TransitionTimer <= DesiredFocusAmount)
 			{
-				TransitionTimer = 0;
+				TransitionTimer = DesiredFocusAmount;
 			}
 		}
 
-		// presume instantaneous
+		// presume instantaneous transition to/from focus
 		float Fraction = focused ? 1.0f : 0.0f;
 
 		if (TransitionInterval > 0)
@@ -139,12 +140,12 @@ public class DSInputFieldMoveWhenFocused : MonoBehaviour
 		}
 
 		// only drive anything when there is change
-		if (PreviousFraction != Fraction)
+		if (Tweening || (PreviousFraction != Fraction))
 		{
 			// move the thing
 			TargetToMove.transform.position = Vector3.Lerp( InitialPosition, DestinationWhenFocused.transform.position, Fraction);
 
-			// activate the thing
+			// activate the things
 			foreach (var go in ActivateWhenFocused)
 			{
 				go.SetActive(focused);
@@ -152,11 +153,12 @@ public class DSInputFieldMoveWhenFocused : MonoBehaviour
 
 			// deactivate the things
 			bool activate = !focused;
-
 			foreach (var go in DeactivateWhenFocused)
 			{
 				go.SetActive(activate);
 			}
 		}
+
+		PreviousFraction = Fraction;
 	}
 }
