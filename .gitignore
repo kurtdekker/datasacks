@@ -23,3 +23,6 @@ sysinfo.txt
 # macintosh crap
 .DS_Store
 .DSStore
+
+# where I traditionally build the iOS project from Unity3D:
+datasacksxc
