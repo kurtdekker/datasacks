@@ -1837,7 +1837,7 @@ MonoBehaviour:
   ActivateWhenFocused:
   - {fileID: 1023585953}
   DeactivateWhenFocused: []
-  TransitionInterval: 0
+  TransitionInterval: 0.2
 --- !u!1 &1023585953
 GameObject:
   m_ObjectHideFlags: 0
