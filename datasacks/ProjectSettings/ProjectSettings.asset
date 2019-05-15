@@ -141,10 +141,10 @@ PlayerSettings:
   protectGraphicsMemory: 0
   useHDRDisplay: 0
   applicationIdentifier:
-    Android: com.Company.ProductName
-    Standalone: unity.Kurt Dekker.datasacks
+    Android: com.kurt.datasacks
+    Standalone: com.kurt.datasacks
     Tizen: com.Company.ProductName
-    iOS: com.Company.ProductName
+    iOS: com.kurt.datasacks
     tvOS: com.Company.ProductName
   buildNumber:
     iOS: 0
@@ -166,7 +166,7 @@ PlayerSettings:
     serializedVersion: 2
     m_Bits: 238
   iPhoneSdkVersion: 988
-  iOSTargetOSVersionString: 
+  iOSTargetOSVersionString: 8.0
   tvOSSdkVersion: 0
   tvOSRequireExtendedGameController: 0
   tvOSTargetOSVersionString: 
