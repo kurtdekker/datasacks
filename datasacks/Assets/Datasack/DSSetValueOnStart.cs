@@ -37,6 +37,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Obsolete( "Use DSSetValue instead.")]
 public class DSSetValueOnStart : MonoBehaviour
 {
 	public Datasack dataSack;
