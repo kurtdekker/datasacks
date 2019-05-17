@@ -155,6 +155,10 @@ public class game1 : MonoBehaviour
 			popup1.Activate();
 			break;
 
+		case "ButtonRuntimeInspector":
+			runtimeinspector.Activate();
+			break;
+
 		default :
 			Debug.LogWarning (GetType () + ".OnUIIntent(): unknown intent: " + ds.Value);
 			break;
