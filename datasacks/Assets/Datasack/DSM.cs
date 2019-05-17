@@ -164,6 +164,14 @@ public partial class DSM : MonoBehaviour
 		return AllSacks [sackname];
 	}
 
+	public IEnumerable<Datasack> Enumerate()
+	{
+		foreach( var kvp in AllSacks)
+		{
+			yield return kvp.Value;
+		}
+	}
+
 	public void ClearAllToInitialValue( bool CallOnChanged = false)
 	{
 		foreach( var kvp in AllSacks)
