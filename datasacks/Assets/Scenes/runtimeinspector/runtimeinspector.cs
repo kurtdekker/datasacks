@@ -54,7 +54,10 @@ public class runtimeinspector : MonoBehaviour
 	{
 		UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync( s_SceneName);
 
-		OnDismiss();
+		if (OnDismiss != null)
+		{
+			OnDismiss();
+		}
 	}
 
 	List<Datasack> CurrentlyDisplayedDatasacks;
@@ -90,14 +93,28 @@ public class runtimeinspector : MonoBehaviour
 		GUI.skin = ScaledSkin;
 
 		// dim out what's behind us
-		GUI.color = new Color( 0,0,0, 0.4f);
+		GUI.color = new Color( 0,0,0, 0.7f);
 		GUI.DrawTexture( RECT( 0,0,1,1), t2d_white32x32);
 
 		float TOP = 0.1f;
 
+		float HEIGHT = 1.0f - 2 * TOP;
+
 		GUI.color = Color.white;
 		GUI.Label( RECT( 0, 0, 1, TOP), "Datasack Runtime Inspector");
 		GUI.Label( RECT( 0, TOP, 1, TOP), "Tap anywhere to dismiss.");
+
+		// quick cheap and cheerful display!
+		for (int i = 0; i < CurrentlyDisplayedDatasacks.Count; i++)
+		{
+			var ds = CurrentlyDisplayedDatasacks[i];
+
+			Rect r = RECT (
+				0.1f, TOP * 2 + (HEIGHT * i) / CurrentlyDisplayedDatasacks.Count,
+				0.8f, HEIGHT / CurrentlyDisplayedDatasacks.Count);
+
+			GUI.Label( r, ds.ToString());
+		}
 	}
 
 	Texture2D t2d_white32x32;
