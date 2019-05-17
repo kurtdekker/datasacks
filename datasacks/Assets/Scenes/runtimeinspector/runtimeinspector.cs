@@ -113,21 +113,27 @@ public class runtimeinspector : MonoBehaviour
 		{
 			ScaledSkin = Instantiate<GUISkin>( ReferenceGUISkin);
 
-			// <WIP> scale up the important bits
+			// <WIP> scale up the important bits (label, button)
 		}
+	}
+
+	void OnUserIntent( Datasack ds)
+	{
 	}
 
 	void OnEnable()
 	{
+		// Use this method to let the underlying script(s) continue to receive events
+		// DSM.UserIntent.OnChanged += OnUserIntent;
+		// But we want to take over the UserIntent entirely since we are a modal popup.
+		DSM.UserIntent.PushOnChanged( OnUserIntent);
+
 		t2d_white32x32 = new Texture2D( 32, 32);
-
 		var pixels = t2d_white32x32.GetPixels();
-
 		for (int i =  0; i < pixels.Length; i++)
 		{
 			pixels[i] = Color.white;
 		}
-
 		t2d_white32x32.SetPixels( pixels);
 		t2d_white32x32.Apply();
 
@@ -136,6 +142,10 @@ public class runtimeinspector : MonoBehaviour
 
 	void OnDisable()
 	{
+		// see note above
+		// DSM.UserIntent.OnChanged -= OnUserIntent;
+		DSM.UserIntent.PopOnChanged();
+
 		if (t2d_white32x32) Destroy( t2d_white32x32);
 		if (ScaledSkin) Destroy( ScaledSkin);
 	}
