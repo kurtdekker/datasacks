@@ -147,6 +147,7 @@ public partial class DSM : MonoBehaviour
 			if (Add)
 			{
 				ds = ScriptableObject.CreateInstance<Datasack> ();
+				ds.name = sackname;
 				ds.FullName = sackname;
 			}
 			if (ds)
