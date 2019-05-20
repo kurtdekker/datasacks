@@ -59,7 +59,12 @@ public class DSKeycodeInput : MonoBehaviour
 	[Tooltip( "Leave blank to send the Keycode.ToString()")]
 	public	string		Output;
 
-	[Tooltip( "Check box to send GameObject.name")]
+    [Tooltip("Check box to Invoke button onClick")]
+    public bool InvokeButtonOnClick;
+
+    [Header("... or ...")]
+
+    [Tooltip( "Check box to send GameObject.name")]
 	public	bool		SendGameObjectName;
 
 	void	Reset()
@@ -77,7 +82,7 @@ public class DSKeycodeInput : MonoBehaviour
 
 		if (GetComponent<Button>())
 		{
-			SendGameObjectName = true;
+            InvokeButtonOnClick = true;
 		}
 	}
 
@@ -111,6 +116,13 @@ public class DSKeycodeInput : MonoBehaviour
 
 		if (triggered)
 		{
+            if (InvokeButtonOnClick)
+            {
+                var button = GetComponent<Button>();
+                button.onClick.Invoke();
+                return;
+            }
+
 			if (Output != null && Output.Length > 0)
 			{
 				tempOutput = Output;
