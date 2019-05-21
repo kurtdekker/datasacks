@@ -133,7 +133,7 @@ public partial class Datasack
 
 				if (nestedClassName != null)
 				{
-					s += "\tpublic static class " + IdentifierSafeString( nestedClassName) + "\n";
+					s += "\tpublic static partial class " + IdentifierSafeString( nestedClassName) + "\n";
 					s += "\t{\n";
 				}
 
