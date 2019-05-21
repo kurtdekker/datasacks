@@ -54,7 +54,7 @@ public class DSAudioStop : MonoBehaviour
 
 	void	OnEnable()
 	{
-		azzs = GetComponents<AudioSource>();
+		azzs = GetComponentsInChildren<AudioSource>();
 		dataSack.OnChanged += OnChanged;	
 	}
 	void	OnDisable()
