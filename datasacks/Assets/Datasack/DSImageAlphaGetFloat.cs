@@ -36,32 +36,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
+// this really should be called DSColorAlphaGetFloat()
+// because it works on any colorable, not just images.
+
+[System.Obsolete( "Kurt still needs to write the replacement...")]
 public class DSImageAlphaGetFloat : MonoBehaviour
 {
 	public	Datasack	dataSack;
 
-	private	Image	image;
+	private DSColorableAbstraction colorable;
 
 	void Start ()
 	{
-		image = GetComponent<Image> ();
 		OnChanged (dataSack);
 	}
 
 	void	OnChanged( Datasack ds)
 	{
-		if (image)
+		if (colorable)
 		{
-			Color c = image.color;
+			Color c = colorable.GetColor();
 			c.a = ds.fValue;
-			image.color = c;
+			colorable.SetColor(c);
 		}
 	}
 
 	void	OnEnable()
 	{
+		if (!colorable)
+		{
+			colorable = DSColorableAbstraction.Attach(this);
+		}
 		dataSack.OnChanged += OnChanged;	
 	}
 	void	OnDisable()
