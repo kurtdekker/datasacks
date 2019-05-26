@@ -59,7 +59,7 @@ public class DSAudioSetLoop : MonoBehaviour
 
 	void	OnEnable()
 	{
-		azzs = GetComponents<AudioSource>();
+		azzs = GetComponentsInChildren<AudioSource>();
 
 		dataSack.OnChanged += OnChanged;	
 	}

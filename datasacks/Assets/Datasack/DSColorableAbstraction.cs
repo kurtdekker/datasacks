@@ -1,7 +1,7 @@
 ﻿/*
 	The following license supersedes all notices in the source code.
 
-	Copyright (c) 2018 Kurt Dekker/PLBM Games All rights reserved.
+	Copyright (c) 2019 Kurt Dekker/PLBM Games All rights reserved.
 
 	http://www.twitter.com/kurtdekker
 
@@ -65,7 +65,7 @@ public class DSColorableAbstraction : MonoBehaviour
 		}
 	}
 
-	public	void	SetColor( Color c)
+	public void SetColor(Color c)
 	{
 		LazyFinder();
 
@@ -85,7 +85,26 @@ public class DSColorableAbstraction : MonoBehaviour
 
 		if (!good)
 		{
-			Debug.LogError( GetType() + ".SetColor(): no suitable colorable object found.");
+			Debug.LogError(GetType() + ".SetColor(): no suitable colorable object found.");
 		}
+	}
+
+	public Color GetColor()
+	{
+		LazyFinder();
+
+		if (text)
+		{
+			return text.color;
+		}
+
+		if (image)
+		{
+			return image.color;
+		}
+
+		Debug.LogError(GetType() + ".GetColor(): no suitable colorable object found.");
+
+		return Color.magenta;
 	}
 }

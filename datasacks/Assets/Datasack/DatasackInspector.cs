@@ -133,7 +133,7 @@ public partial class Datasack
 
 				if (nestedClassName != null)
 				{
-					s += "\tpublic static class " + IdentifierSafeString( nestedClassName) + "\n";
+					s += "\tpublic static partial class " + IdentifierSafeString( nestedClassName) + "\n";
 					s += "\t{\n";
 				}
 
@@ -217,6 +217,13 @@ public partial class Datasack
 			if (GUILayout.Button( "CODEGEN"))
 			{
 				GenerateCode();
+			}
+
+			GUILayout.Space(20);
+
+			if (GUILayout.Button( "RUNTIME POKE"))
+			{
+				ds.Poke();
 			}
 
 			GUILayout.Space(20);

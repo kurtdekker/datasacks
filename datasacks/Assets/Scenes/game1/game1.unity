@@ -2470,6 +2470,7 @@ GameObject:
   - component: {fileID: 1244324097}
   - component: {fileID: 1244324098}
   - component: {fileID: 1244324099}
+  - component: {fileID: 1244324100}
   m_Layer: 5
   m_Name: ButtonNewgame
   m_TagString: Untagged
@@ -2631,6 +2632,23 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1244324100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1244324092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad4c5f4f3f0a14c7d981486cb559339b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dataSack: {fileID: 0}
+  KeysToTrack: 0d000000
+  Activity: 0
+  Output: 
+  InvokeButtonOnClick: 1
+  SendGameObjectName: 0
 --- !u!1 &1248751748
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,7 +1,7 @@
 ﻿/*
 	The following license supersedes all notices in the source code.
 
-	Copyright (c) 2018 Kurt Dekker/PLBM Games All rights reserved.
+	Copyright (c) 2019 Kurt Dekker/PLBM Games All rights reserved.
 
 	http://www.twitter.com/kurtdekker
 
@@ -37,41 +37,45 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// this really should be called DSColorAlphaGetFloat()
-// because it works on any colorable, not just images.
-
-[System.Obsolete( "Kurt still needs to write the replacement...")]
-public class DSImageAlphaGetFloat : MonoBehaviour
+public class DSRandomIntervalPoker : MonoBehaviour
 {
-	public	Datasack	dataSack;
+	public Datasack DatasackToPokeRandomly;
 
-	private DSColorableAbstraction colorable;
+	public float MinimumTimeInterval;
 
-	void Start ()
+	public float MaximumTimeInterval;
+
+	private void Reset()
 	{
-		OnChanged (dataSack);
+		MinimumTimeInterval = 4.0f;
+
+		MaximumTimeInterval = 15.0f;
+
 	}
 
-	void	OnChanged( Datasack ds)
+	float age;
+	float interval;
+
+	void ChooseInterval()
 	{
-		if (colorable)
+		interval = Random.Range(MinimumTimeInterval, MaximumTimeInterval);
+	}
+
+	private void Start()
+	{
+		ChooseInterval();
+	}
+
+	void Update()
+	{
+		age += Time.deltaTime;
+		if (age >= interval)
 		{
-			Color c = colorable.GetColor();
-			c.a = ds.fValue;
-			colorable.SetColor(c);
-		}
-	}
+			DatasackToPokeRandomly.Poke();
 
-	void	OnEnable()
-	{
-		if (!colorable)
-		{
-			colorable = DSColorableAbstraction.Attach(this);
+			age -= interval;
+
+			ChooseInterval();
 		}
-		dataSack.OnChanged += OnChanged;	
-	}
-	void	OnDisable()
-	{
-		dataSack.OnChanged -= OnChanged;	
 	}
 }

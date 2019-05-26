@@ -63,7 +63,7 @@ public class DSAudioVolume : MonoBehaviour
 
 	void	OnEnable()
 	{
-		azzs = GetComponents<AudioSource>();
+		azzs = GetComponentsInChildren<AudioSource>();
 
 		initialVolumes = new float[azzs.Length];
 		for (int i = 0; i < azzs.Length; i++)

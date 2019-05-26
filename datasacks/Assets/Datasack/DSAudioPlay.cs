@@ -1,7 +1,7 @@
 ﻿/*
 	The following license supersedes all notices in the source code.
 
-	Copyright (c) 2018 Kurt Dekker/PLBM Games All rights reserved.
+	Copyright (c) 2019 Kurt Dekker/PLBM Games All rights reserved.
 
 	http://www.twitter.com/kurtdekker
 
@@ -105,7 +105,7 @@ public class DSAudioPlay : MonoBehaviour
 
 	void	OnEnable()
 	{
-		azzs = GetComponents<AudioSource>();
+		azzs = GetComponentsInChildren<AudioSource>();
 		dataSack.OnChanged += OnChanged;
 
 		if (Strategy == PlayStrategy.SHUFFLE)
