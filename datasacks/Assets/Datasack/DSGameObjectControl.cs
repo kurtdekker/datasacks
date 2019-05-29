@@ -39,8 +39,8 @@ using UnityEngine;
 
 public class DSGameObjectControl : MonoBehaviour
 {
-	[Header( "For .bValue control (toggle on/off only):")]
-	[Tooltip( "Poke this Datasack to enable/disable objects below.")]
+	[Header( "Controlling datasack:")]
+	[Tooltip( "This Datasack controls objects below.")]
 	public	Datasack	dataSack;
 
 	[Header( "For simple boolean on/off control:")]
