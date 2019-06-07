@@ -50,6 +50,29 @@ public partial class Datasack
 			}
 		}
 	}
+
+	public int iValueIfDifferent
+	{
+		set
+		{
+			if (iValue != value)
+			{
+				iValue = value;
+			}
+		}
+	}
+
+	public float fValueIfDifferent
+	{
+		set
+		{
+			if (fValue != value)
+			{
+				fValue = value;
+			}
+		}
+	}
+
 	public bool bValueIfDifferent
 	{
 		set
