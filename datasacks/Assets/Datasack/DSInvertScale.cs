@@ -56,18 +56,17 @@ public class DSInvertScale : MonoBehaviour
 
 		if (ds.bValue)
 		{
-			switch( AxisToFlip)
+			if ((AxisToFlip & DSAxis.X) != 0)
 			{
-			default :
-			case DSAxis.X:
 				scale.x *= -1;
-				break;
-			case DSAxis.Y:
+			}
+			if ((AxisToFlip & DSAxis.Y) != 0)
+			{
 				scale.y *= -1;
-				break;
-			case DSAxis.Z:
+			}
+			if ((AxisToFlip & DSAxis.Z) != 0)
+			{
 				scale.z *= -1;
-				break;
 			}
 		}
 
