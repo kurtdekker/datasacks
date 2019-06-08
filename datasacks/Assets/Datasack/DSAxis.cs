@@ -35,6 +35,7 @@
 
 public enum DSAxis
 {
+	NONE,
 	X = 1,
 	Y = 2,
 	Z = 4,
