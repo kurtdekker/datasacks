@@ -35,7 +35,11 @@
 
 public enum DSAxis
 {
-	X,
-	Y,
-	Z,
+	X = 1,
+	Y = 2,
+	Z = 4,
+	XY = X | Y,
+	XZ = X | Z,
+	YZ = Y | Z,
+	XYZ = X | Y | Z,
 }
