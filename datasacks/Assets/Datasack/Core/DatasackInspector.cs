@@ -79,6 +79,8 @@ public partial class Datasack
 
 			string s = "//\n//\n//\n" + 
 				"// MACHINE-GENERATED CODE - DO NOT MODIFY BY HAND!\n" +
+				"//\n" +
+				"// NOTE: You definitely SHOULD commit this file to source control!!!\n" +
 				"//\n//\n" +
 				"// To regenerate this file, select any Datasack object, look\n" +
 				"// in the custom Inspector window and press the CODEGEN button.\n" +
@@ -127,7 +129,7 @@ public partial class Datasack
 			//
 			// This means datasacks at any of these folders will be presented as
 			// "flat namespace," i.e., just DSM.MyName rather than DSM.Folder.MyName.
-			string[] SpecialDirectoriesThatBeginDatasackNamespacing = new string[]
+			List<string> SpecialDirectoriesThatBeginDatasackNamespacing = new List<string>
 			{
 				"Resources",
 				"Datasacks",
@@ -137,6 +139,9 @@ public partial class Datasack
 
 			foreach( var dirName in SplitByDirectory.Keys)
 			{
+				string pathPrefix = "";
+				string indentation = "";
+
 				string[] directoryParts = dirName.Split(
 					new char[] {
 						System.IO.Path.DirectorySeparatorChar,
@@ -152,36 +157,38 @@ public partial class Datasack
 				}
 				Debug.Log( ssss);
 
-				string nestedClassName = null;
-				string pathPrefix = "";
-				string indentation = "";
+				string classDefinitionOpen = "";
+				string classDefinitionClose = "";
 
-				const string s_DatasacksSearchTarget = "/Datasacks";
+				int partsToInclude = 0;
+				for (int i = directoryParts.Length - 1; i >= 0; i--)
+				{
+					if (SpecialDirectoriesThatBeginDatasackNamespacing.Contains( directoryParts[i]))
+					{
+						break;
+					}
+					partsToInclude++;
+				}
+
+				for (int i = 0; i < partsToInclude; i++)
+				{
+					int partNumber = (directoryParts.Length - partsToInclude) + i;
+					string part = directoryParts[partNumber];
+
+					indentation = indentation + "\t";
+
+					// append
+					classDefinitionOpen += indentation + "public static partial class " + IdentifierSafeString( part) + "\n";
+					classDefinitionOpen += indentation + "{\n";
+
+					// prepend!!
+					classDefinitionClose = indentation + "}\n" + classDefinitionClose;
+				}
 
 				s += "\n";
 				s += "// Datasacks from directory '" + dirName + "'\n";
 
-				// CAUTION: this only handles "nested namespaces"
-				// one class (folder) deep for now. Feel free to improve it
-				// and send me a pull request!
-				if (!dirName.EndsWith( s_DatasacksSearchTarget))
-				{
-					int resourcesOffset = dirName.LastIndexOf( s_DatasacksSearchTarget);
-
-					resourcesOffset += s_DatasacksSearchTarget.Length + 1;
-
-					nestedClassName = dirName.Substring( resourcesOffset);
-
-					pathPrefix = nestedClassName + "/";
-
-					indentation = "\t";
-				}
-
-				if (nestedClassName != null)
-				{
-					s += "\tpublic static partial class " + IdentifierSafeString( nestedClassName) + "\n";
-					s += "\t{\n";
-				}
+				s += classDefinitionOpen;
 
 				foreach( var ds in SplitByDirectory[dirName])
 				{
@@ -191,10 +198,7 @@ public partial class Datasack
 					ds.FullName = variableName;
 				}
 
-				if (nestedClassName != null)
-				{
-					s += "\t}\n";
-				}
+				s += classDefinitionClose;
 			}
 
 			s += "}\n";
