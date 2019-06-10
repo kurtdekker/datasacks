@@ -48,14 +48,4 @@ public partial class DSM
 			return I.Get (s_UserIntent, Add: true);
 		}
 	}
-
-	// obsoleted 1/18/2019 - will be errored after 2/18/2019 and removed in the future
-	[System.Obsolete( "Use DSM.UserIntent instead please.", true)]
-	public	static	Datasack	UISack
-	{
-		get
-		{
-			return I.Get (s_UserIntent, Add: true);
-		}
-	}
 }
