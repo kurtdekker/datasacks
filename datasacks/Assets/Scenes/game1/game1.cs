@@ -48,7 +48,7 @@ public class game1 : MonoBehaviour
 		Datasack[] GUID_Datasacks = new Datasack[] {
 			DSM.GUID,
 			DSM.Folder.GUID,
-			DSM.Folder_Subfolder.GUID,
+			DSM.Folder.Subfolder.GUID,
 		};
 
 		foreach( var dataSack in GUID_Datasacks)

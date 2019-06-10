@@ -3,6 +3,8 @@
 //
 // MACHINE-GENERATED CODE - DO NOT MODIFY BY HAND!
 //
+// NOTE: You definitely SHOULD commit this file to source control!!!
+//
 //
 // To regenerate this file, select any Datasack object, look
 // in the custom Inspector window and press the CODEGEN button.
@@ -39,9 +41,12 @@ public partial class DSM
 	}
 
 // Datasacks from directory 'Assets/Resources/Datasacks/Folder/Subfolder'
-	public static partial class Folder_Subfolder
+	public static partial class Folder
 	{
-		public static Datasack GUID { get { return DSM.I.Get( "Folder/Subfolder/GUID"); } }
+		public static partial class Subfolder
+		{
+			public static Datasack GUID { get { return DSM.I.Get( "Folder/Subfolder/GUID"); } }
+		}
 	}
 
 // Datasacks from directory 'Assets/Resources/Datasacks/PlayerState'
