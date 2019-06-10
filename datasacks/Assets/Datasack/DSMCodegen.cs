@@ -29,9 +29,6 @@ public partial class DSM
 	public static Datasack Timer1Start { get { return DSM.I.Get( "Timer1Start", Load: true); } }
 	public static Datasack Volume { get { return DSM.I.Get( "Volume", Load: true); } }
 
-// Datasacks from directory 'Assets/Datasack/Resources/Datasacks'
-	public static Datasack DeleteMe { get { return DSM.I.Get( "DeleteMe", Load: true); } }
-
 // Datasacks from directory 'Assets/Resources/Datasacks/Folder'
 	public static partial class Folder
 	{
@@ -70,4 +67,7 @@ public partial class DSM
 
 // Datasacks from directory 'Assets/Scenes/exampleselectingobjects/Resources/Datasacks'
 	public static Datasack TextObjectSelection { get { return DSM.I.Get( "TextObjectSelection", Load: true); } }
+
+// Datasacks from directory 'Assets/Datasack/Resources/Datasacks'
+	public static Datasack UserIntent { get { return DSM.I.Get( "UserIntent", Load: true); } }
 }
