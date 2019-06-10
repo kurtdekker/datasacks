@@ -12,6 +12,9 @@
 public partial class DSM
 {
 
+// Datasacks from directory 'Assets/Datasack/Resources/Datasacks'
+	public static Datasack UserIntent { get { return DSM.I.Get( "UserIntent"); } }
+
 // Datasacks from directory 'Assets/Resources/Datasacks'
 	public static Datasack AudioSourceClick { get { return DSM.I.Get( "AudioSourceClick"); } }
 	public static Datasack AudioSourceEnter { get { return DSM.I.Get( "AudioSourceEnter"); } }
@@ -41,13 +44,6 @@ public partial class DSM
 		public static Datasack GUID { get { return DSM.I.Get( "Folder/Subfolder/GUID"); } }
 	}
 
-// Datasacks from directory 'Assets/Scenes/examplehealthmeter/Resources/Datasacks/HealthMeter'
-	public static partial class HealthMeter
-	{
-		public static Datasack AnalogPortion { get { return DSM.I.Get( "HealthMeter/AnalogPortion"); } }
-		public static Datasack PipsPortion { get { return DSM.I.Get( "HealthMeter/PipsPortion"); } }
-	}
-
 // Datasacks from directory 'Assets/Resources/Datasacks/PlayerState'
 	public static partial class PlayerState
 	{
@@ -65,9 +61,13 @@ public partial class DSM
 		public static Datasack Result { get { return DSM.I.Get( "Popup1/Result"); } }
 	}
 
+// Datasacks from directory 'Assets/Scenes/examplehealthmeter/Resources/Datasacks/HealthMeter'
+	public static partial class HealthMeter
+	{
+		public static Datasack AnalogPortion { get { return DSM.I.Get( "HealthMeter/AnalogPortion"); } }
+		public static Datasack PipsPortion { get { return DSM.I.Get( "HealthMeter/PipsPortion"); } }
+	}
+
 // Datasacks from directory 'Assets/Scenes/exampleselectingobjects/Resources/Datasacks'
 	public static Datasack TextObjectSelection { get { return DSM.I.Get( "TextObjectSelection"); } }
-
-// Datasacks from directory 'Assets/Datasack/Resources/Datasacks'
-	public static Datasack UserIntent { get { return DSM.I.Get( "UserIntent"); } }
 }

@@ -89,13 +89,31 @@ public partial class Datasack
 			// TODO: make this ransack the entire project for Datasacks,
 			// not just underneath the Resources directories!
 
-			Datasack[] sacks = Resources.LoadAll<Datasack>( DSM.s_DatasacksDirectoryPrefix);
+			string[] datasackGUIDs = AssetDatabase.FindAssets( "t:Datasack");
+			int numDatasacks = datasackGUIDs.Length;
+
+			Debug.Log( "Found " + numDatasacks + " datasack GUIDs...");
 
 			Dictionary<string,List<Datasack>> SplitByDirectory = new Dictionary<string, List<Datasack>>();
 
-			foreach( var ds in sacks)
+			string[] datasackPaths = new string[ numDatasacks];
+			for (int i = 0; i < numDatasacks; i++)
 			{
-				string assetPath = AssetDatabase.GetAssetPath( ds.GetInstanceID());
+				datasackPaths[i] = AssetDatabase.GUIDToAssetPath( datasackGUIDs[i]);
+			}
+
+			System.Array.Sort( datasackPaths);
+
+			Datasack[] sacks = new Datasack[ numDatasacks];
+
+			for (int i = 0; i < datasackGUIDs.Length; i++)
+			{
+				string assetPath = datasackPaths[i];
+
+				sacks[i] = AssetDatabase.LoadAssetAtPath<Datasack>( assetPath);
+
+				var ds = sacks[i];
+
 				string dirName = System.IO.Path.GetDirectoryName( assetPath);
 				if (!SplitByDirectory.ContainsKey( dirName))
 				{
