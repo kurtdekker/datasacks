@@ -12,7 +12,7 @@
 public partial class DSM
 {
 
-// Datasacks from directory 'Assets/Datasack/Resources/Datasacks'
+// Datasacks from directory 'Assets/Resources/Datasacks'
 	public static Datasack AudioSourceClick { get { return DSM.I.Get( "AudioSourceClick", Load: true); } }
 	public static Datasack AudioSourceEnter { get { return DSM.I.Get( "AudioSourceEnter", Load: true); } }
 	public static Datasack AudioSourceHello { get { return DSM.I.Get( "AudioSourceHello", Load: true); } }
@@ -29,34 +29,37 @@ public partial class DSM
 	public static Datasack Timer1Start { get { return DSM.I.Get( "Timer1Start", Load: true); } }
 	public static Datasack Volume { get { return DSM.I.Get( "Volume", Load: true); } }
 
-// Datasacks from directory 'Assets/Datasack/Resources/Datasacks/Folder'
-	public static class Folder
+// Datasacks from directory 'Assets/Datasack/Resources/Datasacks'
+	public static Datasack DeleteMe { get { return DSM.I.Get( "DeleteMe", Load: true); } }
+
+// Datasacks from directory 'Assets/Resources/Datasacks/Folder'
+	public static partial class Folder
 	{
 		public static Datasack GUID { get { return DSM.I.Get( "Folder/GUID", Load: true); } }
 	}
 
-// Datasacks from directory 'Assets/Datasack/Resources/Datasacks/Folder/Subfolder'
-	public static class Folder_Subfolder
+// Datasacks from directory 'Assets/Resources/Datasacks/Folder/Subfolder'
+	public static partial class Folder_Subfolder
 	{
 		public static Datasack GUID { get { return DSM.I.Get( "Folder/Subfolder/GUID", Load: true); } }
 	}
 
 // Datasacks from directory 'Assets/Scenes/examplehealthmeter/Resources/Datasacks/HealthMeter'
-	public static class HealthMeter
+	public static partial class HealthMeter
 	{
 		public static Datasack AnalogPortion { get { return DSM.I.Get( "HealthMeter/AnalogPortion", Load: true); } }
 		public static Datasack PipsPortion { get { return DSM.I.Get( "HealthMeter/PipsPortion", Load: true); } }
 	}
 
-// Datasacks from directory 'Assets/Datasack/Resources/Datasacks/PlayerState'
-	public static class PlayerState
+// Datasacks from directory 'Assets/Resources/Datasacks/PlayerState'
+	public static partial class PlayerState
 	{
 		public static Datasack Score { get { return DSM.I.Get( "PlayerState/Score", Load: true); } }
 		public static Datasack Ships { get { return DSM.I.Get( "PlayerState/Ships", Load: true); } }
 	}
 
-// Datasacks from directory 'Assets/Datasack/Resources/Datasacks/Popup1'
-	public static class Popup1
+// Datasacks from directory 'Assets/Resources/Datasacks/Popup1'
+	public static partial class Popup1
 	{
 		public static Datasack Button1Text { get { return DSM.I.Get( "Popup1/Button1Text", Load: true); } }
 		public static Datasack Button2Text { get { return DSM.I.Get( "Popup1/Button2Text", Load: true); } }

@@ -38,6 +38,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[System.Obsolete("Please use DSGameObjectControl instead.", true)]
 public class DSSelectivelyStayActive : MonoBehaviour
 {
 	public	Datasack	dataSack;
