@@ -122,6 +122,19 @@ public partial class Datasack
 				SplitByDirectory[dirName].Add( ds);
 			}
 
+			// When producing the nested class name that will represent each subfolder,
+			// we search upwards and stop when we hit a folder named any of these values.
+			//
+			// This means datasacks at any of these folders will be presented as
+			// "flat namespace," i.e., just DSM.MyName rather than DSM.Folder.MyName.
+			string[] SpecialDirectoriesThatBeginDatasackNamespacing = new string[]
+			{
+				"Resources",
+				"Datasacks",
+				"Datasack",
+				"Assets",
+			};
+
 			foreach( var dirName in SplitByDirectory.Keys)
 			{
 				string[] directoryParts = dirName.Split(
