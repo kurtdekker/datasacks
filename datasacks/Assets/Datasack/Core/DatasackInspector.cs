@@ -94,8 +94,6 @@ public partial class Datasack
 			string[] datasackGUIDs = AssetDatabase.FindAssets( "t:Datasack");
 			int numDatasacks = datasackGUIDs.Length;
 
-			Debug.Log( "Found " + numDatasacks + " datasack GUIDs...");
-
 			Dictionary<string,List<Datasack>> SplitByDirectory = new Dictionary<string, List<Datasack>>();
 
 			string[] datasackPaths = new string[ numDatasacks];
@@ -149,14 +147,6 @@ public partial class Datasack
 					},
 					StringSplitOptions.RemoveEmptyEntries );
 
-				string ssss = dirName + " -> parts:";
-				for (int i = 0; i < directoryParts.Length; i++)
-				{
-					ssss += directoryParts[i];
-					if (i < directoryParts.Length - 1) ssss += " - ";
-				}
-				Debug.Log( ssss);
-
 				string classDefinitionOpen = "";
 				string classDefinitionClose = "";
 
@@ -204,6 +194,8 @@ public partial class Datasack
 			}
 
 			s += "}\n";
+
+			s += "\n// Total of " + numDatasacks + " datasacks found and processed.\n";
 
 			Debug.Log( s);
 
