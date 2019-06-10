@@ -175,6 +175,8 @@ public partial class Datasack
 					int partNumber = (directoryParts.Length - partsToInclude) + i;
 					string part = directoryParts[partNumber];
 
+					pathPrefix += part + "/";
+
 					indentation = indentation + "\t";
 
 					// append
