@@ -81,6 +81,7 @@ public partial class Datasack : ScriptableObject
 
 	public void LoadPersistent()
 	{
+		TheData = InitialValue;
 		if (Save)
 		{
 			string s_PrefsKey = DSM.s_PlayerPrefsPrefix + FullName;

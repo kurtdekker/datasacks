@@ -70,7 +70,7 @@ public partial class Datasack
 		{
 			s += "\tpublic static Datasack " + IdentifierSafeString( ds.name) +
 				" { get { return DSM.I.Get( \"" +
-				variableName  + "\", Load: true); } }\n";
+				variableName  + "\"); } }\n";
 		}
 
 		void GenerateCode()
@@ -224,13 +224,6 @@ public partial class Datasack
 			if (GUILayout.Button( "RUNTIME POKE"))
 			{
 				ds.Poke();
-			}
-
-			GUILayout.Space(20);
-
-			if (GUILayout.Button( "TOGGLE BOOLEAN"))
-			{
-				ds.bValue = !ds.bValue;
 			}
 
 			GUILayout.Space(20);

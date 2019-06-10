@@ -72,7 +72,8 @@ public partial class DSM : MonoBehaviour
 				var dsc = Resources.Load<DatasackCollection>( s_AllDatasacksAsset);
 				foreach( var dm in dsc.Mappings)
 				{
-					DSM.I.Get( dm.Fullname, Load: true);
+					_I.AllSacks[dm.Fullname] = dm.Datasack;
+					dm.Datasack.LoadPersistent();
 				}
 			}
 			return _I;
@@ -129,21 +130,11 @@ public partial class DSM : MonoBehaviour
 
 	const string s_ReminderToCodegen = "(Perhaps you need to select a Datasack and do 'CODEGEN' from its inspector panel?)";
 
-	public	Datasack	Get( string sackname, bool Add = false, bool Load = false)
+	public	Datasack	Get( string sackname, bool Add = false)
 	{
 		if (!AllSacks.ContainsKey( sackname))
 		{
 			Datasack ds = null;
-			if (Load)
-			{
-				string finalName = s_DatasacksDirectoryPrefix + sackname;
-				ds = Resources.Load<Datasack>( finalName);
-				if (!ds)
-				{
-					Debug.LogError( GetType()+".Get(): Failed to load datasack '" + finalName + "'. Set AutoAdd = true to add at runtime.");
-					Debug.LogWarning( s_ReminderToCodegen);
-				}
-			}
 			if (Add)
 			{
 				ds = ScriptableObject.CreateInstance<Datasack> ();
@@ -157,7 +148,7 @@ public partial class DSM : MonoBehaviour
 			}
 			else
 			{
-				Debug.LogError( GetType()+".Get(): Datasack '" + sackname + "' does not exist. Set AutoAdd = true to add at runtime.");
+				Debug.LogError( GetType()+".Get(): Datasack '" + sackname + "' does not exist. Set Add = true to add at runtime.");
 					Debug.LogWarning( s_ReminderToCodegen);
 			}
 		}
