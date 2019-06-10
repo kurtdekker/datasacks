@@ -40,7 +40,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 [RequireComponent( typeof( InputField))]
-public class DSInputField : MonoBehaviour
+public class DSUserIntentInputField : MonoBehaviour
 {
 	[Header("The DataSack to signal onEndEdit. Default is UserIntent.")]
 	public Datasack DSUI;

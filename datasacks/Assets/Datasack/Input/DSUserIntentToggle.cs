@@ -39,7 +39,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent( typeof( Toggle))]
-public class DSToggleBool : MonoBehaviour
+public class DSUserIntentToggle : MonoBehaviour
 {
 	public	Datasack	dataSack;
 

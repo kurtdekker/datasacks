@@ -1,7 +1,7 @@
 ﻿/*
 	The following license supersedes all notices in the source code.
 
-	Copyright (c) 2018 Kurt Dekker/PLBM Games All rights reserved.
+	Copyright (c) 2019 Kurt Dekker/PLBM Games All rights reserved.
 
 	http://www.twitter.com/kurtdekker
 
@@ -39,7 +39,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent( typeof( Button))]
-public class DSButtonSetUIIntent : MonoBehaviour
+public class DSUserIntentButton : MonoBehaviour
 {
 	[Tooltip("Defaults to UserIntent datasack if none supplied.")]
 	public Datasack dsUI;
