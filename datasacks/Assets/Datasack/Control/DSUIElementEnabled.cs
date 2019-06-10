@@ -1,7 +1,7 @@
 ﻿/*
 	The following license supersedes all notices in the source code.
 
-	Copyright (c) 2018 Kurt Dekker/PLBM Games All rights reserved.
+	Copyright (c) 2019 Kurt Dekker/PLBM Games All rights reserved.
 
 	http://www.twitter.com/kurtdekker
 
@@ -44,8 +44,8 @@ public class DSUIElementEnabled : MonoBehaviour
 	public	bool		Inverted;
 
 	private	Button	button;
-	private Text	text;
-	private Image	image;
+	private	Text	text;
+	private	Image	image;
 
 	void	Start()
 	{

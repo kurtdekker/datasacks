@@ -38,37 +38,47 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DSTextGetString : MonoBehaviour
+public class DSRendererTextureControl : MonoBehaviour
 {
-	public	Datasack	dataSack;
+	[Tooltip("These are Vector2:")]
+	public	Datasack	dsMainTextureOffset;
+	public	Datasack	dsMainTextureScale;
 
-	[Multiline]
-	public	string		FormatString;
+	private	Renderer	myRenderer;
 
-	private DSTextAbstraction ta;
-
-	void	OnChanged( Datasack ds)
+	void Start ()
 	{
-		if (FormatString.Length > 0)
-		{
-			ta.SetText( System.String.Format (FormatString, ds.Value));
-			return;
-		}
-		ta.SetText( ds.Value);
+		OnChangeOffset (dsMainTextureOffset);
+		OnChangeScale (dsMainTextureScale);
+	}
+
+	void	OnChangeOffset( Datasack ds)
+	{
+		if (ds)
+			myRenderer.material.mainTextureOffset = ds.v2Value;
+	}
+	void	OnChangeScale( Datasack ds)
+	{
+		if (ds)
+			myRenderer.material.mainTextureScale = ds.v2Value;
 	}
 
 	void	OnEnable()
 	{
-		if (!ta)
-		{
-			ta = DSTextAbstraction.Attach( this);
-		}
+		myRenderer = GetComponent<Renderer> ();
 
-		dataSack.OnChanged += OnChanged;
-		OnChanged( dataSack);
+		if (dsMainTextureOffset)
+			dsMainTextureOffset.OnChanged += OnChangeOffset;
+
+		if (dsMainTextureScale)
+			dsMainTextureScale.OnChanged += OnChangeScale;	
 	}
 	void	OnDisable()
 	{
-		dataSack.OnChanged -= OnChanged;	
+		if (dsMainTextureOffset)
+			dsMainTextureOffset.OnChanged -= OnChangeOffset;	
+
+		if (dsMainTextureScale)
+			dsMainTextureScale.OnChanged -= OnChangeScale;	
 	}
 }

@@ -1,7 +1,7 @@
 ﻿/*
 	The following license supersedes all notices in the source code.
 
-	Copyright (c) 2018 Kurt Dekker/PLBM Games All rights reserved.
+	Copyright (c) 2019 Kurt Dekker/PLBM Games All rights reserved.
 
 	http://www.twitter.com/kurtdekker
 
@@ -36,32 +36,62 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class DSColorizeGetFloat : MonoBehaviour
+public class DSRotationSetAxis : MonoBehaviour
 {
 	public	Datasack	dataSack;
 
-	public	Gradient	ColorLookup;
+	public	bool		LocalCoordinates;
 
-	private DSColorableAbstraction colorable;
+	public	DSAxis		Axis;
+
+	public	float		BaseValue;
+	public	float		Scale;
+
+	void Reset()
+	{
+		Axis = DSAxis.Z;
+		BaseValue = 0.0f;
+		Scale = 360.0f;
+	}
+
+	void Start ()
+	{
+		OnChanged (dataSack);
+	}
 
 	void	OnChanged( Datasack ds)
 	{
-		if (colorable)
+		float angle = BaseValue + dataSack.fValue * Scale;
+
+		Quaternion q = Quaternion.identity;
+
+		switch(Axis)
 		{
-			colorable.SetColor( ColorLookup.Evaluate (ds.fValue));
+		case DSAxis.X :
+			q = Quaternion.Euler( angle, 0, 0);
+			break;
+		case DSAxis.Y :
+			q = Quaternion.Euler( 0, angle, 0);
+			break;
+		case DSAxis.Z :
+			q = Quaternion.Euler( 0, 0, angle);
+			break;
+		}
+
+		if (LocalCoordinates)
+		{
+			transform.localRotation = q;
+		}
+		else
+		{
+			transform.rotation = q;
 		}
 	}
 
 	void	OnEnable()
 	{
-		if (!colorable)
-		{
-			colorable = DSColorableAbstraction.Attach( this);
-		}
 		dataSack.OnChanged += OnChanged;	
-		OnChanged(dataSack);
 	}
 	void	OnDisable()
 	{

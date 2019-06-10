@@ -36,62 +36,42 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class DSRotationGetFloat : MonoBehaviour
+public class DSTextDisplayStringArray : MonoBehaviour
 {
 	public	Datasack	dataSack;
 
-	public	bool		LocalCoordinates;
+	[Multiline]
+	public	string		FormatString;
 
-	public	DSAxis		Axis;
-
-	public	float		BaseValue;
-	public	float		Scale;
-
-	void Reset()
+	private DSTextAbstraction _textAbstraction;
+	private DSTextAbstraction textAbstraction
 	{
-		Axis = DSAxis.Z;
-		BaseValue = 0.0f;
-		Scale = 360.0f;
+		get
+		{
+			if (!_textAbstraction) _textAbstraction = DSTextAbstraction.Attach(this);
+			return _textAbstraction;
+		}
 	}
 
-	void Start ()
-	{
-		OnChanged (dataSack);
-	}
+	public	int			index;
 
 	void	OnChanged( Datasack ds)
 	{
-		float angle = BaseValue + dataSack.fValue * Scale;
-
-		Quaternion q = Quaternion.identity;
-
-		switch(Axis)
+		string display = ds.GetArrayEntry( index);
+		if (FormatString.Length > 0)
 		{
-		case DSAxis.X :
-			q = Quaternion.Euler( angle, 0, 0);
-			break;
-		case DSAxis.Y :
-			q = Quaternion.Euler( 0, angle, 0);
-			break;
-		case DSAxis.Z :
-			q = Quaternion.Euler( 0, 0, angle);
-			break;
+			textAbstraction.SetText( System.String.Format (FormatString, display));
+			return;
 		}
-
-		if (LocalCoordinates)
-		{
-			transform.localRotation = q;
-		}
-		else
-		{
-			transform.rotation = q;
-		}
+		textAbstraction.SetText( display);
 	}
 
 	void	OnEnable()
 	{
-		dataSack.OnChanged += OnChanged;	
+		dataSack.OnChanged += OnChanged;
+		OnChanged( dataSack);
 	}
 	void	OnDisable()
 	{

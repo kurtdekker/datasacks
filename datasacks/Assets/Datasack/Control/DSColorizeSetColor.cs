@@ -38,37 +38,34 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DSTextGetStrArray : MonoBehaviour
+public class DSColorizeSetColor : MonoBehaviour
 {
-	public	int			index;
-
 	public	Datasack	dataSack;
 
-	[Multiline]
-	public	string		FormatString;
+	private	DSColorableAbstraction _colorable;
+	private	DSColorableAbstraction colorable
+	{
+		get
+		{
+			if (_colorable) _colorable = DSColorableAbstraction.Attach( this);
+			return _colorable;
+		}
+	}
 
-	private DSTextAbstraction ta;
+	void Start ()
+	{
+		OnChanged (dataSack);
+	}
 
 	void	OnChanged( Datasack ds)
 	{
-		string display = ds.GetArrayEntry( index);
-		if (FormatString.Length > 0)
-		{
-			ta.SetText( System.String.Format (FormatString, display));
-			return;
-		}
-		ta.SetText( display);
+		colorable.SetColor( ds.colorValue);
 	}
 
 	void	OnEnable()
 	{
-		if (!ta)
-		{
-			ta = DSTextAbstraction.Attach( this);
-		}
-
-		dataSack.OnChanged += OnChanged;
-		OnChanged( dataSack);
+		dataSack.OnChanged += OnChanged;	
+		OnChanged(dataSack);
 	}
 	void	OnDisable()
 	{

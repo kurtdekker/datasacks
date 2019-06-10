@@ -36,39 +36,52 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class DSTextGetInt : MonoBehaviour
+public class DSScaleInvertAxis : MonoBehaviour
 {
 	public	Datasack	dataSack;
 
-	[Multiline]
-	public	string		FormatString;
+	public	Transform[]	TargetsToControl;
 
-	private DSTextAbstraction ta;
+	public	DSAxis		AxisToFlip = DSAxis.X;
 
-	void	OnChanged( Datasack ds)
+	void	Start()
 	{
-		if (FormatString.Length > 0)
+		OnDatasackChanged( dataSack);
+	}
+
+	void	OnDatasackChanged( Datasack ds)
+	{
+		Vector3 scale = Vector3.one;
+
+		if (ds.bValue)
 		{
-			ta.SetText( System.String.Format (FormatString, ds.iValue));
-			return;
+			if ((AxisToFlip & DSAxis.X) != 0)
+			{
+				scale.x *= -1;
+			}
+			if ((AxisToFlip & DSAxis.Y) != 0)
+			{
+				scale.y *= -1;
+			}
+			if ((AxisToFlip & DSAxis.Z) != 0)
+			{
+				scale.z *= -1;
+			}
 		}
-		ta.SetText( ds.iValue.ToString ());
+
+		foreach( var t in TargetsToControl)
+		{
+			t.localScale = scale;
+		}
 	}
 
 	void	OnEnable()
 	{
-		if (!ta)
-		{
-			ta = DSTextAbstraction.Attach( this);
-		}
-
-		dataSack.OnChanged += OnChanged;
-		OnChanged( dataSack);
+		dataSack.OnChanged += OnDatasackChanged;
 	}
 	void	OnDisable()
 	{
-		dataSack.OnChanged -= OnChanged;	
+		dataSack.OnChanged -= OnDatasackChanged;
 	}
 }

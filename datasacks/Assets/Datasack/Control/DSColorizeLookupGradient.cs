@@ -36,52 +36,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class DSInvertScale : MonoBehaviour
+public class DSColorizeLookupGradient : MonoBehaviour
 {
 	public	Datasack	dataSack;
 
-	public	Transform[]	TargetsToControl;
+	public	Gradient	ColorLookup;
 
-	public	DSAxis		AxisToFlip = DSAxis.X;
-
-	void	Start()
+	private	DSColorableAbstraction _colorable;
+	private	DSColorableAbstraction colorable
 	{
-		OnDatasackChanged( dataSack);
+		get
+		{
+			if (_colorable) _colorable = DSColorableAbstraction.Attach( this);
+			return _colorable;
+		}
 	}
 
-	void	OnDatasackChanged( Datasack ds)
+	void	OnChanged( Datasack ds)
 	{
-		Vector3 scale = Vector3.one;
-
-		if (ds.bValue)
+		if (colorable)
 		{
-			if ((AxisToFlip & DSAxis.X) != 0)
-			{
-				scale.x *= -1;
-			}
-			if ((AxisToFlip & DSAxis.Y) != 0)
-			{
-				scale.y *= -1;
-			}
-			if ((AxisToFlip & DSAxis.Z) != 0)
-			{
-				scale.z *= -1;
-			}
-		}
-
-		foreach( var t in TargetsToControl)
-		{
-			t.localScale = scale;
+			colorable.SetColor( ColorLookup.Evaluate (ds.fValue));
 		}
 	}
 
 	void	OnEnable()
 	{
-		dataSack.OnChanged += OnDatasackChanged;
+		dataSack.OnChanged += OnChanged;	
+		OnChanged(dataSack);
 	}
 	void	OnDisable()
 	{
-		dataSack.OnChanged -= OnDatasackChanged;
+		dataSack.OnChanged -= OnChanged;	
 	}
 }

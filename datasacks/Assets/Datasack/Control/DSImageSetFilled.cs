@@ -1,7 +1,7 @@
 ﻿/*
 	The following license supersedes all notices in the source code.
 
-	Copyright (c) 2018 Kurt Dekker/PLBM Games All rights reserved.
+	Copyright (c) 2019 Kurt Dekker/PLBM Games All rights reserved.
 
 	http://www.twitter.com/kurtdekker
 
@@ -36,33 +36,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class DSPSEmitGetFloat : MonoBehaviour
+public class DSImageSetFilled : MonoBehaviour
 {
 	public	Datasack	dataSack;
 
-	[Header( "NOTE: modifies emit-over-time for now.")]
-
-	private ParticleSystem.EmissionModule em;
-	private float BaseEmissionRate;
+	private	Image	image;
 
 	void Start ()
 	{
-		ParticleSystem ps = GetComponent<ParticleSystem> ();
-		em = ps.emission;
-		BaseEmissionRate = em.rateOverTime.constant;
-
 		OnChanged (dataSack);
 	}
 
 	void	OnChanged( Datasack ds)
 	{
-		em.rateOverTime = ds.fValue * BaseEmissionRate;
+		image.fillAmount = ds.fValue;
 	}
 
 	void	OnEnable()
 	{
+		image = GetComponent<Image> ();
 		dataSack.OnChanged += OnChanged;	
+		OnChanged(dataSack);
 	}
 	void	OnDisable()
 	{

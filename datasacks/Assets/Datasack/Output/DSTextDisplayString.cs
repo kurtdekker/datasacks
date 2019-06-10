@@ -1,7 +1,7 @@
 ﻿/*
 	The following license supersedes all notices in the source code.
 
-	Copyright (c) 2018 Kurt Dekker/PLBM Games All rights reserved.
+	Copyright (c) 2019 Kurt Dekker/PLBM Games All rights reserved.
 
 	http://www.twitter.com/kurtdekker
 
@@ -38,38 +38,40 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent( typeof( Image))]
-public class DSImageColorGetInt : MonoBehaviour
+public class DSTextDisplayString : MonoBehaviour
 {
 	public	Datasack	dataSack;
 
-	public	Color[]		ColorTable;
+	[Multiline]
+	public	string		FormatString;
 
-	void Reset()
+	private DSTextAbstraction _textAbstraction;
+	private DSTextAbstraction textAbstraction
 	{
-		ColorTable = new Color[] {
-			Color.white,
-			Color.green,
-		};
+		get
+		{
+			if (!_textAbstraction) _textAbstraction = DSTextAbstraction.Attach(this);
+			return _textAbstraction;
+		}
 	}
-
-	private	Image image;
 
 	void	OnChanged( Datasack ds)
 	{
-		image.color = ColorTable[ ds.iValue];
+		if (FormatString.Length > 0)
+		{
+			textAbstraction.SetText( System.String.Format (FormatString, ds.Value));
+			return;
+		}
+		textAbstraction.SetText( ds.Value);
 	}
 
 	void	OnEnable()
 	{
-		image = GetComponent<Image> ();
-
 		dataSack.OnChanged += OnChanged;
-
-		OnChanged(dataSack);
+		OnChanged( dataSack);
 	}
 	void	OnDisable()
 	{
-		dataSack.OnChanged -= OnChanged;
+		dataSack.OnChanged -= OnChanged;	
 	}
 }

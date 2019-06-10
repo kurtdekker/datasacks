@@ -36,48 +36,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class DSColorizeGetColor : MonoBehaviour
+public class DSColorizeLookupTable : MonoBehaviour
 {
 	public	Datasack	dataSack;
 
-	public static DSColorizeGetColor Attach( GameObject target, Datasack source)
+	public	Color[]		ColorTable = new Color[] { Color.black, Color.white };
+
+	private	DSColorableAbstraction _colorable;
+	private	DSColorableAbstraction colorable
 	{
-		var dscg = target.GetComponent<DSColorizeGetColor>();
-		if (!dscg) dscg = target.AddComponent<DSColorizeGetColor>();
-
-		dscg.OnDisable();
-		dscg.dataSack = source;
-		dscg.OnEnable();
-
-		return dscg;
+		get
+		{
+			if (_colorable) _colorable = DSColorableAbstraction.Attach( this);
+			return _colorable;
+		}
 	}
-
-	private DSColorableAbstraction colorable;
 
 	void	OnChanged( Datasack ds)
 	{
-		colorable.SetColor( ds.colorValue);
+		if (colorable)
+		{
+			colorable.SetColor( ColorTable[ ds.iValue]);
+		}
 	}
 
 	void	OnEnable()
 	{
-		if (!colorable)
-		{
-			colorable = DSColorableAbstraction.Attach( this);
-		}
-		if (dataSack)
-		{
-			dataSack.OnChanged += OnChanged;	
-			OnChanged(dataSack);
-		}
+		dataSack.OnChanged += OnChanged;	
+		OnChanged(dataSack);
 	}
 	void	OnDisable()
 	{
-		if (dataSack)
-		{
-			dataSack.OnChanged -= OnChanged;	
-		}
+		dataSack.OnChanged -= OnChanged;	
 	}
 }

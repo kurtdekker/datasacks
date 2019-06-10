@@ -38,37 +38,39 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DSTextGetFloat : MonoBehaviour
+[System.Obsolete("Please use DSColorizeLookupInt instead.", true)]
+[RequireComponent( typeof( Image))]
+public class DSImageColorGetInt : MonoBehaviour
 {
 	public	Datasack	dataSack;
 
-	[Multiline]
-	public	string		FormatString;
+	public	Color[]		ColorTable;
 
-	private DSTextAbstraction ta;
+	void Reset()
+	{
+		ColorTable = new Color[] {
+			Color.white,
+			Color.green,
+		};
+	}
+
+	private	Image image;
 
 	void	OnChanged( Datasack ds)
 	{
-		if (FormatString.Length > 0)
-		{
-			ta.SetText( System.String.Format (FormatString, ds.fValue));
-			return;
-		}
-		ta.SetText( ds.fValue.ToString ());
+		image.color = ColorTable[ ds.iValue];
 	}
 
 	void	OnEnable()
 	{
-		if (!ta)
-		{
-			ta = DSTextAbstraction.Attach( this);
-		}
+		image = GetComponent<Image> ();
 
 		dataSack.OnChanged += OnChanged;
-		OnChanged( dataSack);
+
+		OnChanged(dataSack);
 	}
 	void	OnDisable()
 	{
-		dataSack.OnChanged -= OnChanged;	
+		dataSack.OnChanged -= OnChanged;
 	}
 }

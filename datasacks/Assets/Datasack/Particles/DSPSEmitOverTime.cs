@@ -1,7 +1,7 @@
 ﻿/*
 	The following license supersedes all notices in the source code.
 
-	Copyright (c) 2018 Kurt Dekker/PLBM Games All rights reserved.
+	Copyright (c) 2019 Kurt Dekker/PLBM Games All rights reserved.
 
 	http://www.twitter.com/kurtdekker
 
@@ -37,27 +37,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DSQuaternionGet : MonoBehaviour
+public class DSPSEmitOverTime : MonoBehaviour
 {
 	public	Datasack	dataSack;
 
-	public	bool		LocalCoordinates;
+	private ParticleSystem.EmissionModule em;
+	private float BaseEmitOverTimeRate;
 
 	void Start ()
 	{
+		ParticleSystem ps = GetComponent<ParticleSystem> ();
+		em = ps.emission;
+		BaseEmitOverTimeRate = em.rateOverTime.constant;
+
 		OnChanged (dataSack);
 	}
 
 	void	OnChanged( Datasack ds)
 	{
-		if (LocalCoordinates)
-		{
-			transform.localRotation = ds.qValue;
-		}
-		else
-		{
-			transform.rotation = ds.qValue;
-		}
+		em.rateOverTime = ds.fValue * BaseEmitOverTimeRate;
 	}
 
 	void	OnEnable()

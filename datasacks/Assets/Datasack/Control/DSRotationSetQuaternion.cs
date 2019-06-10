@@ -1,7 +1,7 @@
 ﻿/*
 	The following license supersedes all notices in the source code.
 
-	Copyright (c) 2019 Kurt Dekker/PLBM Games All rights reserved.
+	Copyright (c) 2018 Kurt Dekker/PLBM Games All rights reserved.
 
 	http://www.twitter.com/kurtdekker
 
@@ -36,32 +36,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class DSColorizeLookupInt : MonoBehaviour
+public class DSRotationSetQuaternion : MonoBehaviour
 {
 	public	Datasack	dataSack;
 
-	public	Color[]		ColorTable = new Color[] { Color.black, Color.white };
+	public	bool		LocalCoordinates;
 
-	private DSColorableAbstraction colorable;
+	void Start ()
+	{
+		OnChanged (dataSack);
+	}
 
 	void	OnChanged( Datasack ds)
 	{
-		if (colorable)
+		if (LocalCoordinates)
 		{
-			colorable.SetColor( ColorTable[ ds.iValue]);
+			transform.localRotation = ds.qValue;
+		}
+		else
+		{
+			transform.rotation = ds.qValue;
 		}
 	}
 
 	void	OnEnable()
 	{
-		if (!colorable)
-		{
-			colorable = DSColorableAbstraction.Attach( this);
-		}
 		dataSack.OnChanged += OnChanged;	
-		OnChanged(dataSack);
 	}
 	void	OnDisable()
 	{

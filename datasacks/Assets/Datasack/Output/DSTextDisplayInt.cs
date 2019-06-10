@@ -1,7 +1,7 @@
 ﻿/*
 	The following license supersedes all notices in the source code.
 
-	Copyright (c) 2018 Kurt Dekker/PLBM Games All rights reserved.
+	Copyright (c) 2019 Kurt Dekker/PLBM Games All rights reserved.
 
 	http://www.twitter.com/kurtdekker
 
@@ -38,44 +38,40 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DSRendererParameters : MonoBehaviour
+public class DSTextDisplayInt : MonoBehaviour
 {
-	[Tooltip("These are Vector2:")]
-	public	Datasack	dsMainTextureOffset;
-	public	Datasack	dsMainTextureScale;
+	public	Datasack	dataSack;
 
-	private	Renderer	myRenderer;
+	[Multiline]
+	public	string		FormatString;
 
-	void Start ()
+	private DSTextAbstraction _textAbstraction;
+	private DSTextAbstraction textAbstraction
 	{
-		myRenderer = GetComponent<Renderer> ();
-		OnChangeOffset (dsMainTextureOffset);
-		OnChangeScale (dsMainTextureScale);
+		get
+		{
+			if (!_textAbstraction) _textAbstraction = DSTextAbstraction.Attach(this);
+			return _textAbstraction;
+		}
 	}
 
-	void	OnChangeOffset( Datasack ds)
+	void	OnChanged( Datasack ds)
 	{
-		if (ds)
-			myRenderer.material.mainTextureOffset = ds.v2Value;
-	}
-	void	OnChangeScale( Datasack ds)
-	{
-		if (ds)
-			myRenderer.material.mainTextureScale = ds.v2Value;
+		if (FormatString.Length > 0)
+		{
+			textAbstraction.SetText( System.String.Format (FormatString, ds.iValue));
+			return;
+		}
+		textAbstraction.SetText( ds.iValue.ToString ());
 	}
 
 	void	OnEnable()
 	{
-		if (dsMainTextureOffset)
-			dsMainTextureOffset.OnChanged += OnChangeOffset;
-		if (dsMainTextureScale)
-			dsMainTextureScale.OnChanged += OnChangeScale;	
+		dataSack.OnChanged += OnChanged;
+		OnChanged( dataSack);
 	}
 	void	OnDisable()
 	{
-		if (dsMainTextureOffset)
-			dsMainTextureOffset.OnChanged -= OnChangeOffset;	
-		if (dsMainTextureScale)
-			dsMainTextureScale.OnChanged -= OnChangeScale;	
+		dataSack.OnChanged -= OnChanged;	
 	}
 }

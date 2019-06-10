@@ -1,7 +1,7 @@
 ﻿/*
 	The following license supersedes all notices in the source code.
 
-	Copyright (c) 2018 Kurt Dekker/PLBM Games All rights reserved.
+	Copyright (c) 2019 Kurt Dekker/PLBM Games All rights reserved.
 
 	http://www.twitter.com/kurtdekker
 
@@ -37,15 +37,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// this really should be called DSColorAlphaGetFloat()
-// because it works on any colorable, not just images.
-
-[System.Obsolete( "Kurt still needs to write the replacement...")]
-public class DSImageAlphaGetFloat : MonoBehaviour
+public class DSColorizeSetAlpha : MonoBehaviour
 {
 	public	Datasack	dataSack;
 
-	private DSColorableAbstraction colorable;
+	private	DSColorableAbstraction _colorable;
+	private	DSColorableAbstraction colorable
+	{
+		get
+		{
+			if (_colorable) _colorable = DSColorableAbstraction.Attach( this);
+			return _colorable;
+		}
+	}
 
 	void Start ()
 	{
@@ -64,11 +68,8 @@ public class DSImageAlphaGetFloat : MonoBehaviour
 
 	void	OnEnable()
 	{
-		if (!colorable)
-		{
-			colorable = DSColorableAbstraction.Attach(this);
-		}
 		dataSack.OnChanged += OnChanged;	
+		OnChanged(dataSack);
 	}
 	void	OnDisable()
 	{

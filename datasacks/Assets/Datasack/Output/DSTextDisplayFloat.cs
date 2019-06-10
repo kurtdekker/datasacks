@@ -1,7 +1,7 @@
 ﻿/*
 	The following license supersedes all notices in the source code.
 
-	Copyright (c) 2018 Kurt Dekker/PLBM Games All rights reserved.
+	Copyright (c) 2019 Kurt Dekker/PLBM Games All rights reserved.
 
 	http://www.twitter.com/kurtdekker
 
@@ -38,29 +38,37 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DSImageFilledGetFloat : MonoBehaviour
+public class DSTextDisplayFloat : MonoBehaviour
 {
 	public	Datasack	dataSack;
 
-	private	Image	image;
+	[Multiline]
+	public	string		FormatString;
 
-	void Start ()
+	private DSTextAbstraction _textAbstraction;
+	private DSTextAbstraction textAbstraction
 	{
-		image = GetComponent<Image> ();
-		OnChanged (dataSack);
+		get
+		{
+			if (!_textAbstraction) _textAbstraction = DSTextAbstraction.Attach(this);
+			return _textAbstraction;
+		}
 	}
 
 	void	OnChanged( Datasack ds)
 	{
-		if (image)
+		if (FormatString.Length > 0)
 		{
-			image.fillAmount = ds.fValue;
+			textAbstraction.SetText( System.String.Format (FormatString, ds.fValue));
+			return;
 		}
+		textAbstraction.SetText( ds.fValue.ToString ());
 	}
 
 	void	OnEnable()
 	{
-		dataSack.OnChanged += OnChanged;	
+		dataSack.OnChanged += OnChanged;
+		OnChanged( dataSack);
 	}
 	void	OnDisable()
 	{
