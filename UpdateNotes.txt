@@ -1,0 +1,30 @@
+12:28 PM 6/10/2019
+
+Notes for updating other projects using the Datasacks past
+commit 2be80bc252 (June 9, 2019 and onwards):
+
+- make your project "clean" in source control (no modified files)
+
+- open Unity in your project
+
+- move all of your project datasacks OUT of the Datasacks folder:
+
+	Move any Datasacks you find here:
+	~/Assets/Datasack/Resources/Datasacks
+
+- hit CodeGen on any Datasack and commit all changes
+
+- close Unity in your project
+
+- delete the ENTIRE ~/Assets/Datasack directory in your project.
+
+- copy the ENTIRE ~/Assets/Datasack directory from the datasacks repo
+
+- open Unity in your project (you will likely have a slew of errors)
+
+- hit CodeGen on any Datasack and commit all changes
+
+- Your project should be 100% functional now. Please test. If there
+	are problems, revert to the above source commit and retry
+
+- commit all changes

@@ -8,6 +8,8 @@ Android: https://play.google.com/store/apps/developer?id=Kurt+Dekker
 
 Also: https://kurtdekker.itch.io/
 
+For updating your project, see UpdateNotes.txt file.
+
 --------------------------------- DATASACKS --------------------------
 
 Fire up the example game scene for a silly clicker that has some UI
