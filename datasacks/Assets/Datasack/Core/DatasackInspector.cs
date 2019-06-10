@@ -124,6 +124,21 @@ public partial class Datasack
 
 			foreach( var dirName in SplitByDirectory.Keys)
 			{
+				string[] directoryParts = dirName.Split(
+					new char[] {
+						System.IO.Path.DirectorySeparatorChar,
+						System.IO.Path.AltDirectorySeparatorChar,
+					},
+					StringSplitOptions.RemoveEmptyEntries );
+
+				string ssss = dirName + " -> parts:";
+				for (int i = 0; i < directoryParts.Length; i++)
+				{
+					ssss += directoryParts[i];
+					if (i < directoryParts.Length - 1) ssss += " - ";
+				}
+				Debug.Log( ssss);
+
 				string nestedClassName = null;
 				string pathPrefix = "";
 				string indentation = "";
