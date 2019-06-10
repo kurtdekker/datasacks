@@ -155,7 +155,10 @@ public partial class Datasack
 
 			Debug.Log( s);
 
-			string outfile = "Assets/Datasack/DSMCodegen.cs";
+			string s_DatasacksDirectory = "Assets/Datasacks/";
+			System.IO.Directory.CreateDirectory( s_DatasacksDirectory);
+
+			string outfile = s_DatasacksDirectory + "DSMCodegen.cs";
 			using( System.IO.StreamWriter sw =
 				new System.IO.StreamWriter(outfile, false))
 			{
