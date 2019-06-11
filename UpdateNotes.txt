@@ -7,18 +7,23 @@ commit 2be80bc252 (June 9, 2019 and onwards):
 
 - open Unity in your project
 
-- move all of your project datasacks OUT of the Datasacks folder:
+- move all of your project datasacks OUT of the root Datasack folder:
 
 	Move any Datasacks you find here:
+	~/Assets/Datasack
 	~/Assets/Datasack/Resources/Datasacks
 
-- hit CodeGen on any Datasack and commit all changes
+	Move them elsewhere in your project, but right now under
+	a Resources/Datasacks directory structure as before.
+
+- hit CodeGen on any Datasack and commit all changes, including
+	any fixup of inadvertently-changed folder names.
 
 - close Unity in your project
 
 - delete the ENTIRE ~/Assets/Datasack directory in your project.
 
-- copy the ENTIRE ~/Assets/Datasack directory from the datasacks repo
+- copy over the ENTIRE ~/Assets/Datasack directory from the Datasacks repo
 
 - open Unity in your project (you will likely have a slew of errors)
 
@@ -27,4 +32,13 @@ commit 2be80bc252 (June 9, 2019 and onwards):
 - Your project should be 100% functional now. Please test. If there
 	are problems, revert to the above source commit and retry
 
-- commit all changes
+- If you have a very old version of Datasacks, you might need to
+	transiently create a static Datasack named UserIntent somewhere
+	in the DSM class to get the new code to compile:
+
+	public static Datasack UserIntent;
+
+	Then after you get it to compile and codegen, you will have a
+	duplicate UserIntent identifier, so delete your temp code.
+
+- test and commit all changes
