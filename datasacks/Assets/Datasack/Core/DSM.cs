@@ -73,6 +73,7 @@ public partial class DSM : MonoBehaviour
 				foreach( var dm in dsc.Mappings)
 				{
 					_I.AllSacks[dm.Fullname] = dm.Datasack;
+					dm.Datasack.FullName = dm.Fullname;
 					dm.Datasack.LoadPersistent();
 				}
 			}
