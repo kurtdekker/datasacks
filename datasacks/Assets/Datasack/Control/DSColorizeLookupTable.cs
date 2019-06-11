@@ -48,7 +48,7 @@ public class DSColorizeLookupTable : MonoBehaviour
 	{
 		get
 		{
-			if (_colorable) _colorable = DSColorableAbstraction.Attach( this);
+			if (!_colorable) _colorable = DSColorableAbstraction.Attach( this);
 			return _colorable;
 		}
 	}
