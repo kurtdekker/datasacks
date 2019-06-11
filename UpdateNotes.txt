@@ -27,7 +27,20 @@ commit 2be80bc252 (June 9, 2019 and onwards):
 
 - open Unity in your project (you will likely have a slew of errors)
 
-- hit CodeGen on any Datasack and commit all changes
+- Now fixup:
+	- temporarily add "bool Load = false" argument to DSM.I.Get()
+	- temporarily add "public static Datasack UserIntent;" to DSMCodeGen
+	- it should compile now so you can run the NEW codegen
+
+- hit CodeGen on any Datasack
+
+- if there are no errors, remove the above temporary changes
+
+- remove Datasack/DSMCodegen.cs (keep/add Datasacks/DSMCodegen.cs!)
+
+- verify it still compiles and hit codegen again for fun
+
+- commit all changes
 
 - Your project should be 100% functional now. Please test. If there
 	are problems, revert to the above source commit and retry
