@@ -39,9 +39,9 @@ using UnityEngine;
 
 public partial class DSM : MonoBehaviour
 {
+	public const string s_AllDatasacksDirectory = "Assets/Datasacks/";
+	public const string s_AllDatasacksResources = "Assets/Datasacks/Resources/";
 	public const string s_AllDatasacksAsset = "AllDatasacks";
-	public const string s_AllDatasacksPathPrefix = "Datasack/Resources/";
-	public const string s_DatasacksDirectoryPrefix = "Datasacks/";
 
 	public static bool shuttingDown { get; private set; }
 

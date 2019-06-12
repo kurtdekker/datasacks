@@ -14,7 +14,7 @@
 public partial class DSM
 {
 
-// Datasacks from directory 'Assets/Datasack/Resources'
+// Datasacks from directory 'Assets/Datasacks'
 	public static Datasack UserIntent { get { return DSM.I.Get( "UserIntent"); } }
 
 // Datasacks from directory 'Assets/Resources/Datasacks'

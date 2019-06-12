@@ -199,20 +199,21 @@ public partial class Datasack
 
 			Debug.Log( s);
 
-			string s_DatasacksDirectory = "Assets/Datasacks/";
-			System.IO.Directory.CreateDirectory( s_DatasacksDirectory);
-
-			string outfile = s_DatasacksDirectory + "DSMCodegen.cs";
-			using( System.IO.StreamWriter sw =
-				new System.IO.StreamWriter(outfile, false))
 			{
-				sw.Write(s);
+				System.IO.Directory.CreateDirectory( DSM.s_AllDatasacksDirectory);
+
+				string outfile = DSM.s_AllDatasacksDirectory + "DSMCodegen.cs";
+				using( System.IO.StreamWriter sw =
+					new System.IO.StreamWriter(outfile, false))
+				{
+					sw.Write(s);
+				}
 			}
 
 			{
 				bool create = false;
 
-				string assetPath = "Assets/" + DSM.s_AllDatasacksPathPrefix;
+				string assetPath = DSM.s_AllDatasacksResources;
 
 				System.IO.Directory.CreateDirectory( assetPath);
 
