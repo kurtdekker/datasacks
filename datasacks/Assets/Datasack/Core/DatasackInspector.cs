@@ -88,8 +88,8 @@ public partial class Datasack
 
 			s += "public partial class DSM\n{\n";
 
-			// TODO: make this ransack the entire project for Datasacks,
-			// not just underneath the Resources directories!
+			// This now scans the entire project for Datasacks,
+			// not just underneath the Resources directories.
 
 			string[] datasackGUIDs = AssetDatabase.FindAssets( "t:Datasack");
 			int numDatasacks = datasackGUIDs.Length;
