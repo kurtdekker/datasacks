@@ -14,9 +14,6 @@
 public partial class DSM
 {
 
-// Datasacks from directory 'Assets/Datasacks'
-	public static Datasack UserIntent { get { return DSM.I.Get( "UserIntent"); } }
-
 // Datasacks from directory 'Assets/Resources/Datasacks'
 	public static Datasack AudioSourceClick { get { return DSM.I.Get( "AudioSourceClick"); } }
 	public static Datasack AudioSourceEnter { get { return DSM.I.Get( "AudioSourceEnter"); } }
@@ -77,4 +74,4 @@ public partial class DSM
 	public static Datasack TextObjectSelection { get { return DSM.I.Get( "TextObjectSelection"); } }
 }
 
-// Total of 28 datasacks found and processed.
+// Total of 27 datasacks found and processed.

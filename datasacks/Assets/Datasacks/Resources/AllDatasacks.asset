@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Name: AllDatasacks
   m_EditorClassIdentifier: 
   Mappings:
-  - Fullname: UserIntent
-    Datasack: {fileID: 11400000, guid: c9b0e398c99544d1fbde03c09a232243, type: 2}
   - Fullname: AudioSourceClick
     Datasack: {fileID: 11400000, guid: 59828163b380646019e91da8f8cfaf76, type: 2}
   - Fullname: AudioSourceEnter
