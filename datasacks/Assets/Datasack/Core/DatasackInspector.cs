@@ -60,9 +60,21 @@ public partial class Datasack
 		string IdentifierSafeString( string s)
 		{
 			s = s.Replace( "_", "_");
-			s = s.Replace( "-", "_");
 			s = s.Replace( "/", "_");
 			s = s.Replace( "\\", "_");
+
+			s = s.Replace( " ", "_");
+
+			s = s.Replace( "-", "_");
+			s = s.Replace( "+", "_");
+
+			s = s.Replace( "(", "_");
+			s = s.Replace( ")", "_");
+
+			s = s.Replace( ";", "_");
+			s = s.Replace( "&", "_");
+			s = s.Replace( "$", "_");
+
 			return s;
 		}
 
