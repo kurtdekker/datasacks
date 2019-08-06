@@ -1,5 +1,7 @@
 This is my datasacks module for easy UI event processing in Unity3D.
 
+In this Unity project, see the DatasackUsageExamples.txt file for examples.
+
 You can check out my games here:
 
 iPhone:  https://itunes.apple.com/us/developer/kurt-dekker/id680019078
