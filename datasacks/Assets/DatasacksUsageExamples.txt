@@ -1,0 +1,72 @@
+Here are some common recipes for using Datasacks.
+
+------------------------------------------------------------------------------------------
+
+To make a UI button that your scripts can respond to:
+
+- make the Button in the UI
+- name the GameObject containing the actual Button something unique (such as "ButtonStartGame")
+- Add a DSUserIntentButton.cs script to your button.
+
+- make a Monobehavior to go in your UI scene (I usually place this on a root GameObject such as the Canvas)
+- Put code in that Monobehavior to respond to your new button. This is a good template to follow:
+
+	public Datasack dataSack;	// populate this in the Unity editor (optional)
+
+	void	OnUserIntent( Datasack ds)
+	{
+		// Here is where you service the notification
+		// that the contents of this Datasack changed
+		// You can inspect the name of the Datasack if
+		// you expect more than one Datasack to call
+		// this function.
+		switch( ds.Value)
+		{
+		case "ButtonStartGame":
+			// call whatever you do to start the game
+			break;
+		}
+	}
+
+	void	OnEnable()
+	{
+		if (!dataSack) dataSack = DSM.UserIntent;
+		dataSack.OnChanged += OnUserIntent;
+	}
+	void	OnDisable()
+	{
+		dataSack.OnChanged -= OnUserIntent;
+	}
+
+DONE! Now to see it in action:
+
+Press PLAY in the Unity Editor.
+
+Press your Start Game button
+
+------------------------------------------------------------------------------------------
+
+To make a UI text object that displays values from your program
+
+- Create a Datasack named appropriately (lets say it is called "GameScore")
+- select the new Datasack:
+	- name it to GameScore
+	- in the inspector press the CodeGen button
+	- note that some extra files were created and/or modified
+	- doubleclick the DSMCodegen.cs file to see your newly-created code variable
+
+- Add a Text object to your UI hierarchy, position it where you want
+- Add a DSTextDisplayInt.cs script to your Text Component
+- Drag the GameScore Datasack into the "Data Sack" field of the DSTextDisplayInt component
+- Fill in any formatting you want in the FormatString field (google C# String Formatting for more info)
+
+Now in your code:
+- Give the player some points with code like this:
+
+	DSM.GameScore.iValue += points;
+
+- Note how when the above line of code is executed, your Text component will instantly be updated!
+
+------------------------------------------------------------------------------------------
+
+Email me at kurtdekker@gmail.com if you have a request for simple recipes to be explained here!
