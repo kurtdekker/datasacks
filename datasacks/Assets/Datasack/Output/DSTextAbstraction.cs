@@ -33,10 +33,14 @@
 	SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+// Uncomment this #define if you want TextMeshPro support.
+#define USING_TEXTMESHPRO
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 // WARNING! Internal class: other Datasack scripts will add this as needed.
 
@@ -44,8 +48,12 @@ public class DSTextAbstraction : MonoBehaviour
 {
 	private	Text	text;
 
-	// <WIP> observe and interoperate with other text-type objects
-	// here, such as TextMeshPro or TextMeshProUGUI objects.
+#if USING_TEXTMESHPRO
+	private	TextMeshPro	tmptext;
+	private	TextMeshProUGUI	tmptextugui;
+#endif
+
+	// <WIP> observe and interoperate with other text-type objects here.
 
 	public	static	DSTextAbstraction	Attach( MonoBehaviour script)
 	{
@@ -63,6 +71,16 @@ public class DSTextAbstraction : MonoBehaviour
 		{
 			text = GetComponent<Text>();
 		}
+#if USING_TEXTMESHPRO
+		if (!tmptext)
+		{
+			tmptext = GetComponent<TextMeshPro>();
+		}
+		if (!tmptextugui)
+		{
+			tmptextugui = GetComponent<TextMeshProUGUI>();
+		}
+#endif
 	}
 
 	public	string	GetText()
@@ -75,6 +93,18 @@ public class DSTextAbstraction : MonoBehaviour
 		{
 			return text.text;
 		}
+
+#if USING_TEXTMESHPRO
+		if (tmptext)
+		{
+			return tmptext.text;
+		}
+
+		if (tmptextugui)
+		{
+			return tmptextugui.text;
+		}
+#endif
 
 		Debug.LogError( name + "." + GetType() + ".GetText(): no suitable text object found.");
 
@@ -92,6 +122,20 @@ public class DSTextAbstraction : MonoBehaviour
 			text.text = s;
 			return;
 		}
+
+#if USING_TEXTMESHPRO
+		if (tmptext)
+		{
+			tmptext.text = s;
+			return;
+		}
+
+		if (tmptextugui)
+		{
+			tmptextugui.text = s;
+			return;
+		}
+#endif
 
 		Debug.LogError( name + "." + GetType() + ".SetText(): no suitable text object found.");
 	}
