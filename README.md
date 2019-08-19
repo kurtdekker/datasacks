@@ -14,8 +14,8 @@ For updating your project, see UpdateNotes.txt file.
 
 --------------------------------- DATASACKS --------------------------
 
-Fire up the example game scene for a silly clicker that has some UI
-that uses datasacks.
+Fire up the example game scene for a silly clicker game that has some UI
+elements that use datasacks for input and output.
 
 Here is a sorta graphical overview of how things work:
 
@@ -103,3 +103,15 @@ into the string portion of a Datasack.
 	{
 		dataSack.OnChanged -= OnUserIntent;
 	}
+
+TextMeshPRO support added!
+
+If you are using TextMeshPRO you may enable Datasacks to interoperate
+with the TextMeshPRO objects. To do so you can either make a Scripting
+define called USING_TEXTMESHPRO, or else add it into the DSTextAbstraction.cs
+file directly.
+
+Obviously the former approach is better.
+
+Script pre-defines can be added in the Unity Player Settings. Be sure to
+press ENTER after you add the text string or Unity will not save it.
