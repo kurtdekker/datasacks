@@ -43,6 +43,7 @@ public class DSCameraControl : MonoBehaviour
 	[Header( "Only supply the Camera properties you want to control:")]
 	public	Datasack	DataSackFOV;
 	public	Datasack	DataSackOrthoSize;
+	public	Datasack	DataSackRect;
 
 	Camera cam;
 
@@ -54,6 +55,11 @@ public class DSCameraControl : MonoBehaviour
 	void	OnChangedOrthoSize( Datasack ds)
 	{
 		cam.orthographicSize = ds.fValue;
+	}
+
+	void	OnChangedRect( Datasack ds)
+	{
+		cam.rect = ds.rValue;
 	}
 
 	void	OnEnable()
@@ -70,6 +76,11 @@ public class DSCameraControl : MonoBehaviour
 			DataSackOrthoSize.OnChanged += OnChangedOrthoSize;	
 			OnChangedOrthoSize(DataSackOrthoSize);
 		}
+		if (DataSackRect)
+		{
+			DataSackRect.OnChanged += OnChangedRect;	
+			OnChangedRect(DataSackRect);
+		}
 	}
 	void	OnDisable()
 	{
@@ -80,6 +91,10 @@ public class DSCameraControl : MonoBehaviour
 		if (DataSackOrthoSize)
 		{
 			DataSackOrthoSize.OnChanged -= OnChangedOrthoSize;
+		}
+		if (DataSackRect)
+		{
+			DataSackRect.OnChanged -= OnChangedRect;
 		}
 	}
 }
