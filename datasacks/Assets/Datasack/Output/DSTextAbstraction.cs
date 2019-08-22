@@ -34,13 +34,16 @@
 */
 
 // Uncomment this #define if you want TextMeshPro support.
-#define USING_TEXTMESHPRO
+//#define USING_TEXTMESHPRO
 
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
+
+#if USING_TEXTMESHPRO
+	using TMPro;
+#endif
 
 // WARNING! Internal class: other Datasack scripts will add this as needed.
 
