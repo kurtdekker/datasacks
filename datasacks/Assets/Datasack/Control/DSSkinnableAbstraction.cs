@@ -65,6 +65,12 @@ public class DSSkinnableAbstraction : MonoBehaviour
 
 	public void SetSprite( Sprite sprite)
 	{
+		if (!sprite)
+		{
+			SetEnabled(false);
+			return;
+		}
+
 		LazyFinder();
 
 		bool good = false;
@@ -77,12 +83,18 @@ public class DSSkinnableAbstraction : MonoBehaviour
 
 		if (!good)
 		{
-			Debug.LogError(GetType() + ".SetGraphic(): no suitable skinnable object found.");
+			Debug.LogError(GetType() + ".SetSprite(): no suitable skinnable object found.");
 		}
 	}
 
 	public void SetTexture2D( Texture2D t2d)
 	{
+		if (!t2d)
+		{
+			SetEnabled(false);
+			return;
+		}
+
 		Rect r = new Rect( 0, 0, t2d.width, t2d.height);
 
 		var sprite = Sprite.Create( t2d, r, Vector2.one * 0.5f);
