@@ -45,12 +45,16 @@ public class DSColorableAbstraction : MonoBehaviour
 	private	Text	text;
 	private Image	image;
 
-	// <WIP> observe and interoperate with other colorable objects
+	// <WIP> observe and interoperate with other types of colorable objects
 
+	public	static	DSColorableAbstraction	Attach( GameObject go)
+	{
+		DSColorableAbstraction ca = go.AddComponent<DSColorableAbstraction>();
+		return ca;
+	}
 	public	static	DSColorableAbstraction	Attach( MonoBehaviour script)
 	{
-		DSColorableAbstraction ca = script.gameObject.AddComponent<DSColorableAbstraction>();
-		return ca;
+		return Attach( script.gameObject);
 	}
 
 	void	LazyFinder()
