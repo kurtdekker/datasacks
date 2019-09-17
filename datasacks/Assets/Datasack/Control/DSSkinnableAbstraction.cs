@@ -47,12 +47,16 @@ public class DSSkinnableAbstraction : MonoBehaviour
 {
 	private Image	image;
 
-	// <WIP> observe and interoperate with other skinnable objects
+	// <WIP> observe and interoperate with other types of skinnable objects
 
+	public	static	DSSkinnableAbstraction	Attach( GameObject go)
+	{
+		DSSkinnableAbstraction sa = go.AddComponent<DSSkinnableAbstraction>();
+		return sa;
+	}
 	public	static	DSSkinnableAbstraction	Attach( MonoBehaviour script)
 	{
-		DSSkinnableAbstraction sa = script.gameObject.AddComponent<DSSkinnableAbstraction>();
-		return sa;
+		return Attach( script.gameObject);
 	}
 
 	void	LazyFinder()
