@@ -66,3 +66,5 @@ MonoBehaviour:
     Datasack: {fileID: 11400000, guid: c76d0e2dab4d24ac084091bf57cdf9d5, type: 2}
   - Fullname: TextObjectSelection
     Datasack: {fileID: 11400000, guid: 66b6faa2ec07341e98df8b347bdaffe4, type: 2}
+  - Fullname: SliderToImage
+    Datasack: {fileID: 11400000, guid: 47949c79e0fa14a0ca322787f77544be, type: 2}

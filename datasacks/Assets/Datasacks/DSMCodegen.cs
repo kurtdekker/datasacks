@@ -72,6 +72,9 @@ public partial class DSM
 
 // Datasacks from directory 'Assets/Scenes/exampleselectingobjects/Resources/Datasacks'
 	public static Datasack TextObjectSelection { get { return DSM.I.Get( "TextObjectSelection"); } }
+
+// Datasacks from directory 'Assets/Scenes/exampleslidertofilledimage/Datasacks'
+	public static Datasack SliderToImage { get { return DSM.I.Get( "SliderToImage"); } }
 }
 
-// Total of 27 datasacks found and processed.
+// Total of 28 datasacks found and processed.
