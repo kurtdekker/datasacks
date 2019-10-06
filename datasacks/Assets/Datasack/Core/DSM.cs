@@ -73,6 +73,8 @@ public partial class DSM : MonoBehaviour
 				foreach( var dm in dsc.Mappings)
 				{
 					_I.AllSacks[dm.Fullname] = dm.Datasack;
+					// If you get a null reference here, you probably need to select
+					// any Datasack in your project and hit the CODEGEN button.
 					dm.Datasack.FullName = dm.Fullname;
 					dm.Datasack.LoadPersistent();
 				}
