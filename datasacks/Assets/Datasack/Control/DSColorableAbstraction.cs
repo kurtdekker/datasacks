@@ -89,7 +89,7 @@ public class DSColorableAbstraction : MonoBehaviour
 
 		if (!good)
 		{
-			Debug.LogError(GetType() + ".SetColor(): no suitable colorable object found.");
+			Debug.LogError( name + "." + GetType() + ".SetColor(): no suitable colorable object found.", gameObject);
 		}
 	}
 
@@ -107,7 +107,7 @@ public class DSColorableAbstraction : MonoBehaviour
 			return image.color;
 		}
 
-		Debug.LogError(GetType() + ".GetColor(): no suitable colorable object found.");
+		Debug.LogError( name + "." + GetType() + ".GetColor(): no suitable colorable object found.", gameObject);
 
 		return Color.magenta;
 	}
