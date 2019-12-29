@@ -60,6 +60,9 @@ public class DSGameObjectControl : MonoBehaviour
 	[Tooltip( "Selection strategy for list of items.")]
 	public	SelectionStrategy	selectionStrategy;
 
+	[Tooltip( "Invert Selection Strategy (does not affect up area booleans!)")]
+	public	bool				InvertSelectionStrategy;
+
 	public enum SelectionStrategy
 	{
 		SELECT_EXACTLY_ONE,
@@ -120,6 +123,11 @@ public class DSGameObjectControl : MonoBehaviour
 				case SelectionStrategy.SELECT_BY_GAMEOBJECT_NAME :
 					onoff = (ds.Value == currentGameObject.name);
 					break;
+				}
+
+				if (InvertSelectionStrategy)
+				{
+					onoff = !onoff;
 				}
 
 				currentGameObject.SetActive( onoff);
