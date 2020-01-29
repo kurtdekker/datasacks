@@ -52,6 +52,11 @@ public partial class Datasack
 		return String.Join( ArraySeparatorCharacter.ToString(), input);
 	}
 
+	static	string	ArrayAppend( string original, string entry)
+	{
+		return original + ArraySeparatorCharacter.ToString() + entry;
+	}
+
 	public	string	GetArrayValue( int index)
 	{
 		if (index >= 0)
@@ -62,14 +67,27 @@ public partial class Datasack
 				return parts[index];
 			}
 		}
-		return "<index out of range>";
+		// array requests outside the valid return empty string
+		return "";
 	}
 
 	public	void	SetArrayValue( string s, int index)
 	{
 		if (index >= 0)
 		{
-			string[] parts = ArraySplit( Value);
+			string[] parts = null;
+
+			// arrays auto-expand to the highest-set value
+			while( true)
+			{
+				parts = ArraySplit( Value);
+				if (index < parts.Length)
+				{
+					break;
+				}
+				TheData = ArrayAppend( TheData, "");
+			}
+
 			if (index < parts.Length)
 			{
 				parts[index] = s;
@@ -77,8 +95,6 @@ public partial class Datasack
 				return;
 			}
 		}
-		throw new System.ArgumentOutOfRangeException(
-			"Datasack.Vectors.SetArray:" + index.ToString());
 	}
 
 	public	int		GetArrayiValue( int index)
