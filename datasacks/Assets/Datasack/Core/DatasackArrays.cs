@@ -44,6 +44,10 @@ public partial class Datasack
 
 	static	string[]	ArraySplit( string input)
 	{
+		if (string.IsNullOrEmpty(input))
+		{
+			return new string[0];
+		}
 		return input.Split( ArraySeparatorCharacter);
 	}
 
@@ -75,19 +79,13 @@ public partial class Datasack
 	{
 		if (index >= 0)
 		{
-			string[] parts = null;
-
 			// arrays auto-expand to the highest-set value
-			while( true)
+			if (index >= GetArrayLength())
 			{
-				parts = ArraySplit( Value);
-				if (index < parts.Length)
-				{
-					break;
-				}
-				TheData = ArrayAppend( TheData, "");
+				SetArrayLength(index + 1);
 			}
 
+			var parts = ArraySplit(Value);
 			if (index < parts.Length)
 			{
 				parts[index] = s;
@@ -116,5 +114,52 @@ public partial class Datasack
 	public	string[]	GetArray()
 	{
 		return ArraySplit( Value);
+	}
+
+	public int GetArrayLength()
+	{
+		return GetArray().Length;
+	}
+
+	public void SetArrayLength( int DesiredArrayLength)
+	{
+		int CurrentLength = GetArrayLength();
+
+		// must expand?
+		if (DesiredArrayLength > CurrentLength)
+		{
+			string[] CurrentParts = ArraySplit( Value);
+
+			string[] TempArray = new string[DesiredArrayLength];
+
+			System.Array.Copy(CurrentParts, TempArray, CurrentParts.Length);
+
+			for (int i = CurrentLength; i < DesiredArrayLength; i++)
+			{
+				TempArray[i] = "";
+			}
+
+			// we transact directly against TheData beacuse we
+			// are not ready to signal a change in data to listeners.
+			TheData = ArrayJoin(TempArray);
+
+			return;
+		}
+
+		// must contract?
+		if (DesiredArrayLength < CurrentLength)
+		{
+			string[] CurrentParts = ArraySplit(Value);
+
+			string[] TempArray = new string[DesiredArrayLength];
+
+			System.Array.Copy(CurrentParts, TempArray, DesiredArrayLength);
+
+			// we transact directly against TheData beacuse we
+			// are not ready to signal a change in data to listeners.
+			TheData = ArrayJoin(TempArray);
+
+			return;
+		}
 	}
 }
