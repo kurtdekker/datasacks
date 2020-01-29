@@ -1,7 +1,7 @@
 ﻿/*
 	The following license supersedes all notices in the source code.
 
-	Copyright (c) 2018 Kurt Dekker/PLBM Games All rights reserved.
+	Copyright (c) 2020 Kurt Dekker/PLBM Games All rights reserved.
 
 	http://www.twitter.com/kurtdekker
 
@@ -52,7 +52,7 @@ public partial class Datasack
 		return String.Join( ArraySeparatorCharacter.ToString(), input);
 	}
 
-	public	string	GetArrayEntry( int index)
+	public	string	GetArrayValue( int index)
 	{
 		if (index >= 0)
 		{
@@ -65,7 +65,7 @@ public partial class Datasack
 		return "<index out of range>";
 	}
 
-	public	void	SetArrayEntry( string s, int index)
+	public	void	SetArrayValue( string s, int index)
 	{
 		if (index >= 0)
 		{
@@ -79,6 +79,17 @@ public partial class Datasack
 		}
 		throw new System.ArgumentOutOfRangeException(
 			"Datasack.Vectors.SetArray:" + index.ToString());
+	}
+
+	public	int		GetArrayiValue( int index)
+	{
+		int i = 0;
+		int.TryParse( GetArrayValue( index), out i);
+		return i;
+	}
+	public	void	SetArrayiValue( int i, int index)
+	{
+		SetArrayValue( i.ToString(), index);
 	}
 
 	public	void	SetArray( string[] data)
