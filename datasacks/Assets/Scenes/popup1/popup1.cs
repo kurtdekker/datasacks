@@ -41,6 +41,8 @@ public class popup1 : MonoBehaviour
 {
 	const string s_SceneName = "popup1";
 
+	Animator animator;
+
 	public	static	void	Activate()
 	{
 		UnityEngine.SceneManagement.SceneManager.LoadScene(
@@ -52,19 +54,38 @@ public class popup1 : MonoBehaviour
 		UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync( s_SceneName);
 	}
 
+	private void Start()
+	{
+		animator = GetComponent<Animator>();
+	}
+
+	void StartDismiss()
+	{
+		animator.SetTrigger("hide");
+	}
+
+	string chosenResult;
+
 	void OnUserIntent( Datasack ds)
 	{
-		DSM.AudioSourceClick.Poke();
-
 		switch( ds.Value)
 		{
 		case "PopupButton1":
 		case "PopupButton2":
+			DSM.AudioSourceClick.Poke();
 
+			chosenResult = ds.Value;		// store for when animation is done
+
+			StartDismiss();
+			break;
+
+		case "popup1_done":
 			Debug.Log( GetType() + ": Popup1 dismissed with result '" + ds.Value + "'");
 
 			Dismiss();
-			DSM.Popup1.Result.Value = ds.Value;
+
+			DSM.Popup1.Result.Value = chosenResult;
+
 			Destroy(this);
 			break;
 		}

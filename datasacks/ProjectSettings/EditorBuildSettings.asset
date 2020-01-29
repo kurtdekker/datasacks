@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/game1/game1.unity
     guid: 05e96770ee4bf497f94d0f70511de567
   - enabled: 1
-    path: Assets/Scenes/game1/popup1.unity
+    path: Assets/Scenes/popup1/popup1.unity
     guid: 11a87bf81d40949d5b8f3b12c38bef45
   - enabled: 1
     path: Assets/Scenes/game1/audio.unity
