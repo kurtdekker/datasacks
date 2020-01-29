@@ -68,3 +68,9 @@ MonoBehaviour:
     Datasack: {fileID: 11400000, guid: 66b6faa2ec07341e98df8b347bdaffe4, type: 2}
   - Fullname: SliderToImage
     Datasack: {fileID: 11400000, guid: 47949c79e0fa14a0ca322787f77544be, type: 2}
+  - Fullname: Testing/Array1
+    Datasack: {fileID: 11400000, guid: fb7e41f2a8ebb4940a04323620a28528, type: 2}
+  - Fullname: Testing/Array2
+    Datasack: {fileID: 11400000, guid: 40fd2307ea9c548ba9c6556f976e081f, type: 2}
+  - Fullname: Testing/Debug
+    Datasack: {fileID: 11400000, guid: a8d1d0f9704d64b688d0be57901e3cc4, type: 2}

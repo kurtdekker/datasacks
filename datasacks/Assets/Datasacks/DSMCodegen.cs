@@ -75,6 +75,14 @@ public partial class DSM
 
 // Datasacks from directory 'Assets/Scenes/exampleslidertofilledimage/Datasacks'
 	public static Datasack SliderToImage { get { return DSM.I.Get( "SliderToImage"); } }
+
+// Datasacks from directory 'Assets/Testing/Datasacks/Testing'
+	public static partial class Testing
+	{
+		public static Datasack Array1 { get { return DSM.I.Get( "Testing/Array1"); } }
+		public static Datasack Array2 { get { return DSM.I.Get( "Testing/Array2"); } }
+		public static Datasack Debug { get { return DSM.I.Get( "Testing/Debug"); } }
+	}
 }
 
-// Total of 28 datasacks found and processed.
+// Total of 31 datasacks found and processed.
