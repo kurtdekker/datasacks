@@ -90,4 +90,9 @@ public partial class Datasack
 			iValue = value ? 1 : 0;
 		}
 	}
+
+	public	void	bToggle()
+	{
+		bValue = !bValue;
+	}
 }
