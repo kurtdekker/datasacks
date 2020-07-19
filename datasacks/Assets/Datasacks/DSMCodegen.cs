@@ -20,21 +20,39 @@ public partial class DSM
 	public static Datasack AudioSourceHello { get { return DSM.I.Get( "AudioSourceHello"); } }
 	public static Datasack ExampleOutput { get { return DSM.I.Get( "ExampleOutput"); } }
 	public static Datasack GameRunning { get { return DSM.I.Get( "GameRunning"); } }
+
+	// Persistent (has .Save field checked in Datasack):
 	public static Datasack GUID { get { return DSM.I.Get( "GUID"); } }
+
+
+	// Persistent (has .Save field checked in Datasack):
 	public static Datasack HardMode { get { return DSM.I.Get( "HardMode"); } }
+
+
+	// Persistent (has .Save field checked in Datasack):
 	public static Datasack HighScore { get { return DSM.I.Get( "HighScore"); } }
+
 	public static Datasack InputtedData { get { return DSM.I.Get( "InputtedData"); } }
 	public static Datasack LastWord { get { return DSM.I.Get( "LastWord"); } }
+
+	// Persistent (has .Save field checked in Datasack):
 	public static Datasack SimpleCounter { get { return DSM.I.Get( "SimpleCounter"); } }
+
 	public static Datasack StartingShips { get { return DSM.I.Get( "StartingShips"); } }
 	public static Datasack Timer1 { get { return DSM.I.Get( "Timer1"); } }
 	public static Datasack Timer1Start { get { return DSM.I.Get( "Timer1Start"); } }
+
+	// Persistent (has .Save field checked in Datasack):
 	public static Datasack Volume { get { return DSM.I.Get( "Volume"); } }
+
 
 // Datasacks from directory 'Assets/Resources/Datasacks/Folder'
 	public static partial class Folder
 	{
+
+		// Persistent (has .Save field checked in Datasack):
 		public static Datasack GUID { get { return DSM.I.Get( "Folder/GUID"); } }
+
 	}
 
 // Datasacks from directory 'Assets/Resources/Datasacks/Folder/Subfolder'
@@ -42,7 +60,10 @@ public partial class DSM
 	{
 		public static partial class Subfolder
 		{
+
+			// Persistent (has .Save field checked in Datasack):
 			public static Datasack GUID { get { return DSM.I.Get( "Folder/Subfolder/GUID"); } }
+
 		}
 	}
 
