@@ -44,8 +44,9 @@ public class DSColorizeLookupTable : MonoBehaviour
 	[Header( "Enable: becomes two-state based on Datasack matching IndexValue")]
 	public	bool		MatchIndexValue;
 	public	int			IndexValueToMatch;
+	public	bool		UseSiblingIndex;
 
-	public	Color[]		ColorTable = new Color[] { Color.black, Color.white };
+	public	Color[]		ColorTable = new Color[] { Color.gray, Color.white };
 
 	private	DSColorableAbstraction _colorable;
 	private	DSColorableAbstraction colorable
@@ -65,7 +66,10 @@ public class DSColorizeLookupTable : MonoBehaviour
 
 			if (MatchIndexValue)
 			{
-				bool matching = (index == IndexValueToMatch);
+				int ActualIndexToCompare = IndexValueToMatch;
+				if (UseSiblingIndex) ActualIndexToCompare = transform.GetSiblingIndex();
+
+				bool matching = (index == ActualIndexToCompare);
 				index = matching ? 1 : 0;
 			}
 
