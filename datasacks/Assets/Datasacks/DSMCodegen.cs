@@ -74,16 +74,6 @@ public partial class DSM
 		public static Datasack Ships { get { return DSM.I.Get( "PlayerState/Ships"); } }
 	}
 
-// Datasacks from directory 'Assets/Resources/Datasacks/Popup1'
-	public static partial class Popup1
-	{
-		public static Datasack Button1Text { get { return DSM.I.Get( "Popup1/Button1Text"); } }
-		public static Datasack Button2Text { get { return DSM.I.Get( "Popup1/Button2Text"); } }
-		public static Datasack Header { get { return DSM.I.Get( "Popup1/Header"); } }
-		public static Datasack Message { get { return DSM.I.Get( "Popup1/Message"); } }
-		public static Datasack Result { get { return DSM.I.Get( "Popup1/Result"); } }
-	}
-
 // Datasacks from directory 'Assets/Scenes/examplehealthmeter/Resources/Datasacks/HealthMeter'
 	public static partial class HealthMeter
 	{
@@ -96,6 +86,16 @@ public partial class DSM
 
 // Datasacks from directory 'Assets/Scenes/exampleslidertofilledimage/Datasacks'
 	public static Datasack SliderToImage { get { return DSM.I.Get( "SliderToImage"); } }
+
+// Datasacks from directory 'Assets/Scenes/popup1/Datasacks/Popup1'
+	public static partial class Popup1
+	{
+		public static Datasack Button1Text { get { return DSM.I.Get( "Popup1/Button1Text"); } }
+		public static Datasack Button2Text { get { return DSM.I.Get( "Popup1/Button2Text"); } }
+		public static Datasack Header { get { return DSM.I.Get( "Popup1/Header"); } }
+		public static Datasack Message { get { return DSM.I.Get( "Popup1/Message"); } }
+		public static Datasack Result { get { return DSM.I.Get( "Popup1/Result"); } }
+	}
 
 // Datasacks from directory 'Assets/Testing/Datasacks/Testing'
 	public static partial class Testing
