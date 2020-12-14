@@ -72,7 +72,7 @@ public class popup1 : MonoBehaviour
 		{
 		case "PopupButton1":
 		case "PopupButton2":
-			DSM.AudioSourceClick.Poke();
+			DSM.Popup1.AudioButtonPress.Poke();
 
 			chosenResult = ds.Value;		// store for when animation is done
 

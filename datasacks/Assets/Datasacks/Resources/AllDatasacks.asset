@@ -40,6 +40,8 @@ MonoBehaviour:
     Datasack: {fileID: 11400000, guid: df5b0d6d6a220455dbb9dadbbe692cff, type: 2}
   - Fullname: PlayerState/Ships
     Datasack: {fileID: 11400000, guid: 7126e95b7dafb42bd895f1dd45bd46f5, type: 2}
+  - Fullname: Settings/Volume
+    Datasack: {fileID: 11400000, guid: 227e1785b7a8944d294071092208250a, type: 2}
   - Fullname: SimpleCounter
     Datasack: {fileID: 11400000, guid: c56f8a73fd72a4969b831494011e390a, type: 2}
   - Fullname: StartingShips
@@ -48,8 +50,6 @@ MonoBehaviour:
     Datasack: {fileID: 11400000, guid: a8324af9f172044e88b016aa8042cdac, type: 2}
   - Fullname: Timer1Start
     Datasack: {fileID: 11400000, guid: 19a7844b00b7944cba01bf20d75d5c18, type: 2}
-  - Fullname: Volume
-    Datasack: {fileID: 11400000, guid: 227e1785b7a8944d294071092208250a, type: 2}
   - Fullname: HealthMeter/AnalogPortion
     Datasack: {fileID: 11400000, guid: 25240b4fbcd1a43e3b3b6e0dea2601d7, type: 2}
   - Fullname: HealthMeter/PipsPortion
@@ -58,6 +58,8 @@ MonoBehaviour:
     Datasack: {fileID: 11400000, guid: 66b6faa2ec07341e98df8b347bdaffe4, type: 2}
   - Fullname: SliderToImage
     Datasack: {fileID: 11400000, guid: 47949c79e0fa14a0ca322787f77544be, type: 2}
+  - Fullname: Popup1/AudioButtonPress
+    Datasack: {fileID: 11400000, guid: c20de1b5b54404c568f9205abb93fc39, type: 2}
   - Fullname: Popup1/Button1Text
     Datasack: {fileID: 11400000, guid: f2e932da3faa24279a8453ce19c063ea, type: 2}
   - Fullname: Popup1/Button2Text

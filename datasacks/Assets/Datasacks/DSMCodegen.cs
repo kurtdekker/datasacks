@@ -42,10 +42,6 @@ public partial class DSM
 	public static Datasack Timer1 { get { return DSM.I.Get( "Timer1"); } }
 	public static Datasack Timer1Start { get { return DSM.I.Get( "Timer1Start"); } }
 
-	// Persistent (has .Save field checked in Datasack):
-	public static Datasack Volume { get { return DSM.I.Get( "Volume"); } }
-
-
 // Datasacks from directory 'Assets/Resources/Datasacks/Folder'
 	public static partial class Folder
 	{
@@ -74,6 +70,15 @@ public partial class DSM
 		public static Datasack Ships { get { return DSM.I.Get( "PlayerState/Ships"); } }
 	}
 
+// Datasacks from directory 'Assets/Resources/Datasacks/Settings'
+	public static partial class Settings
+	{
+
+		// Persistent (has .Save field checked in Datasack):
+		public static Datasack Volume { get { return DSM.I.Get( "Settings/Volume"); } }
+
+	}
+
 // Datasacks from directory 'Assets/Scenes/examplehealthmeter/Resources/Datasacks/HealthMeter'
 	public static partial class HealthMeter
 	{
@@ -90,6 +95,7 @@ public partial class DSM
 // Datasacks from directory 'Assets/Scenes/popup1/Datasacks/Popup1'
 	public static partial class Popup1
 	{
+		public static Datasack AudioButtonPress { get { return DSM.I.Get( "Popup1/AudioButtonPress"); } }
 		public static Datasack Button1Text { get { return DSM.I.Get( "Popup1/Button1Text"); } }
 		public static Datasack Button2Text { get { return DSM.I.Get( "Popup1/Button2Text"); } }
 		public static Datasack Header { get { return DSM.I.Get( "Popup1/Header"); } }
@@ -106,4 +112,4 @@ public partial class DSM
 	}
 }
 
-// Total of 31 datasacks found and processed.
+// Total of 32 datasacks found and processed.

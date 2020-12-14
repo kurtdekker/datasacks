@@ -13,3 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InitialValue: 0.8
   Save: 1
+  Comments: 
