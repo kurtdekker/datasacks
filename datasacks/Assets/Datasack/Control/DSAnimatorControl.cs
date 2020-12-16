@@ -75,7 +75,10 @@ public class DSAnimatorControl : MonoBehaviour
 			break;
 
 		case DSAnimatorPropertyType.TRIGGER :
-			animator.SetTrigger( propertyName);
+			if (ds.bValue)
+			{
+				animator.SetTrigger( propertyName);
+			}
 			break;
 
 		default :
