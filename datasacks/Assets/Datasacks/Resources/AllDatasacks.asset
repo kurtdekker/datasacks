@@ -50,6 +50,8 @@ MonoBehaviour:
     Datasack: {fileID: 11400000, guid: a8324af9f172044e88b016aa8042cdac, type: 2}
   - Fullname: Timer1Start
     Datasack: {fileID: 11400000, guid: 19a7844b00b7944cba01bf20d75d5c18, type: 2}
+  - Fullname: exampleanimator/GoFast
+    Datasack: {fileID: 11400000, guid: 1c5005a39ff7c4b8f81c4c2babcaf67e, type: 2}
   - Fullname: HealthMeter/AnalogPortion
     Datasack: {fileID: 11400000, guid: 25240b4fbcd1a43e3b3b6e0dea2601d7, type: 2}
   - Fullname: HealthMeter/PipsPortion

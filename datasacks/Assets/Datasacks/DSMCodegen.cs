@@ -79,6 +79,12 @@ public partial class DSM
 
 	}
 
+// Datasacks from directory 'Assets/Scenes/exampleanimator/Datasacks/exampleanimator'
+	public static partial class exampleanimator
+	{
+		public static Datasack GoFast { get { return DSM.I.Get( "exampleanimator/GoFast"); } }
+	}
+
 // Datasacks from directory 'Assets/Scenes/examplehealthmeter/Resources/Datasacks/HealthMeter'
 	public static partial class HealthMeter
 	{
@@ -112,4 +118,4 @@ public partial class DSM
 	}
 }
 
-// Total of 32 datasacks found and processed.
+// Total of 33 datasacks found and processed.
