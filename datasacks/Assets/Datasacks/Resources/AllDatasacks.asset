@@ -40,6 +40,10 @@ MonoBehaviour:
     Datasack: {fileID: 11400000, guid: df5b0d6d6a220455dbb9dadbbe692cff, type: 2}
   - Fullname: PlayerState/Ships
     Datasack: {fileID: 11400000, guid: 7126e95b7dafb42bd895f1dd45bd46f5, type: 2}
+  - Fullname: Settings/Channel
+    Datasack: {fileID: 11400000, guid: 297c7f8be614c48dda938f4af6766ae3, type: 2}
+  - Fullname: Settings/InvertControls
+    Datasack: {fileID: 11400000, guid: 81364075c607e48459c2d65724450022, type: 2}
   - Fullname: Settings/Volume
     Datasack: {fileID: 11400000, guid: 227e1785b7a8944d294071092208250a, type: 2}
   - Fullname: SimpleCounter

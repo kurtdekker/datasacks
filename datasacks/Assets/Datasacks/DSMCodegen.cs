@@ -75,6 +75,14 @@ public partial class DSM
 	{
 
 		// Persistent (has .Save field checked in Datasack):
+		public static Datasack Channel { get { return DSM.I.Get( "Settings/Channel"); } }
+
+
+		// Persistent (has .Save field checked in Datasack):
+		public static Datasack InvertControls { get { return DSM.I.Get( "Settings/InvertControls"); } }
+
+
+		// Persistent (has .Save field checked in Datasack):
 		public static Datasack Volume { get { return DSM.I.Get( "Settings/Volume"); } }
 
 	}
@@ -118,4 +126,4 @@ public partial class DSM
 	}
 }
 
-// Total of 33 datasacks found and processed.
+// Total of 35 datasacks found and processed.
