@@ -38,7 +38,9 @@ code convenience and type-checking because you can always get
 at a Datasack by its name (DSM.I.Get( string)), and of course
 they are always available as draggable objects into Monobehaviors.
 
-The general flow pattern is that you put the DSButtonSetUIIntent.cs
+INPUT:
+
+The general flow pattern is that you put the DSUserIntentButton.cs
 script on any UI button, and when pressed that will put the name
 of that button's GameObject into the DSM.UserIntent variable, unless
 you specify another Datasack.
@@ -48,6 +50,8 @@ name of the button received, and does different things. See below.
 
 Datasacks can be subscribed to for changes, either on a permanent
 listener basis or on a one-shot basis.
+
+OUTPUT:
 
 For data presentation, you can put the DSTextGetString.cs onto
 your UnityEngine.UI.Text components and then the contents of
