@@ -1,7 +1,7 @@
 ﻿/*
 	The following license supersedes all notices in the source code.
 
-	Copyright (c) 2020 Kurt Dekker/PLBM Games All rights reserved.
+	Copyright (c) 2021 Kurt Dekker/PLBM Games All rights reserved.
 
 	http://www.twitter.com/kurtdekker
 
@@ -43,6 +43,7 @@ public class DSTextDisplayStringArray : MonoBehaviour
 	public	Datasack	dataSack;
 
 	[Multiline]
+	[Header("Optional; Standard C# formatting syntax.")]
 	public	string		FormatString;
 
 	private DSTextAbstraction _textAbstraction;
@@ -57,9 +58,19 @@ public class DSTextDisplayStringArray : MonoBehaviour
 
 	public	int			index;
 
+	[Header("Optional: used in lieu of above integer.")]
+	public	Datasack	indexDatasack;
+
 	void	OnChanged( Datasack ds)
 	{
-		string display = ds.GetArrayValue( index);
+		int i = index;
+
+		if (indexDatasack)
+		{
+			i = indexDatasack.iValue;
+		}
+
+		string display = ds.GetArrayValue( i);
 
 		if (!System.String.IsNullOrEmpty(FormatString))
 		{
