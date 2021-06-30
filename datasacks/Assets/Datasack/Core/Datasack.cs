@@ -65,20 +65,6 @@ public partial class Datasack : ScriptableObject
 	[NonSerialized]
 	public	string		FullName;
 
-	void OnEnable()
-	{
-		bool holdBreak = DebugBreak;
-		bool holdLogging = DebugLogging;
-
-		DebugBreak = false;
-		DebugLogging = false;
-
-		Value = InitialValue;
-
-		DebugBreak = holdBreak;
-		DebugLogging = holdLogging;
-	}
-
 	public void LoadPersistent()
 	{
 		TheData = InitialValue;
