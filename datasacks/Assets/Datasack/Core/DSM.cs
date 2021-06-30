@@ -60,7 +60,6 @@ public partial class DSM : MonoBehaviour
 	[RuntimeInitializeOnLoadMethod]
 	static void StartDSM()
 	{
-		Debug.Log("DSM.StartDSM();");
 		I.ToString();
 	}
 
