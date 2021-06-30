@@ -112,9 +112,11 @@ public partial class Datasack : ScriptableObject
 		}
 		set
 		{
+#if UNITY_EDITOR
 			if (DebugLogging)
 			{
-				Debug.Log( "Datasack " + FullName + " changed: '" + TheData + "' to '" + value + "'");
+				Debug.Log( "Datasack " + FullName + " changed:\n" +
+					DisplayDebugOutput());
 			}
 
 			if (DebugBreak)
@@ -122,6 +124,7 @@ public partial class Datasack : ScriptableObject
 				Debug.LogWarning( "Datasack " + FullName + ": set to DebugBreak");
 				Debug.Break();
 			}
+#endif
 
 			TheData = value;
 
