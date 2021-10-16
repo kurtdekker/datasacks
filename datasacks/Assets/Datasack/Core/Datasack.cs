@@ -112,6 +112,8 @@ public partial class Datasack : ScriptableObject
 		}
 		set
 		{
+			TheData = value;
+
 #if UNITY_EDITOR
 			if (DebugLogging)
 			{
@@ -125,8 +127,6 @@ public partial class Datasack : ScriptableObject
 				Debug.Break();
 			}
 #endif
-
-			TheData = value;
 
 			Poke();
 
