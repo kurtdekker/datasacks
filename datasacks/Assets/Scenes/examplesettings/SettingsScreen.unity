@@ -1729,6 +1729,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dataSack: {fileID: 11400000, guid: 227e1785b7a8944d294071092208250a, type: 2}
+  ForceIntegers: 0
 --- !u!114 &1241463445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2488,7 +2489,7 @@ GameObject:
   - component: {fileID: 1698966312}
   - component: {fileID: 1698966311}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: CanvasSettingsSCreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
