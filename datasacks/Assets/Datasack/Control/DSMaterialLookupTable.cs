@@ -33,6 +33,9 @@
 	SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+// Purpose: place this on a GameObject (or hierarchy) with Renderers.
+// This will live-control which Material in an array is injected.
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
