@@ -125,7 +125,7 @@ public class DSAudioPlay : MonoBehaviour
 	}
 
 #if UNITY_EDITOR
-	[CustomEditor( typeof( DSAudioPlay))]
+	[CustomEditor( typeof( DSAudioPlay)), CanEditMultipleObjects]
 	public class DSAudioPlayEditor : Editor
 	{
 		public override void OnInspectorGUI()
