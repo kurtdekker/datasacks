@@ -1,7 +1,7 @@
 ﻿/*
 	The following license supersedes all notices in the source code.
 
-	Copyright (c) 2021 Kurt Dekker/PLBM Games All rights reserved.
+	Copyright (c) 2022 Kurt Dekker/PLBM Games All rights reserved.
 
 	http://www.twitter.com/kurtdekker
 
@@ -77,8 +77,13 @@ public partial class Datasack : ScriptableObject
 
 	[NonSerialized] private	string	TheData;
 
-	public	void	Poke()
+	public	void	Poke( string message = null)
 	{
+		if (message != null)
+		{
+			TheData = message;
+		}
+
 		if (OnChanged != null)
 		{
 			OnChanged.Invoke (this);
