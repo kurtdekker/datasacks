@@ -77,6 +77,10 @@ public partial class Datasack : ScriptableObject
 
 	[NonSerialized] private	string	TheData;
 
+	public	void	iPoke( int i)
+	{
+		Poke( i.ToString());
+	}
 	public	void	Poke( string message = null)
 	{
 		if (message != null)
