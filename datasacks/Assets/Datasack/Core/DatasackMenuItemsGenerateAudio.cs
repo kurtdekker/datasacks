@@ -45,22 +45,55 @@ public static partial class DatasackMenuItems
 	[MenuItem("Assets/GenerateAudioDatasacks")]
 	static void GenerateAudioDatasacks()
 	{
-		foreach (var assetGUID in Selection.assetGUIDs)
+		foreach (var asset in Selection.objects)
 		{
-			Debug.Log(assetGUID);
+			var clip = asset as AudioClip;
 
-			// TODO:
 			// open the AudioClip asset
-			// get its name
-			// make a Datasack by that name
-			// make a GameObject with:
-			//	- AudioSource
-			//	- hook up the AudioClip
-			//	- add a DSAudioPlay
-			//	- connect the Datasack
-			// dirty the scene
-			// trigger a codegen directly!
+			if (clip)
+			{
+				// get its name
+				var nm = clip.name;
+
+				Debug.Log("Processing asset named '" + nm + "'...");
+
+				var path = AssetDatabase.GetAssetPath(clip);
+
+				Debug.Log( "path = '" + path + "'");
+
+				var directory = System.IO.Path.GetDirectoryName( path);
+
+				// make a Datasack by that name
+				var ds = ScriptableObject.CreateInstance<Datasack>();
+				ds.name = nm;
+				var nmAsset = nm + ".asset";
+				var dsPath = System.IO.Path.Combine( directory, nmAsset);
+				AssetDatabase.CreateAsset( ds, dsPath);
+
+				// make a GameObject with:
+				//	- AudioSource
+				//	- hook up the AudioClip
+				//	- add a DSAudioPlay
+				//	- connect the Datasack
+				var go = new GameObject( nm);
+				var azz = go.AddComponent<AudioSource>();
+				azz.clip = clip;
+				azz.bypassListenerEffects = true;
+				azz.playOnAwake = false;
+				var play = go.AddComponent<DSAudioPlay>();
+				play.dataSack = ds;
+
+				// TODO:
+				// dirty the scene
+				// trigger a codegen directly!
+			}
+			else
+			{
+				Debug.LogError( "Warning: asset '" + asset.name + "' was NOT an AudioClip!");
+			}
 		}
+
+		AssetDatabase.Refresh();
 	}
 }
 #endif
