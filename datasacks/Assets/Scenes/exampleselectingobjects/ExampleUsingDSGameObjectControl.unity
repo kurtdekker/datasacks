@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311947, g: 0.38074005, b: 0.35872722, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -243,6 +243,7 @@ MonoBehaviour:
   dataSack: {fileID: 11400000, guid: 66b6faa2ec07341e98df8b347bdaffe4, type: 2}
   ToEnable: []
   ToDisable: []
+  UseNotIsNullOrEmpty: 0
   IndexArray:
   - {fileID: 2099643327}
   - {fileID: 1608643330}
@@ -599,6 +600,7 @@ MonoBehaviour:
   dataSack: {fileID: 11400000, guid: 66b6faa2ec07341e98df8b347bdaffe4, type: 2}
   ToEnable: []
   ToDisable: []
+  UseNotIsNullOrEmpty: 0
   IndexArray: []
   OperateOnChildren: 1
   selectionStrategy: 2
@@ -1056,7 +1058,6 @@ GameObject:
   - component: {fileID: 1802727612}
   - component: {fileID: 1802727616}
   - component: {fileID: 1802727615}
-  - component: {fileID: 1802727614}
   - component: {fileID: 1802727613}
   m_Layer: 5
   m_Name: Camera
@@ -1080,13 +1081,6 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!81 &1802727613
 AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1802727611}
-  m_Enabled: 1
---- !u!92 &1802727614
-Behaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
