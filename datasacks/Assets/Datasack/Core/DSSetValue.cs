@@ -1,7 +1,7 @@
 ﻿/*
 	The following license supersedes all notices in the source code.
 
-	Copyright (c) 2019 Kurt Dekker/PLBM Games All rights reserved.
+	Copyright (c) 2022 Kurt Dekker/PLBM Games All rights reserved.
 
 	http://www.twitter.com/kurtdekker
 
@@ -41,18 +41,21 @@ public class DSSetValue : MonoBehaviour
 {
 	public Datasack targetDatasack;
 
-	[Tooltip( "Value to put into above datasack.")]
+	[Header( "Value to put into above datasack.")]
 	public string valueToSet;
 
-	[Tooltip( "Optional alternate source of value to set.")]
+	[Header( "Optional alternate source of value to set.")]
 	public Datasack sourceDatasack;
 
-	[Tooltip( "When to actually set the above value.")]
+	[Header( "When to actually set the above value.")]
 	public bool SetDuringAwake;
 	public bool SetDuringStart;
 
 	public bool SetDuringOnEnable;
 	public bool SetDuringOnDisable;
+
+	[Header("Clears datasack when this GameObject is disabled.")]
+	public bool ClearDuringOnDisable;
 
 	void Reset()
 	{
@@ -92,6 +95,11 @@ public class DSSetValue : MonoBehaviour
 		if (SetDuringOnDisable)
 		{
 			DoTheSet();
+		}
+
+		if (ClearDuringOnDisable)
+		{
+			targetDatasack.Clear();
 		}
 	}
 
