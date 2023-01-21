@@ -33,30 +33,12 @@
 	SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-// This is for the Datasacks system to know all Datasacks.
-// It should not be created / used by users.
-//
-// See Datasack(s)Collection (plural) for runtime collections
+// This is for the user to make lists of Datasacks
 
-public class DatasackCollection : ScriptableObject
+[CreateAssetMenu]
+public class DatasacksCollection : ScriptableObject
 {
-	[System.Serializable]
-	public class DatasackMapping
-	{
-		public string Fullname;
-		public Datasack Datasack;
-	}
-
-	[Header("This holds ALL datasacks in your project.", order = 100)]
-
-	[Header("Do not modify it yourself!", order = 200)]
-
-	[Header("Instead use CODEGEN from any", order = 300)]
-	[Header("Datasack object to regenerate.", order = 310)]
-
-	public	DatasackMapping[] Mappings;
+	public Datasack[] Datasacks;
 }
