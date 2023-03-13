@@ -1,7 +1,7 @@
 ﻿/*
 	The following license supersedes all notices in the source code.
 
-	Copyright (c) 2019 Kurt Dekker/PLBM Games All rights reserved.
+	Copyright (c) 2023 Kurt Dekker/PLBM Games All rights reserved.
 
 	http://www.twitter.com/kurtdekker
 
@@ -37,6 +37,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
+// This sets up a bidirectional data flow between the Datasack you
+// specify and the Toggle. In OnEnable() it brings the two together
+// state-wise and they remain in sync after that:
+//
+//	- setting the Datasack true/false drives the toggle
+//	- manipulating the Toggle control drives the Datasack true/false
 
 [RequireComponent( typeof( Toggle))]
 public class DSUserIntentToggle : MonoBehaviour
