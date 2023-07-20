@@ -1,7 +1,7 @@
 ﻿/*
 	The following license supersedes all notices in the source code.
 
-	Copyright (c) 2018 Kurt Dekker/PLBM Games All rights reserved.
+	Copyright (c) 2023 Kurt Dekker/PLBM Games All rights reserved.
 
 	http://www.twitter.com/kurtdekker
 
@@ -67,6 +67,9 @@ public class DSUserIntentKeyboard : MonoBehaviour
 	[Tooltip( "Check box to send GameObject.name")]
 	public	bool		SendGameObjectName;
 
+	[Tooltip("Bypass interactable check on button.")]
+	public bool BypassInteractableCheck;
+
 	void	Reset()
 	{
 		KeysToTrack = new KeyCode[] {
@@ -119,7 +122,12 @@ public class DSUserIntentKeyboard : MonoBehaviour
 			if (InvokeButtonOnClick)
 			{
 				var button = GetComponent<Button>();
-				button.onClick.Invoke();
+
+				if (button.interactable || BypassInteractableCheck)
+				{
+					button.onClick.Invoke();
+				}
+
 				return;
 			}
 
