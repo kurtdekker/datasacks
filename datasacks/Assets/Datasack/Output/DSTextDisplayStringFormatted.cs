@@ -59,7 +59,9 @@ public class DSTextDisplayStringFormatted : MonoBehaviour
 	{
 		if (!System.String.IsNullOrEmpty(formattingDatasack.Value))
 		{
-			textAbstraction.SetText( System.String.Format (formattingDatasack.Value, ds.Value));
+			textAbstraction.SetText( System.String.Format (
+				System.Globalization.CultureInfo.InvariantCulture,
+				formattingDatasack.Value, ds.Value));
 			return;
 		}
 		textAbstraction.SetText( ds.Value);

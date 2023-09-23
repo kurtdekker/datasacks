@@ -60,7 +60,9 @@ public class DSTextDisplayFloat : MonoBehaviour
 	{
 		if (!System.String.IsNullOrEmpty(FormatString))
 		{
-			textAbstraction.SetText( System.String.Format (FormatString, ds.fValue));
+			textAbstraction.SetText( System.String.Format (
+				System.Globalization.CultureInfo.InvariantCulture,
+				FormatString, ds.fValue));
 			return;
 		}
 		textAbstraction.SetText( ds.fValue.ToString ());
