@@ -7,3 +7,7 @@ https://github.com/kurtdekker/datasacks
 https://gitlab.com/kurtdekker/datasacks
 
 https://sourceforge.net/projects/datasacks/
+
+If you are using any version of Unity later than Unity2021, it may be necessary to add this line to your Packages/manifest.json, or add it via the Package Mangler:
+
+	"com.unity.ugui": "1.0.0",
