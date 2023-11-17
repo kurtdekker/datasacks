@@ -12,6 +12,11 @@ Also: https://kurtdekker.itch.io/
 
 For updating your project, see UpdateNotes.txt file.
 
+THIS PACAKGE REQUIRES UGUI UI PACKAGE! Add this via the Package Mangler
+or else make sure you have this line in your Packages/manifest.json file:
+
+	"com.unity.ugui": "1.0.0",
+
 --------------------------------- DATASACKS --------------------------
 
 Fire up the example game scene for a silly clicker game that has some UI
