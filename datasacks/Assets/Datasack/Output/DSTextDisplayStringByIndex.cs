@@ -1,7 +1,7 @@
 ﻿/*
 	The following license supersedes all notices in the source code.
 
-	Copyright (c) 2022 Kurt Dekker/PLBM Games All rights reserved.
+	Copyright (c) 2024 Kurt Dekker/PLBM Games All rights reserved.
 
 	http://www.twitter.com/kurtdekker
 
@@ -46,6 +46,9 @@ public class DSTextDisplayStringByIndex : MonoBehaviour
 	[Header( "These strings are zere-based.")]
 	public	string[]	OutputStrings;
 
+	[Header( "Or specify the strings with a collection:")]
+	public	StringCollection	stringCollection;
+
 	[Multiline]
 	[Header("Optional; Standard C# formatting syntax. {0:000}")]
 	public	string		FormatString;
@@ -65,9 +68,19 @@ public class DSTextDisplayStringByIndex : MonoBehaviour
 		string output = "";
 
 		int index = ds.iValue;
-		if (index >= 0 && index < OutputStrings.Length)
+		if (stringCollection != null)
 		{
-			output = OutputStrings[index];
+			if (index >= 0 && index < stringCollection.Strings.Length)
+			{
+				output = stringCollection.Strings[index];
+			}
+		}
+		else
+		{
+			if (index >= 0 && index < OutputStrings.Length)
+			{
+				output = OutputStrings[index];
+			}
 		}
 
 		if (!System.String.IsNullOrEmpty(FormatString))
