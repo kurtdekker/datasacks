@@ -26,3 +26,8 @@ sysinfo.txt
 
 # where I traditionally build the iOS project from Unity3D:
 datasacksxc
+
+.vs
+.vsconfig
+datasacks/Logs/
+datasacks/UserSettings/
