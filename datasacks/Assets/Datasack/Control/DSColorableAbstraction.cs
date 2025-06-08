@@ -1,7 +1,7 @@
 ﻿/*
 	The following license supersedes all notices in the source code.
 
-	Copyright (c) 2021 Kurt Dekker/PLBM Games All rights reserved.
+	Copyright (c) 2025 Kurt Dekker/PLBM Games All rights reserved.
 
 	http://www.twitter.com/kurtdekker
 
@@ -45,10 +45,15 @@ public class DSColorableAbstraction : MonoBehaviour
 {
 	private	Text	text;
 	private Image	image;
+	private SpriteRenderer	spriteRenderer;
+
+#if USING_LEGACYTEXTMESH
+	private TextMesh textMesh;
+#endif
 
 	// <WIP> observe and interoperate with other types of colorable objects
 
-	public	static	DSColorableAbstraction	Attach( GameObject go)
+	public static	DSColorableAbstraction	Attach( GameObject go)
 	{
 		DSColorableAbstraction ca = go.AddComponent<DSColorableAbstraction>();
 		return ca;
@@ -68,6 +73,17 @@ public class DSColorableAbstraction : MonoBehaviour
 		{
 			image = GetComponent<Image>();
 		}
+		if (!spriteRenderer)
+		{
+			spriteRenderer = GetComponent<SpriteRenderer>();
+		}
+
+#if USING_LEGACYTEXTMESH
+		if (!textMesh)
+		{
+			textMesh = GetComponent<TextMesh>();
+		}
+#endif
 	}
 
 	public void SetColor(Color c)
@@ -87,6 +103,20 @@ public class DSColorableAbstraction : MonoBehaviour
 			image.color = c;
 			good = true;
 		}
+
+		if (spriteRenderer)
+		{
+			spriteRenderer.color = c;
+			good = true;
+		}
+
+#if USING_LEGACYTEXTMESH
+		if (textMesh)
+		{
+			textMesh.color = c;
+			good = true;
+		}
+#endif
 
 		if (!good)
 		{
