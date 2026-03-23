@@ -53,6 +53,7 @@ public class DSPulseScaleOnChange : MonoBehaviour
 
 	private void Reset()
 	{
+		PulseCurve = new AnimationCurve();
 		PulseCurve.keys = new Keyframe[]
 		{
 			new Keyframe( 0.00f, 1.0f),
