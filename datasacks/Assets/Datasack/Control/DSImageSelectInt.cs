@@ -1,7 +1,7 @@
 ﻿/*
 	The following license supersedes all notices in the source code.
 
-	Copyright (c) 2021 Kurt Dekker/PLBM Games All rights reserved.
+	Copyright (c) 2026 Kurt Dekker/PLBM Games All rights reserved.
 
 	http://www.twitter.com/kurtdekker
 
@@ -59,7 +59,11 @@ public class DSImageSelectInt : MonoBehaviour
 	{
 		if (image)
 		{
-			image.sprite = SpriteTable[ ds.iValue];
+			int index = ds.iValue;
+			if (index >= 0 && index < SpriteTable.Length)
+			{
+				image.sprite = SpriteTable[index];
+			}
 		}
 	}
 
